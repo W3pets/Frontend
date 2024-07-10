@@ -12,6 +12,14 @@ module.exports = {
         DEFAULT: '1rem',
         md: '1.5rem',
         lg: '2rem'
+      },
+      maxWidth: {
+        DEFAULT: '320px',
+        sm: '475px',
+        md: '640px',
+        lg: '768px',
+        xl: '1024px',
+        '2xl': '1280px',
       }
     }
   },
