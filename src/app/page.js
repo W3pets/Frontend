@@ -4,7 +4,7 @@ const page = () => {
   return (
     <section className='py-8'>
     <div className='container'>
-      <h1 className='text-3xl font-bold text-center'>W3pets</h1>
+      <h1 className='text-3xl font-bold text-center'>My NextJS Boilerplate</h1>
     </div>
   </section>
   )
