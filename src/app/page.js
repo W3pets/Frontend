@@ -9,7 +9,7 @@ import MainCategories from './components/MainCategories';
 
 const page = () => {
   return (
-    <div className="flex flex-row w-full bg-primary pt-20">
+    <div className="flex flex-row w-full pt-20">
       <div>
       <Sidebar />
       </div>

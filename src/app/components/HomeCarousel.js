@@ -35,7 +35,7 @@ const HomeCarousel = () => {
   };
 
   return (
-    <div className='h-60 bg-secondary text-white flex gap-4 mb-5'>
+    <div className='h-60 text-white flex gap-4 mb-5'>
       {/* <Image src='/hero-img.png' alt='W3pets' width={1000} height={1000} className='w-full h-full object-cover'/> */}
 
       <div className="relative w-9/12 h-full rounded-md overflow-hidden">
