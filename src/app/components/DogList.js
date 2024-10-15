@@ -47,7 +47,6 @@ const productDetails = [
 const DogList = () => {
   return (
     <div className='mb-5'>
-      <p className='text-xl text-black mb-5 font-medium'>Dogs</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {productDetails.map((product) => (
           <ProductCard

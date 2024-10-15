@@ -13,7 +13,7 @@ const MainCategories = () => {
 
   return (
     <div className="mb-5">
-      <p className="text-xl text-black mb-5 font-medium">Categories</p>
+<p className="text-xl text-black mb-5 font-medium">Categories</p>
 
       <div className="flex gap-28 items-center">
         {categories.map((category) => (

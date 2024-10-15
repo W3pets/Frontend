@@ -66,7 +66,7 @@ const productDetails = [
   {
     imageUrl: '/Chicken-pic.png',
     title: 'Muscovy Duck',
-    category: 'Parrots',
+    category: 'Dogs',
     breed: 'Free-range',
     age: '8 months',
     price: '60,000',

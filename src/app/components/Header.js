@@ -26,7 +26,7 @@ const Header = () => {
 
           <p className='font-bold text-xs'>Seller Registration</p>
 
-          <button className='bg-tertiary text-white py-1 px-3 rounded-sm text-xs'>Log in</button>
+          <Link href='/login'><button className='bg-tertiary text-white py-1 px-3 rounded-sm text-xs'>Log in</button></Link>
 
           <div>
             <Image src='/default-pfp.png' alt='profile picture' width={100} height={100} className='w-6'/>

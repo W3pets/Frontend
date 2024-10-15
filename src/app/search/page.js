@@ -108,7 +108,7 @@ const SearchComponent = () => {
 
 const SearchPage = () => {
   return (
-    <div className="pt-20 flex flex-row w-full">
+    <div className="pt-20 pb-20 flex flex-row w-full bg-primary">
       <div>
         <Sidebar />
       </div>

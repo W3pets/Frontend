@@ -9,7 +9,7 @@ import MainCategories from './components/MainCategories';
 
 const page = () => {
   return (
-    <div className="flex flex-row w-full pt-20">
+    <div className="flex flex-row w-full pt-20 pb-20 bg-primary">
       <div>
       <Sidebar />
       </div>
@@ -28,6 +28,7 @@ const page = () => {
         </div>
 
         <div>
+        <p className='text-xl text-black mb-5 font-medium'>Dogs</p>
         <DogList/>
         </div>
 

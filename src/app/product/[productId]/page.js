@@ -263,7 +263,7 @@ export default function ProductPage() {
   }
 
   return (
-    <div className='flex w-full flex-col p-8 pt-20'>
+    <div className='flex w-full flex-col p-8 pt-20 bg-primary'>
       <div>
         <Link href='/' className='flex items-center gap-2 pb-0 pt-2'>
           <Image

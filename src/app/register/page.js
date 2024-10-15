@@ -1,25 +1,90 @@
+'use client';
 
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function RegisterPage() {
+
+    // State to handle password visibility
+    const [showPassword, setShowPassword] = useState(false);
+
+    // Toggle password visibility
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };
+
+
     return (
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
-        <form>
-          <div className="mb-4">
-            <label htmlFor="name" className="block mb-1">Name:</label>
-            <input type="text" id="name" className="w-full px-4 py-2 border rounded-lg" />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="email" className="block mb-1">Email:</label>
-            <input type="email" id="email" className="w-full px-4 py-2 border rounded-lg" />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="password" className="block mb-1">Password:</label>
-            <input type="password" id="password" className="w-full px-4 py-2 border rounded-lg" />
-          </div>
-          <button type="submit" className="bg-green-500 text-white w-full py-2 rounded-lg">Sign Up</button>
-        </form>
+      <div className="bg-primary h-screen w-screen flex justify-center">
+      <div className="flex-1 flex w-full h-full overflow-hidden">
+        <Image src='/loginsignup-img.png' alt='login' width={1000} height={1000} className="w-full h-full object-fill"/>
       </div>
+
+      <div className="flex-1 py-6 px-8">
+        <div className="flex justify-between items-center mb-3">
+          <div>
+            <Link href="/"><Image src='/logo.png' alt='w3pets' width={100} height={100} className='w-32'/></Link>
+          </div>
+
+          <div className="text-sm">Already a Member? <Link href="/login"><span className="text-tertiary">Log in</span></Link></div>
+        </div>
+
+        <div className="flex flex-col items-center justify-center">
+          <h2 className="text-4xl font-medium mb-3 text-center">Welcome to W3pets <br/> & let's get started</h2>
+          <p className="text-xs mb-3 text-center max-w-[24rem] font-medium">Experience a seamless shopping journey where quality meets affordability, making it easier than ever to bring home the perfect addition to your farm or family.</p>
+        </div>
+
+        <div className="mb-4 px-auto flex flex-col">
+          <form className="w-full max-w-[24rem] mx-auto mb-4">
+            <div className="mb-4">
+              <label htmlFor="name" className="block mb-1">Username</label>
+              <input type="text" id="email" placeholder="Username" className="w-full h-9 text-sm placeholder:text-sm bg-[#F5F5F5] outline-none px-4 py-2 border border-[#383838] rounded-[4px]" />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="email" className="block mb-1">Email</label>
+              <input type="email" id="email" placeholder="Email" className="w-full h-9 text-sm placeholder:text-sm bg-[#F5F5F5] outline-none px-4 py-2 border border-[#383838] rounded-[4px]" />
+            </div>
+
+            <div className="mb-8 relative">
+              <label htmlFor="password" className="block mb-1">Password</label>
+              <input 
+                type={showPassword ? 'text' : 'password'} 
+                id="password" 
+                placeholder="Password" 
+                className="w-full bg-[#F5F5F5] h-9 text-sm placeholder:text-sm outline-none px-4 py-2 border border-[#383838] rounded-[4px]" 
+              />
+              {/* Eye icon to toggle password visibility */}
+              <div className="absolute right-3 bottom-2 flex items-center">
+              {/* <a href="https://www.flaticon.com/free-icons/password" title="password icons">Password icons created by th studio - Flaticon</a> */}
+                <Image 
+                  src={showPassword ? '/eye-open.png' : '/eye-closed.png'} 
+                  alt="Password Visibility" 
+                  width={20} 
+                  height={20} 
+                  className="cursor-pointer"
+                  onClick={togglePasswordVisibility}
+                />
+              </div>
+            </div>
+
+            <button type="submit" className="bg-tertiary text-white w-full py-2 rounded-md">Sign Up</button>
+            {/* <p className="text-[#228B22] text-sm">Forgot password?</p> */}
+          </form>
+
+          <div className="w-full flex flex-col gap-4 items-center justify-center">
+            <div className='flex gap-10 items-center justify-center'>
+            <Image src='/google.png' alt='google' width={1000} height={1000} className="w-12 h-12"/>
+            <Image src='/facebook.png' alt='facebook' width={1000} height={1000} className="w-12 h-12"/>
+            </div>
+
+            <p className="text-[0.8rem] text-center w-full max-w-[24rem]">By signing up, I agree to the <span className='text-[#228B22]'>Terms and Conditions and Privacy Policy.</span> </p>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
     );
   }
   
