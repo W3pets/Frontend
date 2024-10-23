@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Sidebar() {
   return (
-    <div>
-    <aside className='w-64 rounded-r-xl bg-secondary px-3 py-8 max-h-max'>
+    <div className="overflow-y-scroll fixed h-5/6 scrollbar-style">
+    <aside className='w-60 rounded-r-xl bg-secondary px-3 py-8 max-h-max'>
       <h2 className='mb-6 text-lg text-tertiary'>Filters</h2>
       <form>
 

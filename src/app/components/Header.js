@@ -20,8 +20,10 @@ const Header = () => {
 
           <p className='text-tertiary font-semibold text-xs'>Market</p>
           
-          <div >
+          <div>
+            <Link href='/cart'>
           <Image src='/cart-icon.png' alt='cart' width={100} height={100} className='w-5'/>
+          </Link>
           </div>
 
           <p className='font-bold text-xs'>Seller Registration</p>

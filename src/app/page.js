@@ -9,8 +9,8 @@ import MainCategories from './components/MainCategories';
 
 const page = () => {
   return (
-    <div className="flex flex-row w-full pt-20 pb-20 bg-primary">
-      <div>
+    <div className="flex flex-row w-full pt-20 bg-primary relative">
+      <div className='w-64 pb-20'>
       <Sidebar />
       </div>
       <div className="flex-1 pl-4 pr-8">

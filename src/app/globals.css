@@ -21,4 +21,24 @@
   .carousel .indicator.active {
     background-color: green;
   }
+
+
+  /* For WebKit browsers (Chrome, Safari, Edge) */
+.scrollbar-style ::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.scrollbar-style ::-webkit-scrollbar-thumb {
+  background-color: #75CA23; /* Scrollbar thumb color */
+}
+
+.scrollbar-style ::-webkit-scrollbar-track {
+  background: white; /* Background of the track */
+}
+
+/* For Firefox */
+.scrollbar-style {
+  scrollbar-width: thin; /* You can set 'auto' or 'thin' */
+  scrollbar-color: #75CA23 white; /* Scrollbar thumb color, scrollbar track color */
+}
   
