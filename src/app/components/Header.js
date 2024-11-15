@@ -26,7 +26,10 @@ const Header = () => {
           </Link>
           </div>
 
+          <Link href='/shop/onboarding'>
           <p className='font-bold text-xs'>Seller Registration</p>
+          </Link>
+
 
           <Link href='/login'><button className='bg-tertiary text-white py-1 px-3 rounded-sm text-xs'>Log in</button></Link>
 

@@ -41,4 +41,28 @@
   scrollbar-width: thin; /* You can set 'auto' or 'thin' */
   scrollbar-color: #75CA23 white; /* Scrollbar thumb color, scrollbar track color */
 }
+
+
+
+/* Custom checkbox styling */
+.checkbox-custom {
+  appearance: none; /* Remove default checkbox styling */
+  background-color: #ffffff; /* Light gray background (default) */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkbox-custom:checked {
+  background-color: #ffffff; /* Blue background when checked */
+}
+
+.checkbox-custom:checked:after {
+  content: '✓'; /* Unicode checkmark */
+  color: #75CA23; /* White checkmark color */
+  display: block;
+  font-size: 1rem; /* Adjust size as needed */
+  text-align: center;
+  line-height: 0.8rem; /* Center the checkmark vertically */
+}
+
   

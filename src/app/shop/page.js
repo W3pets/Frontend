@@ -1,17 +1,6 @@
 export default function SellerPage() {
     return (
       <div className="bg-white p-8 rounded-lg shadow-md">
-
-    <aside className="w-64 bg-gray-200 p-4">
-          <nav>
-            <ul>
-              <li><a href="/seller" className="block py-2 px-4 rounded hover:bg-gray-300">Dashboard</a></li>
-              <li><a href="/seller/products" className="block py-2 px-4 rounded hover:bg-gray-300">Your Products</a></li>
-              <li><a href="/seller/add-product" className="block py-2 px-4 rounded hover:bg-gray-300">Add Product</a></li>
-            </ul>
-          </nav>
-        </aside>
-
           <header className="flex items-center justify-between bg-white p-4 shadow">
             <h1 className="text-2xl font-bold">Seller Page</h1>
             <button className="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
