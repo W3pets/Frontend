@@ -1,6 +1,6 @@
 'use client'
 
-import ProductCard from '@/app/components/ProductCard'
+import ProductCard from '@/components/ProductCard'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'

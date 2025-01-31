@@ -1,10 +1,10 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import ProductCard from '../../components/ProductCard';
+import ProductCard from '../../../components/ProductCard';
 import Image from 'next/image';
 import Link from 'next/link';
-import DogList from '@/app/components/DogList';
+import DogList from '@/components/DogList';
 
 const productDetails = [
   {

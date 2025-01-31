@@ -2,8 +2,8 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
-import Sidebar from '../components/Sidebar';
-import ProductCard from '../components/ProductCard';
+import Sidebar from '../../components/Sidebar';
+import ProductCard from '../../components/ProductCard';
 
 const productDetails = [
   {
