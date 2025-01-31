@@ -1,0 +1,1 @@
+export const baseUrl = "http://ec2-51-20-31-127.eu-north-1.compute.amazonaws.com";

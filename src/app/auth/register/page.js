@@ -52,7 +52,7 @@ export default function RegisterPage() {
 
           <div className='text-sm'>
             Already a Member?{' '}
-            <Link href='/login'>
+            <Link href='/auth/login'>
               <span className='text-tertiary'>Log in</span>
             </Link>
           </div>
@@ -128,7 +128,7 @@ export default function RegisterPage() {
             </div>
 
             {error && (
-              <p className='mb-2 text-base text-error'>{error}</p>
+              <p className='mb-2 text-xs text-error'>{error}</p>
             )}
 
             <button

@@ -35,7 +35,7 @@ export default function LoginPage() {
             <Link href="/"><Image src='/logo.png' alt='w3pets' width={100} height={100} className='w-32' /></Link>
           </div>
 
-          <div className="text-sm">Not a Member? <Link href="/register"><span className="text-tertiary">Sign up</span></Link></div>
+          <div className="text-sm">Not a Member? <Link href="/auth/register"><span className="text-tertiary">Sign up</span></Link></div>
         </div>
 
         <div className="flex flex-col items-center justify-center">
@@ -82,7 +82,7 @@ export default function LoginPage() {
             </div>
 
             {error && (
-              <p className='mb-2 text-base text-error'>{error}</p>
+              <p className='mb-2 text-xs text-error'>{error}</p>
             )}
 
             <button

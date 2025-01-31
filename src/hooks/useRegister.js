@@ -1,3 +1,4 @@
+import { baseUrl } from "@/api/route";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -10,25 +11,28 @@ export const useRegister = () => {
         setLoading(true)
         setError(null)
 
-        const response = await fetch('http://ec2-51-20-31-127.eu-north-1.compute.amazonaws.com/api/users/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, email, password })
-        })
-        const json = await response.json()
+        try {
+            const response = await fetch(`${baseUrl}/api/users/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, email, password })
+            })
+            const json = await response.json()
 
-        if (!response.ok) {
-            setLoading(false)
-            setError(json.message)
-        }
-        if (response.ok) { 
-            localStorage.setItem('user', JSON.stringify(json))
-
-            dispatch(({ type: 'LOGIN', payload: json }))
-
-            setLoading(false)
-
-            router.push("/");
+            if (!response.ok) {
+                setError(json.message)
+            }
+            if (response.ok) {
+                localStorage.setItem('user', JSON.stringify(json.user))
+                localStorage.setItem('token', json.token)
+                dispatch(({ type: 'LOGIN', payload: json }))
+                router.push("/");
+            }
+        } catch (error) {
+            setError('An error occurred. Please try again.')
+            console.error('Register error:', error)
+        } finally {
+            setLoading(false);
         }
     }
 

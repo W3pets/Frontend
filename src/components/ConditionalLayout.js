@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation'
 import MainLayout from './MainLayout'
 import { UserContextProvider } from '@/contexts/UserContext'
+import { CartContextProvider } from '@/contexts/CartContext'
 
 export default function ConditionalLayout({ children }) {
   const pathname = usePathname()
@@ -21,15 +22,19 @@ export default function ConditionalLayout({ children }) {
   if (authRoutes.includes(pathname)) {
     return (
       <>
-        <UserContextProvider>{children}</UserContextProvider>
+        <UserContextProvider>
+          <CartContextProvider>{children}</CartContextProvider>
+        </UserContextProvider>
       </>
     )
   }
 
   // Otherwise, render the MainLayout
   return (
-    <MainLayout>
-      <UserContextProvider>{children}</UserContextProvider>
-    </MainLayout>
+    <UserContextProvider>
+      <CartContextProvider>
+        <MainLayout>{children}</MainLayout>
+      </CartContextProvider>
+    </UserContextProvider>
   )
 }

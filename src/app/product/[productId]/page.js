@@ -1,6 +1,8 @@
 'use client'
 
 import ProductCard from '@/components/ProductCard'
+import { useCartContext } from '@/hooks/useCartContext'
+import { useUserContext } from '@/hooks/useUserContext'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -13,7 +15,7 @@ const productDetails = [
       '/dog1-pic3.png',
       '/dog1-pic4.png',
       '/dog1-pic5.png',
-      '/dog1-pic6.png',
+      '/dog1-pic6.png'
     ],
     title: 'Golden Retriever',
     category: 'Dogs',
@@ -26,10 +28,18 @@ const productDetails = [
     gender: 'Male',
     description: 'A friendly and loyal Golden Retriever, perfect for families.',
     reviews: [
-      { user: 'John Doe', rating: 4, comment: 'Great companion, very well-trained!' },
-      { user: 'Jane Smith', rating: 5, comment: 'Amazing dog, very gentle and playful.' },
+      {
+        user: 'John Doe',
+        rating: 4,
+        comment: 'Great companion, very well-trained!'
+      },
+      {
+        user: 'Jane Smith',
+        rating: 5,
+        comment: 'Amazing dog, very gentle and playful.'
+      }
     ],
-    sellerName: 'Happy Paws Kennels',
+    sellerName: 'Happy Paws Kennels'
   },
   {
     images: [
@@ -38,7 +48,7 @@ const productDetails = [
       '/dog2-pic3.png',
       '/dog2-pic4.png',
       '/dog2-pic5.png',
-      '/dog2-pic6.png',
+      '/dog2-pic6.png'
     ],
     title: 'German Shepherd',
     category: 'Dogs',
@@ -51,10 +61,18 @@ const productDetails = [
     gender: 'Female',
     description: 'A highly intelligent and protective German Shepherd.',
     reviews: [
-      { user: 'Peter Parker', rating: 5, comment: 'Very smart and great for security.' },
-      { user: 'Mary Jane', rating: 4, comment: 'Strong and obedient, a good pet.' },
+      {
+        user: 'Peter Parker',
+        rating: 5,
+        comment: 'Very smart and great for security.'
+      },
+      {
+        user: 'Mary Jane',
+        rating: 4,
+        comment: 'Strong and obedient, a good pet.'
+      }
     ],
-    sellerName: 'Guard Dog Experts',
+    sellerName: 'Guard Dog Experts'
   },
   {
     images: [
@@ -63,7 +81,7 @@ const productDetails = [
       '/bird1-pic3.png',
       '/bird1-pic4.png',
       '/bird1-pic5.png',
-      '/bird1-pic6.png',
+      '/bird1-pic6.png'
     ],
     title: 'Merino Sheep',
     category: 'Fowls & Birds',
@@ -76,9 +94,13 @@ const productDetails = [
     gender: 'Male',
     description: 'Healthy Merino sheep known for producing high-quality wool.',
     reviews: [
-      { user: 'Alice Cooper', rating: 5, comment: 'Excellent wool quality, very healthy.' },
+      {
+        user: 'Alice Cooper',
+        rating: 5,
+        comment: 'Excellent wool quality, very healthy.'
+      }
     ],
-    sellerName: 'Woolly Farm',
+    sellerName: 'Woolly Farm'
   },
   {
     images: [
@@ -87,7 +109,7 @@ const productDetails = [
       '/parrot1-pic3.png',
       '/parrot1-pic4.png',
       '/parrot1-pic5.png',
-      '/parrot1-pic6.png',
+      '/parrot1-pic6.png'
     ],
     title: 'African Grey Parrot',
     category: 'Parrots',
@@ -100,9 +122,13 @@ const productDetails = [
     gender: 'Female',
     description: 'A talkative African Grey Parrot, known for its intelligence.',
     reviews: [
-      { user: 'Bruce Wayne', rating: 4, comment: 'Very smart, learns words quickly.' },
+      {
+        user: 'Bruce Wayne',
+        rating: 4,
+        comment: 'Very smart, learns words quickly.'
+      }
     ],
-    sellerName: 'Exotic Birds Hub',
+    sellerName: 'Exotic Birds Hub'
   },
   {
     images: [
@@ -111,7 +137,7 @@ const productDetails = [
       '/cat1-pic3.png',
       '/cat1-pic4.png',
       '/cat1-pic5.png',
-      '/cat1-pic6.png',
+      '/cat1-pic6.png'
     ],
     title: 'Siamese Cat',
     category: 'Cats',
@@ -124,9 +150,9 @@ const productDetails = [
     gender: 'Male',
     description: 'A playful Siamese cat with a beautiful coat and blue eyes.',
     reviews: [
-      { user: 'Clark Kent', rating: 5, comment: 'Very active and friendly.' },
+      { user: 'Clark Kent', rating: 5, comment: 'Very active and friendly.' }
     ],
-    sellerName: 'Feline Friends',
+    sellerName: 'Feline Friends'
   },
   {
     images: [
@@ -135,7 +161,7 @@ const productDetails = [
       '/fish1-pic3.png',
       '/fish1-pic4.png',
       '/fish1-pic5.png',
-      '/fish1-pic6.png',
+      '/fish1-pic6.png'
     ],
     title: 'Goldfish',
     category: 'Fish',
@@ -148,9 +174,13 @@ const productDetails = [
     gender: 'Female',
     description: 'A beautiful goldfish, perfect for aquariums.',
     reviews: [
-      { user: 'Lois Lane', rating: 5, comment: 'Lovely fish, bright and lively.' },
+      {
+        user: 'Lois Lane',
+        rating: 5,
+        comment: 'Lovely fish, bright and lively.'
+      }
     ],
-    sellerName: 'Aquatic Wonders',
+    sellerName: 'Aquatic Wonders'
   },
   {
     images: [
@@ -159,7 +189,7 @@ const productDetails = [
       '/dog3-pic3.png',
       '/dog3-pic4.png',
       '/dog3-pic5.png',
-      '/dog3-pic6.png',
+      '/dog3-pic6.png'
     ],
     title: 'Bulldog',
     category: 'Dogs',
@@ -172,9 +202,9 @@ const productDetails = [
     gender: 'Male',
     description: 'A sturdy Bulldog, well-socialized and perfect for a family.',
     reviews: [
-      { user: 'Barry Allen', rating: 4, comment: 'Very loving and gentle.' },
+      { user: 'Barry Allen', rating: 4, comment: 'Very loving and gentle.' }
     ],
-    sellerName: 'Paw Perfect',
+    sellerName: 'Paw Perfect'
   },
   {
     images: [
@@ -183,7 +213,7 @@ const productDetails = [
       '/parrot2-pic3.png',
       '/parrot2-pic4.png',
       '/parrot2-pic5.png',
-      '/parrot2-pic6.png',
+      '/parrot2-pic6.png'
     ],
     title: 'Cockatiel',
     category: 'Parrots',
@@ -196,9 +226,13 @@ const productDetails = [
     gender: 'Male',
     description: 'A friendly Cockatiel that loves to whistle and sing.',
     reviews: [
-      { user: 'Diana Prince', rating: 5, comment: 'Beautiful bird, very vocal.' },
+      {
+        user: 'Diana Prince',
+        rating: 5,
+        comment: 'Beautiful bird, very vocal.'
+      }
     ],
-    sellerName: 'Feathered Friends',
+    sellerName: 'Feathered Friends'
   },
   {
     images: [
@@ -207,7 +241,7 @@ const productDetails = [
       '/cat2-pic3.png',
       '/cat2-pic4.png',
       '/cat2-pic5.png',
-      '/cat2-pic6.png',
+      '/cat2-pic6.png'
     ],
     title: 'Persian Cat',
     category: 'Cats',
@@ -218,11 +252,12 @@ const productDetails = [
     productId: '12358',
     weight: '4.5 kg',
     gender: 'Female',
-    description: 'A calm Persian cat with a fluffy coat, great for a relaxed environment.',
+    description:
+      'A calm Persian cat with a fluffy coat, great for a relaxed environment.',
     reviews: [
-      { user: 'Hal Jordan', rating: 4, comment: 'Very calm and well-behaved.' },
+      { user: 'Hal Jordan', rating: 4, comment: 'Very calm and well-behaved.' }
     ],
-    sellerName: 'Royal Pets',
+    sellerName: 'Royal Pets'
   },
   {
     images: [
@@ -231,7 +266,7 @@ const productDetails = [
       '/fish2-pic3.png',
       '/fish2-pic4.png',
       '/fish2-pic5.png',
-      '/fish2-pic6.png',
+      '/fish2-pic6.png'
     ],
     title: 'Betta Fish',
     category: 'Fish',
@@ -242,28 +277,46 @@ const productDetails = [
     productId: '12359',
     weight: '150 g',
     gender: 'Male',
-    description: 'A vibrant Betta fish, known for its bright colors and flowing fins.',
+    description:
+      'A vibrant Betta fish, known for its bright colors and flowing fins.',
     reviews: [
-      { user: 'Arthur Curry', rating: 5, comment: 'Beautiful fish, very easy to care for.' },
+      {
+        user: 'Arthur Curry',
+        rating: 5,
+        comment: 'Beautiful fish, very easy to care for.'
+      }
     ],
-    sellerName: 'Fin Friends',
-  },
-];
-
+    sellerName: 'Fin Friends'
+  }
+]
 
 export default function ProductPage() {
   const { productId } = useParams()
+  const { user } = useUserContext()
+  const { dispatch: cartDispatch } = useCartContext();
 
   // Find the product based on productId
   const product = productDetails.find(item => item.productId === productId)
 
   // Check if product is found
   if (!product) {
-    return <div className='p-8 flex items-center justify-center text-6xl font-semibold pt-64'>Product not found</div>
+    return (
+      <div className='flex items-center justify-center p-8 pt-64 text-6xl font-semibold'>
+        Product not found
+      </div>
+    )
   }
 
+  const handleAddToCart = async () => {
+    if (user) {
+      cartDispatch({ type: 'ADD_TO_CART', payload: product });
+    } else {
+      alert('You need to be logged in!');
+    }
+  };
+
   return (
-    <div className='flex w-full flex-col p-8 pt-20 bg-primary'>
+    <div className='flex w-full flex-col bg-primary p-8 pt-20'>
       <div>
         <Link href='/' className='flex items-center gap-2 pb-0 pt-2'>
           <Image
@@ -281,7 +334,7 @@ export default function ProductPage() {
 
       <div>
         <div className='flex w-full flex-row justify-between pt-6'>
-          <div className='flex flex-col w-8/12'>
+          <div className='flex w-8/12 flex-col'>
             <div className='flex w-full gap-5'>
               <div className='flex flex-col gap-4'>
                 <div className='h-20 w-28 overflow-hidden rounded-md bg-[#757575]'></div>
@@ -300,11 +353,13 @@ export default function ProductPage() {
               </div>
             </div>
 
-            <div><p>REVIEW</p></div>
+            <div>
+              <p>REVIEW</p>
+            </div>
           </div>
 
           <div className='w-4/12'>
-            <div className='ml-8 flex-1 rounded-md border border-[#757575] p-3 '>
+            <div className='ml-8 flex-1 rounded-md border border-[#757575] p-3'>
               <p className='mb-2 text-lg'>Category: {product.category}</p>
               <p className='mb-2 text-lg'>Breed: {product.breed}</p>
               <p className='mb-2 text-lg'>Age: {product.age}</p>
@@ -312,7 +367,10 @@ export default function ProductPage() {
               <p className='mb-4 text-2xl font-bold text-green-700'>
                 {product.price}
               </p>
-              <button className='rounded-lg bg-green-500 px-6 py-2 text-white'>
+              <button
+                className='rounded-lg bg-green-500 px-6 py-2 text-white'
+                onClick={handleAddToCart}
+              >
                 Add to Cart
               </button>
             </div>
