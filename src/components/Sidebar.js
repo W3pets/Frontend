@@ -3,12 +3,12 @@ import Image from 'next/image'
 export default function Sidebar() {
   return (
     <div className='scrollbar-style fixed h-5/6 overflow-y-scroll'>
-      <aside className='max-h-max w-60 rounded-r-xl bg-secondary px-3 py-8'>
+      <aside className='max-h-max w-60 rounded-r-xl bg-white px-3 py-8'>
         <h2 className='mb-6 text-lg text-tertiary'>Filters</h2>
         <form>
           {/* Category Filter */}
           <div className='relative mb-6'>
-            <label className='mb-3 block text-xs font-bold' htmlFor='category'>
+            <label className='mb-3 block text-xs font-bold text-black' htmlFor='category'>
               Animal Category:
             </label>
             <div className='relative'>
@@ -49,7 +49,7 @@ export default function Sidebar() {
           {/* Price Range Filter */}
           <div className='mb-6'>
             <label
-              className='mb-3 block text-xs font-bold'
+              className='mb-3 block text-xs font-bold text-black'
               htmlFor='priceRange'
             >
               Price Range:
