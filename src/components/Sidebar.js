@@ -14,17 +14,9 @@ export default function Sidebar() {
             <div className='relative'>
               <select
                 id='category'
+                placeholder="Select Category"
                 className='w-full cursor-pointer appearance-none rounded-md border border-[#00000099] bg-transparent px-3 py-2 text-xs outline-none'
               >
-                <option
-                  value=''
-                  disabled
-                  selected
-                  hidden
-                  className='font-semibold text-[#00000066]'
-                >
-                  Select Category
-                </option>
                 <option value='dogs' className='text-black'>
                   Dogs
                 </option>
@@ -117,17 +109,9 @@ export default function Sidebar() {
             <div className='relative'>
               <select
                 id='gender'
+                placeholder="Select Gender"
                 className='w-full cursor-pointer appearance-none rounded-md border border-[#00000099] bg-transparent px-3 py-2 text-xs outline-none'
               >
-                <option
-                  value=''
-                  disabled
-                  selected
-                  hidden
-                  className='font-semibold text-[#00000066]'
-                >
-                  Select Gender
-                </option>
                 <option value='male' className='text-black'>
                   Male
                 </option>
