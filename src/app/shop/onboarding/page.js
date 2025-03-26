@@ -22,7 +22,7 @@ export default function OnboardingPage() {
   return (
     <div className='flex items-center justify-center w-full h-screen'>
       <div className='w-96'>
-        <p className='text-lg'>Hi {user.username},</p>
+        <p className='text-lg'>Hi {user?.username},</p>
         <p className='text-lg'>Ready to begin? Do you accept W3pets's terms to continue?</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
