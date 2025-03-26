@@ -13,13 +13,13 @@ const MainCategories = () => {
 
   return (
     <div className="mb-5">
-<p className="text-xl text-black mb-5 font-medium">Categories</p>
+      <p className="text-xl text-black mb-5 font-medium">Categories</p>
 
       <div className="flex gap-28 items-center">
         {categories.map((category) => (
           <Link href={`/category/${category.categoryId}`} key={category.categoryId}>
             <div className="flex flex-col items-center cursor-pointer">
-              <div className="rounded-full w-24 h-24 bg-secondary p-2">
+              <div className="rounded-full w-24 h-24 bg-gray-200 p-2">
                 <Image
                   src={category.imageUrl}
                   alt={category.name}

@@ -20,7 +20,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className='w-60 h-80 rounded-lg overflow-hidden bg-secondary'>
+    <div className='w-60 h-80 rounded-lg overflow-hidden bg-secondary text-white'>
       {/* Product Image */}
       <div className='w-full h-1/2 overflow-hidden'>
         <Image
@@ -35,23 +35,23 @@ export default function ProductCard({
       {/* Product Info */}
       <div className='px-3 py-2 h-1/2 flex flex-col justify-between'>
         <div className='h-full flex flex-col justify-between'>
-        {/* Title with ellipsis */}
-        <p className='text-xl font-medium truncate'>{title}</p>
+          {/* Title with ellipsis */}
+          <p className='text-xl font-medium truncate'>{title}</p>
 
-        <div className='flex truncate mt-1 text-sm'>
-{/* Category that adapts to fit without overflowing */}
-<p className="">
-          {category}
-        </p>
-        <span>‎ / ‎</span>
-        <p className="">
-          {breed}
-        </p>
-        <span>‎ / ‎</span>
-        <p className="truncate">
-          {age}
-        </p>
-        </div>
+          <div className='flex truncate mt-1 text-sm'>
+            {/* Category that adapts to fit without overflowing */}
+            <p className="">
+              {category}
+            </p>
+            <span>‎ / ‎</span>
+            <p className="">
+              {breed}
+            </p>
+            <span>‎ / ‎</span>
+            <p className="truncate">
+              {age}
+            </p>
+          </div>
 
           <p className='text-sm mt-1 font-medium'>₦ {price}</p>
           <div className='flex items-center mt-1'>

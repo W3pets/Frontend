@@ -48,23 +48,23 @@ const productDetails = [
 const BirdList = () => {
   return (
     <div className='mb-5'>
-    <p className='text-xl text-black mb-5 font-medium'>Fowls & Birds</p>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {productDetails.map((product) => (
-        <ProductCard
-          key={product.productId}
-          imageUrl={product.imageUrl}
-          title={product.title}
-          category={product.category}
-          breed={product.breed}
-          age={product.age}
-          price={product.price}
-          location={product.location}
-          productId={product.productId}
-        />
-      ))}
+      <p className='text-xl text-black mb-5 font-medium'>Fowls & Birds</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {productDetails.map((product) => (
+          <ProductCard
+            key={product.productId}
+            imageUrl={product.imageUrl}
+            title={product.title}
+            category={product.category}
+            breed={product.breed}
+            age={product.age}
+            price={product.price}
+            location={product.location}
+            productId={product.productId}
+          />
+        ))}
+      </div>
     </div>
-  </div>
   )
 }
 
