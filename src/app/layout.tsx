@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'W3Pets',
   description: 'Find Your Perfect Pet Companion',
   icons: {
-    icon: '/logo.png', // Path to your favicon
+    icon: '/logo.svg', // Path to your favicon
   },
 };
 

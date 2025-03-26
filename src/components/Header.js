@@ -22,7 +22,7 @@ const Header = () => {
         <div>
           <Link href='/'>
             <Image
-              src='/logo.png'
+              src='/logo.svg'
               alt='w3pets'
               width={100}
               height={100}

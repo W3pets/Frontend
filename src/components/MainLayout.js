@@ -1,7 +1,7 @@
 "use client"; // This file is a client component
 
 import Header from './Header';
-import Footer from './Footer';
+import Footer from './shared/Footer/Footer';
 
 export default function MainLayout({ children }) {
   return (
