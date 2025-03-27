@@ -2,13 +2,19 @@
 
 .footer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
   gap: 40px 80px;
   background-color: $secondary;
-  padding: 64px 48px;
+  padding: 54px 30px;
   color: white;
   font-size: 1.1rem;
+
+  @media only screen and (min-width: 770px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: min-content 1fr;
+    padding: 64px 48px;
+  }
 
   @media only screen and (min-width: 1150px) {
     grid-template-columns: 300px repeat(3, 1fr);
@@ -31,14 +37,12 @@
     }
 
     &:first-child {
+      max-width: 300px;
+      @media only screen and (min-width: 770px) {
+        max-width: auto;
+      }
       h3 {
         font-size: 1.5rem;
-
-        // img {
-        //   width: 40px;
-        //   height: 40px;
-
-        // }
       }
 
       .social_icons {
@@ -83,7 +87,9 @@
     }
 
     &:last-child {
-      grid-column: span 2;
+      @media only screen and (min-width: 770px) {
+        grid-column: span 2;
+      }
 
       @media only screen and (min-width: 1150px) {
         grid-column: span 4;
