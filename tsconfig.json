@@ -28,11 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "tailwind.config.js",
-    "src/components/Header.tsx",
-    "src/components/Products.tsx",
-    "src/components/ProductCard.tsx",
-    "src/components/shared/Filter/Filter.tsx"
+    "tailwind.config.js"
   ],
   "exclude": ["node_modules"]
 }

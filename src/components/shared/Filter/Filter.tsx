@@ -34,8 +34,8 @@ export default function Filter() {
     {
       name: 'Status',
       items: Object.keys(Vaccinated)
-        .splice(0, 3)
-        .map((c, i) => ({ name: `${c} Vaccinated`, id: i })),
+        .slice(3)
+        .map((c, i, arr) => ({ name: `${c} Vaccinated`, id: i })),
     },
   ];
 
