@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import ProductCard from '../../../components/ProductCard';
+import ProductCard from '../../../components/shared/ProductCard/ProductCard';
 import Image from 'next/image';
 import Link from 'next/link';
 import DogList from '@/components/DogList';
@@ -185,8 +185,8 @@ export default function CategoryPage() {
           </div>
 
           <div>
-          <p className='text-2xl text-[#757575] mb-5'>Dogs</p>
-            <DogList/>
+            <p className='text-2xl text-[#757575] mb-5'>Dogs</p>
+            <DogList />
           </div>
         </div>
       </div>

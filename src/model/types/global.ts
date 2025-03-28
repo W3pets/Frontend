@@ -4,6 +4,7 @@ export enum Paths {
   Whislist = '/whishlist',
   Martket = '/market',
   Category = '/category',
+  Product = '/product',
 
   Profile = '/u/profile',
   Register = '/u/auth/register',

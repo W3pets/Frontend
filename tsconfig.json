@@ -30,9 +30,9 @@
     ".next/types/**/*.ts",
     "tailwind.config.js",
     "src/components/Header.tsx",
-    "src/components/CloseSellers.js",
-    "src/components/ProductCard.js",
-    "src/components/Sidebar.js"
+    "src/components/Products.tsx",
+    "src/components/ProductCard.tsx",
+    "src/components/Filter.jsx"
   ],
   "exclude": ["node_modules"]
 }

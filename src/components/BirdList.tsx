@@ -1,6 +1,5 @@
-import React from 'react'
-import ProductCard from './ProductCard'
-
+import React from 'react';
+import ProductCard from './shared/ProductCard/ProductCard';
 
 const productDetails = [
   {
@@ -42,14 +41,14 @@ const productDetails = [
     price: '5,500',
     location: 'Molete, Ibadan',
     productId: '12348',
-  }
+  },
 ];
 
 const BirdList = () => {
   return (
-    <div className='mb-5'>
-      <p className='text-xl text-black mb-5 font-medium'>Fowls & Birds</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="mb-5">
+      <p className="mb-5 text-xl font-medium text-black">Fowls & Birds</p>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {productDetails.map((product) => (
           <ProductCard
             key={product.productId}
@@ -65,7 +64,7 @@ const BirdList = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BirdList
+export default BirdList;

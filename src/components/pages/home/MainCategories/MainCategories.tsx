@@ -8,18 +8,18 @@ import { IoFishOutline } from 'react-icons/io5';
 import { MdOutlinePets } from 'react-icons/md';
 import { Paths } from '@/model/types/global';
 
-const MainCategories = () => {
-  const categories = [
-    { name: 'Dogs', ImageUrl: PiDog, categoryId: 'dogs' },
-    { name: 'Cats', ImageUrl: PiCat, categoryId: 'cats' },
-    { name: 'Birds', ImageUrl: LuBird, categoryId: 'fowls-birds' },
-    { name: 'Fish', ImageUrl: IoFishOutline, categoryId: 'fishes' },
-    { name: 'Other Pets', ImageUrl: MdOutlinePets, categoryId: 'parrots' },
-  ];
+export const dummyCategory = [
+  { name: 'Dogs', ImageUrl: PiDog, categoryId: 0 },
+  { name: 'Cats', ImageUrl: PiCat, categoryId: 1 },
+  { name: 'Birds', ImageUrl: LuBird, categoryId: 2 },
+  { name: 'Fish', ImageUrl: IoFishOutline, categoryId: 3 },
+  { name: 'Other Pets', ImageUrl: MdOutlinePets, categoryId: 4 },
+];
 
+const MainCategories = () => {
   return (
     <div className={styles.cats}>
-      {categories.map(({ name, categoryId, ImageUrl }) => (
+      {dummyCategory.map(({ name, categoryId, ImageUrl }) => (
         <Link
           href={`${Paths.Category}/${categoryId}`}
           key={categoryId}

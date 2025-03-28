@@ -1,5 +1,10 @@
 import Image from 'next/image'
 
+const dummyFilters = [{
+name:"Category",
+
+}];
+
 export default function Sidebar() {
   return (
     <div className='scrollbar-style fixed h-5/6 overflow-y-scroll'>
@@ -9,7 +14,7 @@ export default function Sidebar() {
           {/* Category Filter */}
           <div className='relative mb-6'>
             <label className='mb-3 block text-xs font-bold text-black' htmlFor='category'>
-              Animal Category:
+              Category
             </label>
             <div className='relative'>
               <select
