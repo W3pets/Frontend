@@ -7,7 +7,7 @@
   align-items: center;
   gap: 2rem;
   justify-content: space-between;
-  padding: 25px 0;
+  padding: 20px 0;
   font-size: 1.1rem;
 
   .logo {
@@ -47,8 +47,10 @@
     justify-content: space-between;
     gap: 2rem;
     color: $color_2;
-    .cart {
-      .cart_content {
+    .cart,
+    .whishlist {
+      .cart_content,
+      .whishlist_content {
         position: relative;
         width: min-content;
 

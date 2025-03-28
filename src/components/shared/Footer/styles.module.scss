@@ -2,99 +2,103 @@
 @use '../../../globalStyles/mixin.scss' as *;
 
 .footer {
-  @include max_width;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  gap: 40px 80px;
   background-color: $secondary;
-  padding: 54px 30px;
-  color: white;
-  font-size: 1.1rem;
 
-  @media only screen and (min-width: 770px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: min-content 1fr;
-    padding: 64px 48px;
-  }
+  .content {
+    width: 100%;
+    @include max_width;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 40px 80px;
+    padding: 54px 30px;
+    color: white;
+    font-size: 1.1rem;
 
-  @media only screen and (min-width: 1150px) {
-    grid-template-columns: 300px repeat(3, 1fr);
-    grid-template-rows: auto auto;
-    gap: 40px;
-  }
-
-  & > section {
-    display: flex;
+    @media only screen and (min-width: 770px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: min-content 1fr;
+      padding: 64px 48px;
+    }
 
     @media only screen and (min-width: 1150px) {
-      justify-content: center;
+      grid-template-columns: 300px repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 40px;
     }
 
-    & > div {
+    & > section {
       display: flex;
-      overflow: hidden;
-      flex-direction: column;
-      row-gap: 1.6rem;
-    }
-
-    &:first-child {
-      max-width: 300px;
-      @media only screen and (min-width: 770px) {
-        max-width: auto;
-      }
-      h3 {
-        font-size: 1.5rem;
-      }
-
-      .social_icons {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-
-        & > div {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 50px;
-          width: 50px;
-          border-radius: 50%;
-          border: 2px solid white;
-        }
-      }
-
-      .slogan {
-        line-height: 2rem;
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        img {
-          margin-right: 10px;
-        }
-      }
-    }
-
-    &:not(:first-child) {
-      h3 {
-        font-size: 1.3rem;
-      }
-
-      ul {
-        display: flex;
-        flex-direction: column;
-        row-gap: 0.8rem;
-      }
-    }
-
-    &:last-child {
-      @media only screen and (min-width: 770px) {
-        grid-column: span 2;
-      }
 
       @media only screen and (min-width: 1150px) {
-        grid-column: span 4;
+        justify-content: center;
+      }
+
+      & > div {
+        display: flex;
+        overflow: hidden;
+        flex-direction: column;
+        row-gap: 1.6rem;
+      }
+
+      &:first-child {
+        max-width: 300px;
+        @media only screen and (min-width: 770px) {
+          max-width: auto;
+        }
+        h3 {
+          font-size: 1.5rem;
+        }
+
+        .social_icons {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+
+          & > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+          }
+        }
+
+        .slogan {
+          line-height: 2rem;
+        }
+
+        .brand {
+          display: flex;
+          align-items: center;
+          img {
+            margin-right: 10px;
+          }
+        }
+      }
+
+      &:not(:first-child) {
+        h3 {
+          font-size: 1.3rem;
+        }
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          row-gap: 0.8rem;
+        }
+      }
+
+      &:last-child {
+        @media only screen and (min-width: 770px) {
+          grid-column: span 2;
+        }
+
+        @media only screen and (min-width: 1150px) {
+          grid-column: span 4;
+        }
       }
     }
   }

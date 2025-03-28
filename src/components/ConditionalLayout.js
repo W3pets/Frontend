@@ -1,10 +1,10 @@
 'use client' // This component must be a client component
 
 import { usePathname } from 'next/navigation'
-import MainLayout from './MainLayout'
 import { UserContextProvider } from '@/contexts/UserContext'
 import { CartContextProvider } from '@/contexts/CartContext'
 import { Paths } from '@/model/types/global'
+import MainLayout from './pages/home/MainLayout'
 
 export default function ConditionalLayout({ children }) {
   const pathname = usePathname()

@@ -3,6 +3,7 @@ import { Roboto } from 'next/font/google';
 import './globals.css';
 import { Metadata } from 'next';
 import StoreLayout from './StoreLayout';
+import { ImgPaths } from '@/model/types/global';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   title: 'W3Pets',
   description: 'Find Your Perfect Pet Companion',
   icons: {
-    icon: '/logo.svg', // Path to your favicon
+    icon: ImgPaths.Logo, // Path to your favicon
   },
 };
 

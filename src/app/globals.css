@@ -2,27 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.carousel {
-    position: relative;
-    overflow: hidden;
-    height: 250px; /* Adjust based on your image size */
-  }
-  
-  .carousel img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .carousel .indicator {
-    cursor: pointer;
-  }
-  
-  .carousel .indicator.active {
-    background-color: green;
-  }
-
-
   /* For WebKit browsers (Chrome, Safari, Edge) */
 .scrollbar-style ::-webkit-scrollbar {
   width: 8px; /* Width of the scrollbar */

@@ -7,6 +7,7 @@ import { useAppSelector } from '@/lib/store/hooks';
 import Avatar from '../Avatar/Avatar';
 import { Paths } from '@/model/types/global';
 import GlobalSearch from '../Search/GlobalSearch/GlobalSearch';
+import { MdOutlineFavoriteBorder } from 'react-icons/md';
 
 const Header = () => {
   const isSeller = useAppSelector((s) => s.user.auth.isSeller);
@@ -36,20 +37,29 @@ const Header = () => {
         )}
 
         <div className={styles.other}>
+          <Avatar />
+
           <Link href={Paths.Martket} className={styles.market}>
             Market
+          </Link>
+
+          <Link href={Paths.Whislist} className={styles.whishlist}>
+            <div className={styles.whishlist_content}>
+              {!!cartItemsCount && (
+                <div className={styles.counter}>{cartItemsCount}</div>
+              )}
+              <MdOutlineFavoriteBorder />
+            </div>
           </Link>
 
           <Link href={Paths.Cart} className={styles.cart}>
             <div className={styles.cart_content}>
               {!!cartItemsCount && (
-                <div className={styles.cartItemsCount}>5</div>
+                <div className={styles.counter}>{cartItemsCount}</div>
               )}
               <MdOutlineShoppingCart />
             </div>
           </Link>
-
-          <Avatar />
         </div>
       </div>
     </nav>

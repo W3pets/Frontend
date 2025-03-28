@@ -1,6 +1,7 @@
 export enum Paths {
   Default = '/',
   Cart = '/cart',
+  Whislist = '/whishlist',
   Martket = '/market',
 
   Profile = '/u/profile',
@@ -17,4 +18,9 @@ export enum Paths {
   SellerRegister = '/sellers/register',
   SellerTerms = '/legal/seller/Terms',
   SellerPrivacy = '/legal/seller/privacy',
+}
+
+export enum ImgPaths {
+  Logo = '/logo.svg',
+  Banner = '/banner/banner_1.jpeg',
 }

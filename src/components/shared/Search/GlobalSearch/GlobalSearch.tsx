@@ -5,12 +5,12 @@ import styles from './styles.module.scss';
 
 type Props = {
   placeholder?: string;
-  usePrimaryBtn?: boolean;
+  useV2?: boolean;
 };
 
 const GlobalSearch = ({
   placeholder = 'Search for dogs, cats, birds, and more...',
-  usePrimaryBtn = false,
+  useV2 = false,
 }: Props) => {
   const [query, setQuery] = useState('');
   const router = useRouter();
@@ -23,7 +23,7 @@ const GlobalSearch = ({
   };
 
   return (
-    <div className={styles.search}>
+    <div className={`${styles.search} ${useV2 ? styles.v2 : ''}`}>
       <input
         type="text"
         className={styles.search_input}
@@ -31,7 +31,10 @@ const GlobalSearch = ({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <div className={styles.search_btn} onClick={handleSubmit}>
+      <div
+        className={`${styles.search_btn} ${useV2 ? styles.v2 : ''}`}
+        onClick={handleSubmit}
+      >
         <IoSearch />
       </div>
     </div>
