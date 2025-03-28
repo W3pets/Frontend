@@ -2,8 +2,6 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
-import Sidebar from '../../components/shared/Filter/Filter.js';
-import ProductCard from '../../components/shared/ProductCard/ProductCard.js';
 
 const productDetails = [
   {
@@ -85,7 +83,7 @@ const SearchComponent = () => {
       </h1>
       {results.length ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {results.map((product) => (
+          {/* {results.map((product) => (
             <ProductCard
               key={product.productId}
               imageUrl={product.imageUrl}
@@ -97,7 +95,7 @@ const SearchComponent = () => {
               location={product.location}
               productId={product.productId}
             />
-          ))}
+          ))} */}
         </div>
       ) : (
         <p>No results found.</p>
@@ -110,7 +108,7 @@ const SearchPage = () => {
   return (
     <div className="pt-20 pb-20 flex flex-row w-full bg-primary">
       <div>
-        <Sidebar />
+        {/* <Sidebar /> */}
       </div>
 
       <div className="min-h-screen p-4 w-full">
