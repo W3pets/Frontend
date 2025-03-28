@@ -1,7 +1,9 @@
 import ConditionalLayout from '../components/ConditionalLayout';
 import { Roboto } from 'next/font/google';
-import './globals.css';
+import '@/globalStyles/global.scss';
 import { Metadata } from 'next';
+import StoreLayout from './StoreLayout';
+import { ImgPaths } from '@/model/types/global';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
   title: 'W3Pets',
   description: 'Find Your Perfect Pet Companion',
   icons: {
-    icon: '/logo.png', // Path to your favicon
+    icon: ImgPaths.Logo, // Path to your favicon
   },
 };
 
@@ -22,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <ConditionalLayout>{children}</ConditionalLayout>
+        <StoreLayout>
+          <ConditionalLayout>{children}</ConditionalLayout>
+        </StoreLayout>
       </body>
     </html>
   );

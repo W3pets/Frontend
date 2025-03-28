@@ -1,17 +1,18 @@
 'use client' // This component must be a client component
 
 import { usePathname } from 'next/navigation'
-import MainLayout from './MainLayout'
 import { UserContextProvider } from '@/contexts/UserContext'
 import { CartContextProvider } from '@/contexts/CartContext'
+import { Paths } from '@/model/types/global'
+import MainLayout from './pages/MainLayout'
 
 export default function ConditionalLayout({ children }) {
   const pathname = usePathname()
 
   // Define paths where the header and footer should be hidden
   const authRoutes = [
-    '/auth/login',
-    '/auth/register',
+    Paths.Register,
+    Paths.Login,
     '/shop',
     '/admin',
     '/shop/onboarding',

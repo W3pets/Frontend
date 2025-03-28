@@ -1,0 +1,19 @@
+@use '../../../../globalStyles/var.scss' as *;
+@use '../../../../globalStyles/mixin.scss' as *;
+
+.items {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3rem;
+  font-size: 1rem;
+
+  input {
+    width: 1rem;
+    cursor: pointer;
+  }
+
+  .item {
+    column-gap: 1rem;
+    display: flex;
+  }
+}

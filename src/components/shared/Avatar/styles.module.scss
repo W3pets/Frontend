@@ -1,0 +1,10 @@
+@use '../../../globalStyles/var.scss' as *;
+@use '../../../globalStyles/mixin.scss' as *;
+
+.wrapper {
+  color: $color_2;
+
+  .not_auth {
+    font-size: 1.5rem;
+  }
+}

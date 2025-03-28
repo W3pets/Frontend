@@ -1,0 +1,60 @@
+@use '../../../../../globalStyles/var.scss' as *;
+@use '../../../../../globalStyles/mixin.scss' as *;
+
+.search {
+  flex: 1;
+  display: flex;
+  column-gap: 1rem;
+  border: 2px solid $gray1;
+  border-radius: 0.4rem;
+  align-items: center;
+  padding: 0.4rem 0.5rem;
+  min-width: 200px;
+  justify-content: space-between;
+  background-color: white;
+
+  &.v2 {
+    border: none;
+    outline: none;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    border-radius: 2rem;
+
+    .search_input {
+      font-size: 1.2rem;
+    }
+  }
+
+  &:hover,
+  &:focus-within {
+    border: 2px solid $primary;
+    outline: none;
+  }
+
+  .search_input {
+    flex: 1;
+    outline: none;
+    color: $gray1;
+    border: none;
+
+    &:focus {
+      color: $color_2;
+    }
+  }
+
+  .search_btn {
+    cursor: pointer;
+    color: $color_2;
+    font-size: 1.5rem;
+
+    &.v2 {
+      background-color: $primary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      height: 3rem;
+      width: 3rem;
+      color: white !important;
+    }
+  }
+}

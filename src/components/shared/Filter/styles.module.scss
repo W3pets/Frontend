@@ -1,0 +1,25 @@
+.filters_wrapper {
+  flex: 1;
+  display: flex;
+  //   max-height: 100%;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: white;
+  padding: 2rem 1.5rem;
+  border-radius: 0.4rem;
+  row-gap: 2rem;
+
+  .filter {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.6rem;
+
+    .name {
+      font-size: 1.1rem;
+    }
+
+    .options {
+      padding-left: 0.5rem;
+    }
+  }
+}

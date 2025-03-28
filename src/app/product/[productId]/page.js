@@ -1,6 +1,6 @@
 'use client'
 
-import ProductCard from '@/components/ProductCard'
+import ProductCard from '@/components/shared/ProductCard/ProductCard'
 import { useCartContext } from '@/hooks/useCartContext'
 import { useUserContext } from '@/hooks/useUserContext'
 import Image from 'next/image'

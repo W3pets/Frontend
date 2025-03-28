@@ -28,11 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "tailwind.config.js",
-    "src/components/Header.js",
-    "src/components/CloseSellers.js",
-    "src/components/ProductCard.js",
-    "src/components/Sidebar.js"
+    "tailwind.config.js"
   ],
   "exclude": ["node_modules"]
 }

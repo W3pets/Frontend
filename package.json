@@ -12,17 +12,24 @@
     "format": "npm run prettier && npm run lint:fix"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.6.1",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.9",
+    "formik": "^2.4.6",
     "next": "^14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "swiper": "^11.1.14"
+    "react-icons": "^5.5.0",
+    "react-redux": "^9.2.0",
+    "swiper": "^11.1.14",
+    "uniqid": "^5.4.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@types/node": "^22.13.13",
     "@types/react": "^19.0.12",
+    "@types/uniqid": "^5.3.4",
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.2.4",
     "eslint-config-prettier": "^10.1.1",
@@ -30,6 +37,7 @@
     "postcss": "^8.4.47",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
+    "sass": "^1.86.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.8.2"
   }

@@ -1,0 +1,135 @@
+@use '../../../globalStyles/var.scss' as *;
+@use '../../../globalStyles/mixin.scss' as *;
+
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: -1px 1px 10px $gray1;
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+  width: 100%;
+  font-size: 1.1rem;
+
+  .cover_video {
+    overflow: hidden;
+    position: relative;
+    border-radius: 0.5rem;
+    .over_head_info {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      display: flex;
+      column-gap: 1.5rem;
+
+      .length,
+      .favorite {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        opacity: 0.6;
+      }
+
+      .length {
+        height: 38px;
+        padding: 0 1rem;
+        border-radius: 1rem;
+      }
+      .favorite {
+        height: 38px;
+        width: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      opacity: 0.5;
+      padding: 0.8rem;
+      font-size: 2rem;
+      border-radius: 50%;
+      color: black;
+    }
+    .video {
+      height: 300px;
+      object-fit: cover;
+    }
+  }
+
+  .product_info {
+    max-width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      column-gap: 0.4rem;
+
+      & > div {
+        display: flex;
+        align-items: center;
+        column-gap: 0.3rem;
+      }
+
+      span {
+        margin-bottom: -5px;
+      }
+    }
+
+    .age,
+    .location,
+    .dot {
+      color: $color_low;
+    }
+
+    .rating {
+      color: #facc15;
+
+      svg {
+        font-size: 1.7rem;
+      }
+
+      span {
+        color: $color_1;
+      }
+    }
+
+    .dot {
+      height: 2rem;
+      margin-top: -2rem;
+      font-size: 4rem;
+    }
+
+    .header {
+      font-weight: 600;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      .title {
+        color: $color_1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .price {
+        color: $primary;
+      }
+    }
+  }
+}
