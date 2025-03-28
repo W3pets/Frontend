@@ -1,6 +1,6 @@
 import ConditionalLayout from '../components/ConditionalLayout';
 import { Roboto } from 'next/font/google';
-import './globals.css';
+import '@/globalStyles/global.scss';
 import { Metadata } from 'next';
 import StoreLayout from './StoreLayout';
 import { ImgPaths } from '@/model/types/global';
