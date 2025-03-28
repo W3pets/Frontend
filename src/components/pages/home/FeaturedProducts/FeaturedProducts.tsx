@@ -2,6 +2,7 @@ import { ProductMini, Vaccinated } from '@/model/types/product';
 import styles from './styles.module.scss';
 import ProductCard from '@/components/shared/ProductCard/ProductCard';
 import uniqId from 'uniqid';
+import Filter from '@/components/shared/Filter/Filter';
 
 const productDetails: ProductMini[] = [
   {
@@ -81,7 +82,9 @@ const productDetails: ProductMini[] = [
 function FeaturedProducts() {
   return (
     <div className={styles.split}>
-      <div className={styles.filter}></div>
+      <div className={styles.filters}>
+        <Filter />
+      </div>
       <div className={styles.products}>
         {productDetails.map((product) => (
           <ProductCard key={uniqId()} {...product} />

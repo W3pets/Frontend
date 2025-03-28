@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
-import Sidebar from '../../components/Filter.jsx';
+import Sidebar from '../../components/shared/Filter/Filter.js';
 import ProductCard from '../../components/shared/ProductCard/ProductCard.js';
 
 const productDetails = [

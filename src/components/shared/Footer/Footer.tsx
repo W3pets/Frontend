@@ -7,6 +7,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { ImgPaths, Paths } from '@/model/types/global';
+import consts from '@/model/consts';
 
 const Footer = () => {
   return (
@@ -31,18 +32,18 @@ const Footer = () => {
             </div>
 
             <div className={styles.social_icons}>
-              <div>
+              <Link href={consts.global.url.socials.x}>
                 <FaXTwitter />
-              </div>
-              <div>
+              </Link>
+              <Link href={consts.global.url.socials.whatsApp}>
                 <FaWhatsapp />
-              </div>
-              <div>
+              </Link>
+              <Link href={consts.global.url.socials.telegram}>
                 <FaTelegramPlane />
-              </div>
-              <div>
+              </Link>
+              <Link href={consts.global.url.socials.instagram}>
                 <FaInstagram />
-              </div>
+              </Link>
             </div>
           </div>
         </section>

@@ -6,7 +6,7 @@ import { MdOutlineShoppingCart } from 'react-icons/md';
 import { useAppSelector } from '@/lib/store/hooks';
 import Avatar from '../Avatar/Avatar';
 import { Paths } from '@/model/types/global';
-import GlobalSearch from '../Search/GlobalSearch/GlobalSearch';
+import GlobalSearch from '../Inputs/Search/GlobalSearch/GlobalSearch';
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 
 const Header = () => {

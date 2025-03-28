@@ -2,6 +2,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
 import styles from './styles.module.scss';
+import uniqid from 'uniqid';
 
 type Props = {
   placeholder?: string;

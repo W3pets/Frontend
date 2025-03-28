@@ -32,7 +32,7 @@
     "src/components/Header.tsx",
     "src/components/Products.tsx",
     "src/components/ProductCard.tsx",
-    "src/components/Filter.jsx"
+    "src/components/shared/Filter/Filter.tsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,12 +1,12 @@
 @mixin max_width {
   margin: 0 auto;
-  max-width: 1400px;
-  padding-left: 30px !important;
-  padding-right: 30px !important;
+  max-width: 1500px;
+  padding-left: 25px !important;
+  padding-right: 25px !important;
 
   @media only screen and (min-width: 570px) {
-    padding-left: 48px !important;
-    padding-right: 48px !important;
+    padding-left: 38px !important;
+    padding-right: 38px !important;
   }
 
   @media only screen and (min-width: 770px) {

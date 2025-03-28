@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 import { ImgPaths } from '@/model/types/global';
 import { useEffect, useLayoutEffect, useRef } from 'react';
-import GlobalSearch from '../../Search/GlobalSearch/GlobalSearch';
+import GlobalSearch from '../../Inputs/Search/GlobalSearch/GlobalSearch';
 
 function HomeBanner() {
   const bannerWidth = useRef(0);
@@ -19,6 +19,7 @@ function HomeBanner() {
           alt="app logo"
           width={768}
           height={400}
+          priority={true}
           className={styles.img}
         />
         <div className={styles.cover} />

@@ -26,3 +26,10 @@ export enum ImgPaths {
   Logo = '/logo.svg',
   Banner = '/banner/banner_1.jpeg',
 }
+
+export type Dropdown = {
+  id?: string | number;
+  isRange?: boolean;
+  name: string | number;
+  items?: Dropdown[];
+};
