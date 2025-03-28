@@ -2,6 +2,7 @@ import ConditionalLayout from '../components/ConditionalLayout';
 import { Roboto } from 'next/font/google';
 import './globals.css';
 import { Metadata } from 'next';
+import StoreLayout from './StoreLayout';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <ConditionalLayout>{children}</ConditionalLayout>
+        <StoreLayout>
+          <ConditionalLayout>{children}</ConditionalLayout>
+        </StoreLayout>
       </body>
     </html>
   );

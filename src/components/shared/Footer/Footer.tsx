@@ -6,6 +6,8 @@ import { FaXTwitter } from 'react-icons/fa6';
 import { FaWhatsapp } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 import { FaTelegramPlane } from 'react-icons/fa';
+import consts from '@/model/consts';
+import { Paths } from '@/model/types/global';
 
 const Footer = () => {
   return (
@@ -13,7 +15,13 @@ const Footer = () => {
       <section>
         <div>
           <h3 className={styles.brand}>
-            <Image sizes="" src={'/logo.svg'} width={50} height={50} />
+            <Image
+              sizes=""
+              src={consts.global.url.logo}
+              width={50}
+              height={50}
+              alt="app logo"
+            />
             <span className={styles.init}>W3</span>pets
           </h3>
           <div className={`${styles.slogan}`}>
@@ -45,26 +53,26 @@ const Footer = () => {
           <h3>Site Map</h3>
           <ul>
             <li>
-              <Link href="/market">
+              <Link href={Paths.Cart}>
                 <p>Market</p>
               </Link>
             </li>
             <li>
-              <Link href="/cart">
+              <Link href={Paths.Cart}>
                 <p>Cart</p>
               </Link>
             </li>
             <li>
-              <Link href="/">Featured Sellers</Link>
+              <Link href={Paths.SellersFeatured}>Featured Sellers</Link>
             </li>
             <li>
-              <Link href="/">Sellers Registration</Link>
+              <Link href={Paths.SellerRegister}>Sellers Registration</Link>
             </li>
             <li>
-              <Link href="/">Sign up</Link>
+              <Link href={Paths.Register}>Sign up</Link>
             </li>
             <li>
-              <Link href="/">Profile</Link>
+              <Link href={Paths.Profile}>Profile</Link>
             </li>
           </ul>
         </div>
@@ -75,13 +83,13 @@ const Footer = () => {
           <h3>Company</h3>
           <ul>
             <li>
-              <Link href="/">Help & Support</Link>
+              <Link href={Paths.Help}>Help & Support</Link>
             </li>
             <li>
-              <Link href="/">Terms & Conditions</Link>
+              <Link href={Paths.Terms}>Terms & Conditions</Link>
             </li>
             <li>
-              <Link href="/">Privacy Policy</Link>
+              <Link href={Paths.Privacy}>Privacy Policy</Link>
             </li>
           </ul>
         </div>
@@ -92,13 +100,13 @@ const Footer = () => {
           <h3>Resource</h3>
           <ul>
             <li>
-              <Link href="/">Partner</Link>
+              <Link href={Paths.SellerRegister}>Partner</Link>
             </li>
             <li>
-              <Link href="/">Blog</Link>
+              <Link href={Paths.Default}>Blog</Link>
             </li>
             <li>
-              <Link href="/">Newsletter</Link>
+              <Link href="#newsletter">Newsletter</Link>
             </li>
           </ul>
         </div>

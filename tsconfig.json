@@ -29,7 +29,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "tailwind.config.js",
-    "src/components/Header.js",
+    "src/components/Header.tsx",
     "src/components/CloseSellers.js",
     "src/components/ProductCard.js",
     "src/components/Sidebar.js"

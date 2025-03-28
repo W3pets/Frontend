@@ -1,6 +1,8 @@
 @use '../../../globalStyles/var.scss' as *;
+@use '../../../globalStyles/mixin.scss' as *;
 
 .footer {
+  @include max_width;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;

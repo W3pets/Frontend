@@ -1,0 +1,15 @@
+@mixin max_width {
+  max-width: 1400px;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+
+  @media only screen and (min-width: 570px) {
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+  }
+
+  @media only screen and (min-width: 770px) {
+    padding-left: 64px !important;
+    padding-right: 64px !important;
+  }
+}

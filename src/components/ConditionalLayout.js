@@ -4,14 +4,15 @@ import { usePathname } from 'next/navigation'
 import MainLayout from './MainLayout'
 import { UserContextProvider } from '@/contexts/UserContext'
 import { CartContextProvider } from '@/contexts/CartContext'
+import { Paths } from '@/model/types/global'
 
 export default function ConditionalLayout({ children }) {
   const pathname = usePathname()
 
   // Define paths where the header and footer should be hidden
   const authRoutes = [
-    '/auth/login',
-    '/auth/register',
+    Paths.Register,
+    Paths.Login,
     '/shop',
     '/admin',
     '/shop/onboarding',
