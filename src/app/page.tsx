@@ -1,12 +1,9 @@
 'use client';
 
-import Sidebar from '../components/Sidebar';
 import CloseSellers from '../components/CloseSellers';
-import DogList from '../components/DogList';
-import BirdList from '../components/BirdList';
-import MainCategories from '../components/MainCategories';
 import HomeBanner from '@/components/shared/Banner/HomeBanner/HomeBanner';
 import styles from './../components/pages/home/styles.module.scss';
+import MainCategories from '@/components/pages/home/MainCategories/MainCategories';
 
 const page = () => {
   return (

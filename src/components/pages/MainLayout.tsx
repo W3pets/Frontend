@@ -1,7 +1,7 @@
 'use client'; // This file is a client component
 
-import Header from '../../shared/Header/Header';
-import Footer from '../../shared/Footer/Footer';
+import Header from '../shared/Header/Header';
+import Footer from '../shared/Footer/Footer';
 import styles from './styles.module.scss';
 
 export default function MainLayout({

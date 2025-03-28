@@ -3,6 +3,7 @@ export enum Paths {
   Cart = '/cart',
   Whislist = '/whishlist',
   Martket = '/market',
+  Category = '/category',
 
   Profile = '/u/profile',
   Register = '/u/auth/register',
