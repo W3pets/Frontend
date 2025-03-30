@@ -1,14 +1,15 @@
 'use client';
 import TextInput from '@/components/shared/Inputs/TextInput/TextInput';
 import { useFormik } from 'formik';
-import { SignInDTO, SignInSchema } from '@/model/DTO/user/auth';
+import { SignInSchema } from '@/model/DTO/user/auth';
 import Button from '@/components/shared/Button/Button';
 import styles from '@/components/pages/auth/styles.module.scss';
+import { InferType } from 'yup';
 
 export default function LoginPage() {
-  const handleSubmit = async (values: SignInDTO) => {};
+  const handleSubmit = async (values: InferType<typeof SignInSchema>) => {};
 
-  const initValS: SignInDTO = {
+  const initValS: InferType<typeof SignInSchema> = {
     email: '',
     password: '',
   };
@@ -35,7 +36,11 @@ export default function LoginPage() {
         props={formik.getFieldProps('password')}
       />
 
-      <Button className={styles.submit_btn} type="submit" isLoading>
+      <Button
+        className={styles.submit_btn}
+        type="submit"
+        isLoading={formik.isSubmitting}
+      >
         Sign In
       </Button>
     </>

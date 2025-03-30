@@ -20,11 +20,19 @@ export default function MainLayout({
     return <Header />;
   }, [pathname]);
 
+  const footer = useMemo(() => {
+    if (pathname.startsWith(Paths.Auth)) {
+      return null;
+    }
+
+    return <Footer />;
+  }, [pathname]);
+
   return (
     <div className={styles.app_wrapper}>
       {header}
       <main className={styles.main}>{children}</main>
-      <Footer />
+      {footer}
     </div>
   );
 }

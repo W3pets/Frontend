@@ -1,19 +1,10 @@
 import * as Yup from 'yup';
 
-export type SignInDTO = {
-  email: string;
-  password: string;
-};
-
 export const SignUpSchema = Yup.object().shape({
-  firstname: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
+  fullName: Yup.string()
+    .matches(/^(?:[A-Za-z]+)(?:\s[A-Za-z]+){1,2}$/, 'Provide your 2 or 3 Names')
+    .max(100, 'Too Long!')
     .required('First name is Required'),
-  lastname: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Last name is Required'),
   email: Yup.string()
     .email('Invalid email address')
     .required('Email is required'),

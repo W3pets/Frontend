@@ -11,6 +11,7 @@ type Props = {
   type?: 'text' | 'textarea' | 'password' | 'email';
   placeholder?: string;
   disabled?: boolean;
+  isRequired?: boolean;
   props: FieldInputProps<any>;
 };
 
@@ -20,6 +21,7 @@ function TextInput({
   error = '',
   placeholder = '',
   disabled = false,
+  isRequired = true,
   props,
 }: Readonly<Props>) {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,7 +29,12 @@ function TextInput({
 
   return (
     <div className={Styles.wrapper}>
-      {!!label && <label>{label}</label>}
+      {!!label && (
+        <label>
+          {`${label} `}
+          {isRequired ? <span>*</span> : ''}
+        </label>
+      )}
       <div className={Styles.input_wrapper}>
         <input
           className={Styles.input}

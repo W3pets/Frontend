@@ -49,6 +49,11 @@ export default function Layout({
           </div>
           <div className={styles.inner}>{children}</div>
         </div>
+        <div className={styles.copyright}>
+          <span>
+            Copyright <span>&copy;</span> W3pets 2024 All rights reserved
+          </span>
+        </div>
       </div>
     </div>
   );
