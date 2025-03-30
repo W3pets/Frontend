@@ -9,6 +9,7 @@ type Props = {
   loaderRadius?: number;
   outline?: boolean;
   children: React.ReactNode;
+  isDisabled?: boolean;
   onClick?: MouseEventHandler;
 };
 
@@ -17,6 +18,7 @@ function Button({
   children,
   className = '',
   isLoading = false,
+  isDisabled = false,
   outline = false,
   onClick,
   loaderRadius,
@@ -24,8 +26,8 @@ function Button({
   return (
     <button
       type={type}
-      onClick={!isLoading && !!onClick ? onClick : undefined}
-      className={`${className} ${styles.button} ${
+      onClick={!isLoading && !isDisabled && !!onClick ? onClick : undefined}
+      className={`${className} ${styles.button} ${isDisabled ? styles.disabled : ''} ${
         outline ? styles.outline : ''
       }`}
     >

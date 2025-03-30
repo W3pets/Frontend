@@ -1,17 +1,39 @@
+'use client';
+
 import React from 'react';
 import styles from './styles.module.scss';
 import uniqid from 'uniqid';
 
+export type MultiCheckItem = {
+  name: string | React.ReactNode;
+  id: number;
+  selected?: boolean;
+};
 type Props = {
-  items: { name: string; id: number }[];
+  onChange?: (items: MultiCheckItem[]) => any;
+  items: MultiCheckItem[];
 };
 
-function MultiChecked({ items }: Props) {
+function MultiChecked({ items, onChange }: Props) {
+  const handleChange = (index: number) => {
+    const newItem: MultiCheckItem = {
+      ...items[index],
+      selected: !(items[index]?.selected || false),
+    };
+    const newItems = [...items];
+    newItems[index] = newItem;
+    if (onChange) onChange(newItems);
+  };
+
   return (
     <div className={styles.items}>
-      {items.map(({ id, name }) => (
+      {items.map(({ id, name, ...rest }, i) => (
         <div key={uniqid()} className={styles.item}>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={(ev) => handleChange(i)}
+            checked={rest?.selected || false}
+          />
           <div>{name}</div>
         </div>
       ))}

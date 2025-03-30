@@ -33,4 +33,9 @@
       @include box-shadow($gray1);
     }
   }
+
+  &.disabled {
+    cursor: not-allowed;
+    background: $gray1 !important;
+  }
 }

@@ -8,6 +8,7 @@ import { Paths } from '@/model/types/global';
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import Avatar from '../Avatar/Avatar';
 import GlobalSearch from '../Inputs/Search/GlobalSearch/GlobalSearch';
+import { SellerPaths } from '@/model/types/seller';
 
 type Props = {
   hideSearch?: boolean;
@@ -43,7 +44,10 @@ const Header = ({
         )}
 
         {!hideSeller && !isSeller && (
-          <Link href={Paths.SellerRegister} className={styles.seller}>
+          <Link
+            href={`${Paths.Sellers}${SellerPaths.SellerRegister}`}
+            className={styles.seller}
+          >
             <span>Become a Seller</span>
           </Link>
         )}

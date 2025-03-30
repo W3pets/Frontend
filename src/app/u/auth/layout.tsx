@@ -49,11 +49,6 @@ export default function Layout({
           </div>
           <>{children}</>
         </div>
-        <div className={styles.copyright}>
-          <span>
-            Copyright <span>&copy;</span> W3pets 2024 All rights reserved
-          </span>
-        </div>
       </div>
     </div>
   );
