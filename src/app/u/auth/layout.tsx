@@ -47,7 +47,7 @@ export default function Layout({
             <div className={styles.indicator2} />
             <div className={styles.indicator} style={{ left }} />
           </div>
-          <div className={styles.inner}>{children}</div>
+          <>{children}</>
         </div>
         <div className={styles.copyright}>
           <span>

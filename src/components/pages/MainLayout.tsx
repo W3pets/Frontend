@@ -14,7 +14,7 @@ export default function MainLayout({
 
   const header = useMemo(() => {
     if (pathname.startsWith(Paths.Auth)) {
-      return <Header hideSearch hideOthers />;
+      return <Header hideSearch hideOthers hideSeller />;
     }
 
     return <Header />;

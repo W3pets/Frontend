@@ -8,25 +8,30 @@
   align-items: center;
   background-color: white;
 
-  @media only screen and (min-width: 770px) {
+  @media only screen and (min-width: 650px) {
     background-color: inherit;
   }
 
   .content {
     @include max_width;
     margin: 64px 0;
+    width: 100%;
 
     .card {
       display: flex;
       flex-direction: column;
       background-color: white;
       max-width: 500px;
-      width: 500px;
-      min-height: 575px;
+      width: 100%;
       border-radius: 0.3rem;
-      box-shadow: -2px 2px 8px $gray1;
-      padding: 2.5rem;
       row-gap: 2rem;
+      margin: 0 auto;
+      padding: 0 1rem;
+
+      @media only screen and (min-width: 650px) {
+        padding: 2.5rem;
+        box-shadow: -2px 2px 8px $gray1;
+      }
 
       .header {
         display: flex;
@@ -87,7 +92,7 @@
         }
       }
 
-      .inner {
+      .form {
         display: flex;
         flex-direction: column;
         row-gap: 0.5rem;

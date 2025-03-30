@@ -21,7 +21,7 @@ export default function LoginPage() {
   });
 
   return (
-    <>
+    <form className={styles.form} onSubmit={formik.handleSubmit}>
       <TextInput
         label="Email"
         placeholder="Enter your email"
@@ -43,6 +43,6 @@ export default function LoginPage() {
       >
         Sign In
       </Button>
-    </>
+    </form>
   );
 }

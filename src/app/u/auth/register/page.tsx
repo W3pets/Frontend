@@ -26,7 +26,7 @@ export default function RegisterPage() {
   });
 
   return (
-    <>
+    <form className={styles.form} onSubmit={formik.handleSubmit}>
       <TextInput
         label="Full Name"
         placeholder="Enter your full name"
@@ -68,6 +68,6 @@ export default function RegisterPage() {
       >
         Sign Up
       </Button>
-    </>
+    </form>
   );
 }
