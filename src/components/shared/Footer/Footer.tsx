@@ -8,6 +8,7 @@ import { FaInstagram } from 'react-icons/fa';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { ImgPaths, Paths } from '@/model/types/global';
 import consts from '@/model/consts';
+import { AuthPaths } from '@/model/types/user/auth';
 
 const Footer = () => {
   return (
@@ -69,7 +70,7 @@ const Footer = () => {
                 <Link href={Paths.SellerRegister}>Sellers Registration</Link>
               </li>
               <li>
-                <Link href={Paths.Register}>Sign up</Link>
+                <Link href={`${Paths.Auth}${AuthPaths.Register}`}>Sign up</Link>
               </li>
               <li>
                 <Link href={Paths.Profile}>Profile</Link>

@@ -7,9 +7,8 @@ export enum Paths {
   Product = '/product',
 
   Profile = '/u/profile',
-  Register = '/u/auth/register',
-  Login = '/u/auth/login',
   Help = '/help',
+  Auth = '/u/auth',
   Terms = '/legal/u/Terms',
   Privacy = '/legal/u/privacy',
 

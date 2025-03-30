@@ -1,5 +1,6 @@
 @mixin max_width {
-  margin: 0 auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
   max-width: 1500px;
   padding-left: 25px !important;
   padding-right: 25px !important;
@@ -13,4 +14,8 @@
     padding-left: 64px !important;
     padding-right: 64px !important;
   }
+}
+
+@mixin box-shadow($color) {
+  box-shadow: -2px 2px 8px $color;
 }
