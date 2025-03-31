@@ -7,19 +7,16 @@ export enum Paths {
   Product = '/product',
 
   Profile = '/u/profile',
-  Register = '/u/auth/register',
-  Login = '/u/auth/login',
   Help = '/help',
-  Terms = '/legal/u/Terms',
-  Privacy = '/legal/u/privacy',
+  Auth = '/u/auth',
+  Terms = '/u/Terms',
+  Privacy = '/u/privacy',
 
   Blog = '/resources/blog',
   NewsLetter = '/resources/',
 
   SellersFeatured = '/market',
-  SellerRegister = '/sellers/register',
-  SellerTerms = '/legal/seller/Terms',
-  SellerPrivacy = '/legal/seller/privacy',
+  Sellers = '/sellers',
 }
 
 export enum ImgPaths {

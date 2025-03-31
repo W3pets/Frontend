@@ -4,6 +4,15 @@
 .footer {
   background-color: $secondary;
 
+  &.is_min {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $tertiary;
+    padding: 2rem;
+    font-size: 1.1rem;
+  }
+
   .content {
     width: 100%;
     @include max_width;

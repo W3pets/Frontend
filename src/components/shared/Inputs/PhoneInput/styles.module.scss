@@ -1,0 +1,48 @@
+@use '../../../../globalStyles/var.scss' as *;
+@use '../../../../globalStyles/mixin.scss' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+
+    span {
+      color: red;
+      margin-left: 0.3rem;
+    }
+  }
+
+  .input_wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .input {
+      padding: 0.5rem 0.7rem;
+      border-radius: 4px;
+      width: 100%;
+      font-size: 0.9rem;
+      border: 1px solid $gray1;
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+
+      &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 2px #18e0292e;
+        outline: none;
+      }
+    }
+  }
+
+  .error {
+    color: $error;
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+}

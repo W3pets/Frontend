@@ -11,8 +11,6 @@ export default function ConditionalLayout({ children }) {
 
   // Define paths where the header and footer should be hidden
   const authRoutes = [
-    Paths.Register,
-    Paths.Login,
     '/shop',
     '/admin',
     '/shop/onboarding',
