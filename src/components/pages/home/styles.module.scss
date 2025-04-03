@@ -2,6 +2,7 @@
 @use '../../../globalStyles/mixin.scss' as *;
 
 .content {
+  background-color: $tertiary;
   @include max_width;
   display: flex;
   flex-direction: column;

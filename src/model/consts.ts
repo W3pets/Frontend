@@ -13,5 +13,9 @@ const consts = {
       },
     },
   },
+  files: {
+    types: '.jpg,.jpeg,.gif,.png',
+    size: 190 * 1024,
+  },
 };
 export default consts;

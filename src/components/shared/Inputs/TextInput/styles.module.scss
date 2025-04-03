@@ -48,10 +48,19 @@
       cursor: pointer;
     }
   }
-
-  .error {
-    color: $error;
+  .info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     font-size: 0.8rem;
     margin-top: 4px;
+
+    .error {
+      color: $error;
+    }
+
+    .max {
+      color: $color_2;
+    }
   }
 }
