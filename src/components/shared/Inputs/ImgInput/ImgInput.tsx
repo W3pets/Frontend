@@ -12,6 +12,7 @@ type Props = {
   error?: string;
   label?: string;
   min?: number;
+  placeHolder?: string;
   defaultFiles?: IFile[];
   onChange: (
     field: string,
@@ -27,6 +28,7 @@ function ImgInput({
   error,
   min = 0,
   max = 1,
+  placeHolder = '',
   defaultFiles = [],
   onChange,
 }: Props) {
@@ -69,15 +71,17 @@ function ImgInput({
       <div className={styles.main_area}>
         <FiUpload />
         <div className={styles.info}>
-          <b>Drag and Drop your files here</b>, or <span>Browse</span>
+          Drag and Drop your files here, or <span>Browse</span>
         </div>
         <div className={styles.info}>
-          {types.map((t, i, arr) => (
-            <div key={uniqid()}>
-              {i == arr.length - 1 ? ' or ' : ''}
-              <span>{t}</span>
-            </div>
-          ))}
+          {!!placeHolder && <span>{placeHolder}</span>}
+          {!placeHolder &&
+            types.map((t, i, arr) => (
+              <div key={uniqid()}>
+                {i == arr.length - 1 ? ' or ' : ''}
+                <span>{t}</span>
+              </div>
+            ))}
           <div>format</div>
         </div>
         <input

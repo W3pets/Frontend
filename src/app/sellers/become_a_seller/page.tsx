@@ -22,6 +22,7 @@ function page() {
           percent={progress ? 50 : 0}
           onChange={handleStepChange}
           labelPlacement="vertical"
+          responsive={false}
           items={sellerProgress}
         />
       </div>

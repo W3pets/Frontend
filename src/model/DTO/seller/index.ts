@@ -21,3 +21,7 @@ export const NewSellerSchema = Yup.object().shape({
     .required('Required'),
   image: helpers.getFileShema(1),
 });
+
+export const NewSellerSchema2 = Yup.object().shape({
+  image: helpers.getFileShema(2),
+});

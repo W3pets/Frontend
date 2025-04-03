@@ -7,8 +7,9 @@
   row-gap: 0.5rem;
 
   label {
+    color: $color_2;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 5px;
 
     span {
@@ -23,10 +24,10 @@
     min-height: 200px;
     border-radius: 0.2rem;
     background-color: transparent;
-    color: $color_1;
-    border: 2px solid $gray1;
+    color: $color_2;
+    border: 1px solid $gray1;
     font-size: 14px;
-
+    font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +49,6 @@
       &:nth-child(3) {
         display: flex;
         column-gap: 0.3rem;
-        font-weight: 600;
         div {
           span {
             text-transform: uppercase;

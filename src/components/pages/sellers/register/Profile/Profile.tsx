@@ -9,9 +9,7 @@ import PhoneInput from '@/components/shared/Inputs/PhoneInput/PhoneInput';
 import ImgInput from '@/components/shared/Inputs/ImgInput/ImgInput';
 
 function Profile() {
-  const handleSubmit = async (values: InferType<typeof NewSellerSchema>) => {
-    console.log(values);
-  };
+  const handleSubmit = async (values: InferType<typeof NewSellerSchema>) => {};
 
   const initVals: InferType<typeof NewSellerSchema> = {
     name: '',
@@ -54,7 +52,7 @@ function Profile() {
           placeholder="As a seller..."
           maxLength={240}
           error={formik.errors.sellerValue}
-          props={formik.getFieldProps('name')}
+          props={formik.getFieldProps('sellerValue')}
         />
         <ImgInput
           label="Photo builds trust, add a face to your brand!"

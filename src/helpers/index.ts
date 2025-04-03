@@ -42,8 +42,8 @@ class Helpers {
           .required('A file is required')
           .test(
             'fileSize',
-            `A file should be less than ${Math.round(size / 1024)}MB`,
-            (value) => value && value.file.size <= size
+            `A file should be less than ${Math.round((size / 1024) * 1000)}MB`,
+            (value) => value.file.size <= size
           )
           .test(
             'fileFormat',
