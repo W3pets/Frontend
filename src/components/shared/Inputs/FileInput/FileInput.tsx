@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import { FiUpload } from 'react-icons/fi';
 import consts from '@/model/consts';
@@ -8,6 +8,7 @@ import { IoMdClose } from 'react-icons/io';
 import uniqid from 'uniqid';
 
 type Props = {
+  type?: 'video' | 'img';
   name?: string;
   error?: string;
   label?: string;
@@ -22,7 +23,8 @@ type Props = {
   max?: number;
 };
 
-function ImgInput({
+function FileInput({
+  type = 'img',
   name = 'images',
   label,
   error,
@@ -32,8 +34,10 @@ function ImgInput({
   defaultFiles = [],
   onChange,
 }: Props) {
-  const types = consts.files.types.split(/\./).slice(1);
+  const types = consts.files.imgTypes.split(/\./).slice(1);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isImg = type == 'img';
+
   const [inputs, setInputs] = useState<IFile[]>([]);
 
   useLayoutEffect(() => {
@@ -65,7 +69,7 @@ function ImgInput({
     <div className={styles.files}>
       {!!label && (
         <label>
-          {`${label} `} {!!min ? <span>*</span> : ''}
+          {`${label} `} {!!min ? <span>*</span> : '(optional)'}
         </label>
       )}
       <div className={styles.main_area}>
@@ -91,7 +95,7 @@ function ImgInput({
           className={styles.input_box}
           multiple={min > 0}
           required
-          accept={consts.files.types}
+          accept={isImg ? consts.files.imgTypes : consts.files.vidTypes}
           onChange={(e) => {
             handleFileChange(e.target.files as FileList);
           }}
@@ -105,10 +109,18 @@ function ImgInput({
           return (
             <div className={styles.added_input} key={uniqid()}>
               <IoMdClose onClick={() => removeFromInputs(index)} />
-              <img
-                className={styles.img}
-                src={`${(input as IFile).baseUrl}${(input as IFile).src}`}
-              />
+              {!isImg && (
+                <video
+                  className={styles.img}
+                  src={`${(input as IFile).baseUrl}${(input as IFile).src}`}
+                />
+              )}
+              {isImg && (
+                <img
+                  className={styles.img}
+                  src={`${(input as IFile).baseUrl}${(input as IFile).src}`}
+                />
+              )}
             </div>
           );
         })}
@@ -117,4 +129,4 @@ function ImgInput({
   );
 }
 
-export default ImgInput;
+export default FileInput;

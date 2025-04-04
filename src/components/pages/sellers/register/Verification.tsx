@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from '../styles.module.scss';
+import styles from './styles.module.scss';
 import { MdOutlineShield } from 'react-icons/md';
 import { NewSellerSchema2 } from '@/model/DTO/seller';
 import { InferType } from 'yup';
 import { useFormik } from 'formik';
-import ImgInput from '@/components/shared/Inputs/ImgInput/ImgInput';
+import FileInput from '@/components/shared/Inputs/FileInput/FileInput';
 import Button from '@/components/shared/Button/Button';
 import { FaCheck } from 'react-icons/fa6';
 import uniqid from 'uniqid';
@@ -49,7 +49,7 @@ function Verification() {
         ))}
       </div>
       <form className={styles.form} onSubmit={formik.handleSubmit}>
-        <ImgInput
+        <FileInput
           label="Upload a government-issued ID document(Nin,ID Card,e.t.c)"
           placeHolder="National ID, Driver's License, or Passport"
           error={formik.errors.image}

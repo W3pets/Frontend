@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from '../styles.module.scss';
+import styles from './styles.module.scss';
 import { NewSellerSchema } from '@/model/DTO/seller';
 import { useFormik } from 'formik';
 import { InferType } from 'yup';
 import TextInput from '@/components/shared/Inputs/TextInput/TextInput';
 import Button from '@/components/shared/Button/Button';
 import PhoneInput from '@/components/shared/Inputs/PhoneInput/PhoneInput';
-import ImgInput from '@/components/shared/Inputs/ImgInput/ImgInput';
+import FileInput from '@/components/shared/Inputs/FileInput/FileInput';
 
 function Profile() {
   const handleSubmit = async (values: InferType<typeof NewSellerSchema>) => {};
@@ -54,7 +54,7 @@ function Profile() {
           error={formik.errors.sellerValue}
           props={formik.getFieldProps('sellerValue')}
         />
-        <ImgInput
+        <FileInput
           label="Photo builds trust, add a face to your brand!"
           error={formik.errors.image}
           min={1}

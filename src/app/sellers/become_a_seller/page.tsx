@@ -3,10 +3,16 @@
 import React, { useState } from 'react';
 import styles from '@/components/pages/sellers/register/styles.module.scss';
 import { Steps } from 'antd';
-import Verification from '@/components/pages/sellers/register/Verification/Verification';
-import Profile from '@/components/pages/sellers/register/Profile/Profile';
+import Verification from '@/components/pages/sellers/register/Verification';
+import Profile from '@/components/pages/sellers/register/Profile';
+import UpdateListing from '@/components/pages/sellers/listings/ListingForm';
+import FirstListing from '@/components/pages/sellers/register/FirstListing';
 
-const sellerProgress = [{ title: 'Profile' }, { title: 'Verification' }];
+const sellerProgress = [
+  { title: 'Profile' },
+  { title: 'Verification' },
+  { title: 'First Listing' },
+];
 
 function page() {
   const [progress, setProgress] = useState(0);
@@ -19,15 +25,17 @@ function page() {
       <div className={styles.progress}>
         <Steps
           current={progress}
-          percent={progress ? 50 : 0}
+          percent={progress ? (progress == 1 ? 50 : 100) : 0}
           onChange={handleStepChange}
           labelPlacement="vertical"
           responsive={false}
           items={sellerProgress}
+          size="small"
         />
       </div>
       {!progress && <Profile />}
-      {!!progress && <Verification />}
+      {progress == 1 && <Verification />}
+      {progress == 2 && <FirstListing />}
     </div>
   );
 }

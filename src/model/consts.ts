@@ -14,8 +14,10 @@ const consts = {
     },
   },
   files: {
-    types: '.jpg,.jpeg,.gif,.png',
-    size: 2 * 1024 * 1000, // 2mb
+    imgTypes: '.jpg,.jpeg,.gif,.png',
+    imgSize: 2 * 1024 * 1024, // 2mb
+    vidSize: 20 * 1024 * 1024, // 20mb
+    vidTypes: '.mp4,.avi,.mov',
   },
 };
 export default consts;

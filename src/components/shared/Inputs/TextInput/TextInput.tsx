@@ -9,7 +9,7 @@ type Props = {
   error?: string;
   label?: string;
   maxLength?: number;
-  type?: 'text' | 'textarea' | 'password' | 'email';
+  type?: 'text' | 'textarea' | 'password' | 'email' | 'number';
   placeholder?: string;
   disabled?: boolean;
   isRequired?: boolean;
