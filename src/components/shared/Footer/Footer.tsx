@@ -14,9 +14,10 @@ import { SellerPaths } from '@/model/types/seller';
 type Props = {
   isMinInfo?: boolean;
 };
+
 const Footer = ({ isMinInfo = false }: Props) => {
   return (
-    <footer className={`${styles.footer} ${styles.is_min}`}>
+    <footer className={`${styles.footer} ${isMinInfo ? styles.is_min : ''}`}>
       {isMinInfo && (
         <div className={styles.min_content}>
           <span>

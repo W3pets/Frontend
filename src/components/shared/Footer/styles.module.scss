@@ -9,8 +9,13 @@
     justify-content: center;
     align-items: center;
     background-color: $tertiary;
-    padding: 2rem;
+    padding: 2rem 1rem;
     font-size: 1.1rem;
+    color: $color_2;
+
+    @media only screen and (min-width: 650px) {
+      padding: 2rem;
+    }
   }
 
   .content {

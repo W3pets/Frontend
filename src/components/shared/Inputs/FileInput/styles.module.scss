@@ -1,0 +1,102 @@
+@use '../../../../globalStyles/var.scss' as *;
+@use '../../../../globalStyles/mixin.scss' as *;
+
+.files {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+
+  label {
+    color: $color_2;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+
+    span {
+      color: red;
+      margin-left: 0.3rem;
+    }
+  }
+
+  .main_area {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    border-radius: 0.2rem;
+    background-color: transparent;
+    color: $color_2;
+    border: 1px solid $gray1;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 0.5rem;
+
+    svg {
+      font-size: 3rem;
+    }
+
+    .info {
+      &:nth-child(2) {
+        span {
+          color: $primary;
+          font-weight: 600;
+        }
+      }
+
+      &:nth-child(3) {
+        display: flex;
+        column-gap: 0.3rem;
+        div {
+          span {
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+
+    input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+
+  .error {
+    color: $error;
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+
+  .uploaded {
+    display: grid;
+    padding-top: 1rem;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    @media only screen and (min-width: 770px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .added_input {
+      position: relative;
+
+      svg {
+        background-color: white;
+        box-shadow: 1px 1px 4px gray;
+        padding: 0.2rem;
+        border-radius: 50%;
+        right: -0.5rem;
+        top: -0.5rem;
+        font-size: 1.3rem;
+        position: absolute;
+        cursor: pointer;
+      }
+    }
+  }
+}

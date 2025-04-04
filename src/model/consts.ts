@@ -13,5 +13,11 @@ const consts = {
       },
     },
   },
+  files: {
+    imgTypes: '.jpg,.jpeg,.gif,.png',
+    imgSize: 2 * 1024 * 1024, // 2mb
+    vidSize: 20 * 1024 * 1024, // 20mb
+    vidTypes: '.mp4,.avi,.mov',
+  },
 };
 export default consts;

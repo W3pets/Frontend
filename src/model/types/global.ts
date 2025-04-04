@@ -30,3 +30,9 @@ export type Dropdown = {
   name: string | number;
   items?: Dropdown[];
 };
+
+export interface IFile {
+  file: File;
+  src: string;
+  baseUrl: string;
+}
