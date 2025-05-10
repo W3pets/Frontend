@@ -36,6 +36,8 @@
       .slogan {
         font-size: 1.1rem;
         color: $color_2;
+        width: 80%;
+        text-align: center;
       }
 
       .title {
@@ -90,6 +92,46 @@
       display: flex;
       flex-direction: column;
       row-gap: 0.5rem;
+    }
+
+    .forgot_email_sent {
+      display: flex;
+      align-items: center;
+      row-gap: 0.4rem;
+      flex-direction: column;
+      .icon {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 64px;
+        width: 64px;
+
+        svg {
+          color: $primary;
+        }
+
+        .background {
+          left: 0;
+          top: 0;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          opacity: 0.2;
+          background-color: $primary;
+          border-radius: 50%;
+        }
+      }
+      .main_info {
+        font-weight: 600;
+        font-size: 1.3rem;
+      }
+      .info {
+        font-size: 1rem;
+        color: $color_2;
+        width: 80%;
+        text-align: center;
+      }
     }
   }
 }

@@ -27,27 +27,25 @@ export default function Layout({
   };
 
   return (
-    <div className={styles.content}>
-      <div className={styles.card}>
-        <div className={styles.header}>
-          <Image src={ImgPaths.Logo} width={48} height={48} alt="logo" />
-          <div className={styles.title}>Welcome to W3pets</div>
-          <div className={styles.slogan}>
-            The marketplace for pet and livestock sellers
-          </div>
+    <>
+      <div className={styles.header}>
+        <Image src={ImgPaths.Logo} width={48} height={48} alt="logo" />
+        <div className={styles.title}>Welcome to W3pets</div>
+        <div className={styles.slogan}>
+          The marketplace for pet and livestock sellers
         </div>
-        <div className={styles.paths}>
-          <div className={styles.path} onClick={handlePathChange}>
-            Log In
-          </div>
-          <div className={styles.path} onClick={handlePathChange}>
-            Sign Up
-          </div>
-          <div className={styles.indicator2} />
-          <div className={styles.indicator} style={{ left }} />
-        </div>
-        <>{children}</>
       </div>
-    </div>
+      <div className={styles.paths}>
+        <div className={styles.path} onClick={handlePathChange}>
+          Log In
+        </div>
+        <div className={styles.path} onClick={handlePathChange}>
+          Sign Up
+        </div>
+        <div className={styles.indicator2} />
+        <div className={styles.indicator} style={{ left }} />
+      </div>
+      {children}
+    </>
   );
 }

@@ -26,9 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <StoreLayout>
-          <ConfigProvider theme={{ token: { colorPrimary: '#22c55e' } }}>
-            <ConditionalLayout>{children}</ConditionalLayout>
-          </ConfigProvider>
+          {/* <ConfigProvider theme={{ token: { colorPrimary: '#22c55e' } }}> */}
+          <ConditionalLayout>{children}</ConditionalLayout>
+          {/* </ConfigProvider> */}
         </StoreLayout>
       </body>
     </html>
