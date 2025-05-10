@@ -40,7 +40,7 @@ export default function LoginPage() {
       />
 
       <div className={styles.forgot_pass}>
-        <Link href={`${Paths.Users}/${AuthPaths.ForgotPassInit}`}>
+        <Link href={`${Paths.Auth}/${AuthPaths.ForgotPassInit}`}>
           Forgot password?
         </Link>
       </div>

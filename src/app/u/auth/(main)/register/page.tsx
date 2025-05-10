@@ -1,7 +1,6 @@
 'use client';
 
-import PhoneInput from '@/components/shared/Inputs/PhoneInput/PhoneInput';
-import styles from '../../../../components/pages/auth/styles.module.scss';
+import styles from '@/components/pages/auth/styles.module.scss';
 import Button from '@/components/shared/Button/Button';
 import TextInput from '@/components/shared/Inputs/TextInput/TextInput';
 import { SignUpSchema } from '@/model/DTO/user/auth';
