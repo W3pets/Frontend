@@ -12,9 +12,16 @@ export type MultiCheckItem = {
 type Props = {
   onChange?: (items: MultiCheckItem[]) => any;
   items: MultiCheckItem[];
+  className?: string;
+  type?: 'checkbox' | 'radio';
 };
 
-function MultiChecked({ items, onChange }: Props) {
+function MultiChecked({
+  items,
+  onChange,
+  className,
+  type = 'checkbox',
+}: Props) {
   const handleChange = (index: number) => {
     const newItem: MultiCheckItem = {
       ...items[index],
@@ -26,11 +33,11 @@ function MultiChecked({ items, onChange }: Props) {
   };
 
   return (
-    <div className={styles.items}>
+    <div className={`${styles.items} ${className}`}>
       {items.map(({ id, name, ...rest }, i) => (
         <div key={uniqid()} className={styles.item}>
           <input
-            type="checkbox"
+            type={type}
             onChange={(ev) => handleChange(i)}
             checked={rest?.selected || false}
           />

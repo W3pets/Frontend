@@ -1,6 +1,7 @@
 export enum AuthPaths {
   Login = '/login',
   Register = '/register',
+  ForgotPassInit = '/forgot_init',
 }
 
 export type AuthStore = {

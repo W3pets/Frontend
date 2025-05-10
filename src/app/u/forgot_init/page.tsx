@@ -1,6 +1,6 @@
 'use client';
 
-import { ForgotPassSchema } from '@/model/DTO/user/auth';
+import { ForgotInitSchema } from '@/model/DTO/user/auth';
 import { useFormik } from 'formik';
 import styles from '@/components/pages/auth/styles.module.scss';
 import { InferType } from 'yup';
@@ -12,17 +12,17 @@ import { useState } from 'react';
 
 function page() {
   const [isSent, setSent] = useState(false);
-  const handleSubmit = async (values: InferType<typeof ForgotPassSchema>) => {
+  const handleSubmit = async (values: InferType<typeof ForgotInitSchema>) => {
     setSent(!isSent);
   };
 
-  const initVal: InferType<typeof ForgotPassSchema> = {
+  const initVal: InferType<typeof ForgotInitSchema> = {
     email: '',
   };
 
   const formik = useFormik({
     initialValues: initVal,
-    validationSchema: ForgotPassSchema,
+    validationSchema: ForgotInitSchema,
     onSubmit: handleSubmit,
   });
 

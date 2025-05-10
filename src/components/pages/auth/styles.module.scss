@@ -33,6 +33,10 @@
       align-items: center;
       row-gap: 0.5rem;
 
+      .icon {
+        color: $primary;
+      }
+
       .slogan {
         font-size: 1.1rem;
         color: $color_2;
@@ -92,6 +96,32 @@
       display: flex;
       flex-direction: column;
       row-gap: 0.5rem;
+
+      .forgot_pass {
+        text-align: right;
+        color: $primary;
+        font-size: 0.9rem;
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+      }
+
+      .required {
+        margin-bottom: 0.4rem;
+        .title {
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: $color_2;
+        }
+
+        .inputs {
+          color: $color_low;
+          font-size: 0.8rem;
+
+          input {
+            width: 0.6rem;
+          }
+        }
+      }
     }
 
     .forgot_email_sent {

@@ -11,6 +11,7 @@ export enum Paths {
   Auth = '/u/auth',
   Terms = '/u/Terms',
   Privacy = '/u/privacy',
+  Users = 'u',
 
   Blog = '/resources/blog',
   NewsLetter = '/resources/',

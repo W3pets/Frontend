@@ -5,6 +5,9 @@ import { SignInSchema } from '@/model/DTO/user/auth';
 import Button from '@/components/shared/Button/Button';
 import styles from '@/components/pages/auth/styles.module.scss';
 import { InferType } from 'yup';
+import Link from 'next/link';
+import { AuthPaths } from '@/model/types/user/auth';
+import { Paths } from '@/model/types/global';
 
 export default function LoginPage() {
   const handleSubmit = async (values: InferType<typeof SignInSchema>) => {};
@@ -35,6 +38,12 @@ export default function LoginPage() {
         error={formik.touched.password ? formik.errors.password : ''}
         props={formik.getFieldProps('password')}
       />
+
+      <div className={styles.forgot_pass}>
+        <Link href={`${Paths.Users}/${AuthPaths.ForgotPassInit}`}>
+          Forgot password?
+        </Link>
+      </div>
 
       <Button
         className={styles.submit_btn}
