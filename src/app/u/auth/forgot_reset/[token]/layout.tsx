@@ -1,6 +1,4 @@
 import styles from '@/components/pages/auth/styles.module.scss';
-import { ImgPaths } from '@/model/types/global';
-import Image from 'next/image';
 import { MdOutlineShield } from 'react-icons/md';
 
 export default function Layout({

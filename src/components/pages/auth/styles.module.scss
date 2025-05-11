@@ -38,7 +38,7 @@
       }
 
       .slogan {
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: $color_2;
         width: 80%;
         text-align: center;
@@ -86,10 +86,22 @@
         flex: 1;
         font-size: 1.1rem;
         color: $color_2;
+        font-weight: 600;
         padding: 0.7rem;
         justify-content: center;
         cursor: pointer;
       }
+    }
+
+    .return_path {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: $color_2;
+      font-weight: 600;
+      text-align: center;
+      column-gap: 0.2rem;
     }
 
     .form {
@@ -161,6 +173,36 @@
         color: $color_2;
         width: 80%;
         text-align: center;
+      }
+    }
+
+    .email_verification {
+      position: relative;
+      padding: 1rem;
+      font-weight: 600;
+      color: $primary;
+
+      .background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        border: 1px solid $primary;
+        top: 0;
+        background-color: $primary;
+        opacity: 0.15;
+        border-radius: 0.3rem;
+      }
+      .title {
+        font-size: 1rem;
+        padding-bottom: 0.5rem;
+      }
+      .alerts {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.3rem;
+        font-size: 0.9rem;
+        color: $primary;
       }
     }
   }
