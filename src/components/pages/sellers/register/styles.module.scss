@@ -91,6 +91,13 @@
       display: flex;
       flex-direction: column;
       row-gap: 1rem;
+
+      .btn_row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
     }
   }
 }

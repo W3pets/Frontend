@@ -42,6 +42,7 @@ export default function RegisterPage() {
     initialValues: initVals,
     validationSchema: SignUpSchema,
     onSubmit: handleSubmit,
+    validateOnMount: true,
   });
 
   const passwordTests = useMemo(
