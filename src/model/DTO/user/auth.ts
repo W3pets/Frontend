@@ -48,3 +48,22 @@ export const ForgotResetSchema = Yup.object().shape({
     .oneOf([Yup.ref('newPassword')], 'Passwords must match')
     .required('Please confirm your password'),
 });
+
+export type AuthenticatedRes = {
+  user: UserMini;
+  message: string;
+  accessToken: string;
+};
+
+export type UserMini = {
+  id: number;
+  email: string;
+  username: string;
+  role: string;
+  // isSeller: boolean;
+  // isVerified: boolean;
+};
+
+export type JwtToken = {
+  accessToken: string;
+};

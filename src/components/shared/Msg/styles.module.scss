@@ -1,0 +1,76 @@
+@use '../../../globalStyles/var.scss' as *;
+
+@mixin colorcode($color) {
+  .background_message_progress_bar .progress {
+    background: $color;
+  }
+
+  .background_message_text,
+  .background_message_close {
+    color: $color;
+  }
+}
+
+.background_message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  max-width: 90vw;
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+
+  &.error {
+    @include colorcode($error);
+  }
+
+  &.info {
+    @include colorcode($info);
+  }
+
+  &.warning {
+    @include colorcode($warning);
+  }
+
+  &.success {
+    @include colorcode($primary);
+  }
+
+  .background_message_content {
+    padding: 0.5rem 0.8rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 1.2rem;
+
+    .background_message_text {
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .background_message_close {
+      font-size: 20px;
+      cursor: pointer;
+
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+
+  .background_message_progress_bar {
+    height: 5px;
+    background: #f0f0f0;
+    width: 100%;
+    & .progress {
+      height: 100%;
+      transition: width 0.1s linear;
+    }
+  }
+}

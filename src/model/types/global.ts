@@ -42,3 +42,31 @@ export interface IFile {
   src: string;
   baseUrl: string;
 }
+
+export enum StatusCode {
+  Success = 200,
+  BadRequest = 400,
+  UnAuth = 401,
+  Forbidden = 403,
+  Timeout = 408,
+  Server = 500,
+  Network = 503,
+}
+
+export interface Message {
+  code?: StatusCode;
+  category: MessageType;
+  message: string;
+  time?: number; //seconds
+}
+
+export type GlobalStore = {
+  msg: Message | null;
+};
+
+export enum MessageType {
+  Success = 'success',
+  Info = 'info',
+  Warning = 'warning',
+  Error = 'error',
+}

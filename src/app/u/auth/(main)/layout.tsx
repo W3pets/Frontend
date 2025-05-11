@@ -2,7 +2,7 @@
 
 import { AuthPaths } from '@/model/types/user/auth';
 import styles from '@/components/pages/auth/styles.module.scss';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { ImgPaths, Paths } from '@/model/types/global';
 import { useState } from 'react';
@@ -10,20 +10,27 @@ import { useState } from 'react';
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const redirect = searchParams.get('redirect');
 
   const isLogin = pathname.includes(AuthPaths.Login);
   const [left, setLeft] = useState(isLogin ? '0%' : '50%');
 
   const handlePathChange = () => {
+    let link = `${Paths.Auth}`;
     if (isLogin) {
-      router.push(`${Paths.Auth}${AuthPaths.Register}`);
+      link += AuthPaths.Register;
       setLeft('50%');
     } else {
-      router.push(`${Paths.Auth}${AuthPaths.Login}`);
+      link += AuthPaths.Login;
       setLeft('0%');
     }
+    if (redirect) {
+      link += `?redirect=${encodeURIComponent(redirect)}`;
+    }
+    router.push(link);
   };
 
   return (

@@ -2,10 +2,11 @@ import { configureStore } from '@reduxjs/toolkit';
 import { isLive } from '@/model/consts';
 import user from './slices/user/slice';
 import seller from './slices/seller/slice';
+import global from './slices/globalSlice';
 
 const makeStore = () => {
   return configureStore({
-    reducer: { user, seller },
+    reducer: { user, seller, global: global.reducer },
     devTools: !isLive,
   });
 };

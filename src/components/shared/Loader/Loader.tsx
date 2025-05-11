@@ -11,7 +11,9 @@ type LoaderProps = {
 function Loader({ radius = 25, isFixed = false, icon = null }: LoaderProps) {
   return (
     <div className={`${styles.loader} ${isFixed ? styles.isFixed : ''}`}>
-      {icon || <VscLoading style={{ fontSize: radius }} />}
+      <div className={styles.content}>
+        {icon || <VscLoading style={{ fontSize: radius }} />}
+      </div>
     </div>
   );
 }
