@@ -32,6 +32,11 @@ export type Dropdown = {
   items?: Dropdown[];
 };
 
+export type Paragraph = {
+  h: string;
+  paragraphs: (Paragraph | string)[];
+};
+
 export interface IFile {
   file: File;
   src: string;

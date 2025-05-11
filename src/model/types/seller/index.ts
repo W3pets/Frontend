@@ -1,5 +1,6 @@
 export enum SellerPaths {
   SellerRegister = '/become_a_seller',
-  SellerTerms = '/legal/terms_conditions',
-  SellerPrivacy = '/legal/privacy',
+  Terms = '/legal/terms_of_service',
+  Privacy = '/legal/privacy_policy',
+  PrivacyPreview = '/legal/preview_terms_conditions',
 }

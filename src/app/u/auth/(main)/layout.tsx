@@ -6,14 +6,12 @@ import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { ImgPaths, Paths } from '@/model/types/global';
 import { useState } from 'react';
-import { useAppSelector } from '@/lib/store/hooks';
 
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
   const router = useRouter();
-  const justRegistered = useAppSelector((s) => s.user.auth.justRegistered);
 
   const isLogin = pathname.includes(AuthPaths.Login);
   const [left, setLeft] = useState(isLogin ? '0%' : '50%');
