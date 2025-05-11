@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import styles from './styles.module.scss';
 import { NewSellerSchema } from '@/model/DTO/seller';
 import { useFormik } from 'formik';
@@ -9,15 +9,14 @@ import FileInput from '@/components/shared/Inputs/FileInput/FileInput';
 import LocationInput from '@/components/shared/Inputs/LocationInput/LocationInput';
 import { Paths } from '@/model/types/global';
 import { OnBoardingSteps, SellerPaths } from '@/model/types/seller';
-import { useAppDispatch } from '@/lib/store/hooks';
-import newSellerSlice, {
-  initialState,
-} from '@/lib/store/slices/seller/newSeller';
+import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 import { useRouter } from 'next/navigation';
+import newSellerSlice from '@/lib/store/slices/seller/newSeller';
 
 function Profile() {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const profileData = useAppSelector((s) => s.seller.newSeller.profile);
 
   const handleSubmit = async () => {
     router.push(
@@ -26,20 +25,20 @@ function Profile() {
   };
 
   const formik = useFormik({
-    initialValues: initialState.profile,
+    initialValues: profileData,
     validationSchema: NewSellerSchema,
     onSubmit: handleSubmit,
     validateOnMount: true,
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch(
       newSellerSlice.actions.setProfile({
         ...formik.values,
         isValid: formik.isValid,
       })
     );
-  }, [formik.isValid]);
+  }, [formik.values, formik.isValid]);
 
   return (
     <div className={styles.content}>

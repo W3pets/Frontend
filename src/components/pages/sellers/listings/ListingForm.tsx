@@ -7,20 +7,18 @@ import FileInput from '@/components/shared/Inputs/FileInput/FileInput';
 import SelectInput from '@/components/shared/Inputs/SelectInput/SelectInput';
 import { dummyCategory } from '../../home/MainCategories/MainCategories';
 import Button from '@/components/shared/Button/Button';
-import newSellerSlice, {
-  initialState,
-} from '@/lib/store/slices/seller/newSeller';
-import { useAppDispatch } from '@/lib/store/hooks';
+import newSellerSlice from '@/lib/store/slices/seller/newSeller';
+import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 
 function ListingForm() {
   const dispatch = useAppDispatch();
   const handleSubmit = async () => {};
-
+  const data = useAppSelector((s) => s.seller.newSeller.listing);
   const categories = dummyCategory.map((c) => c.name);
   const genders = ['Male', 'Female', 'Male and Female'];
 
   const formik = useFormik({
-    initialValues: initialState.listing,
+    initialValues: data,
     validationSchema: ListingSchema,
     onSubmit: handleSubmit,
     validateOnMount: true,
@@ -28,7 +26,7 @@ function ListingForm() {
 
   useEffect(() => {
     dispatch(newSellerSlice.actions.setListing(formik.values));
-  }, [formik.isValid]);
+  }, [formik.values, formik.isValid]);
 
   return (
     <form className={styles.form_listing}>

@@ -7,13 +7,11 @@ import FileInput from '@/components/shared/Inputs/FileInput/FileInput';
 import Button from '@/components/shared/Button/Button';
 import { FaCheck } from 'react-icons/fa6';
 import uniqid from 'uniqid';
-import newSellerSlice, {
-  initialState,
-} from '@/lib/store/slices/seller/newSeller';
 import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 import { Paths } from '@/model/types/global';
 import { OnBoardingSteps, SellerPaths } from '@/model/types/seller';
 import { useRouter } from 'next/navigation';
+import newSellerSlice from '@/lib/store/slices/seller/newSeller';
 
 const strengths = [
   'Builds trust with potential buyers',
@@ -28,6 +26,8 @@ function Verification() {
     (s) => s.seller.newSeller.profile.isValid
   );
 
+  const data = useAppSelector((s) => s.seller.newSeller.id);
+
   const handleSubmit = async () => {
     router.push(
       `${Paths.Sellers}${SellerPaths.SellerRegister}?progress=${OnBoardingSteps.Listing}`
@@ -35,7 +35,7 @@ function Verification() {
   };
 
   const formik = useFormik({
-    initialValues: initialState.id,
+    initialValues: data,
     validationSchema: NewSellerSchema2,
     onSubmit: handleSubmit,
     validateOnMount: true,
@@ -43,7 +43,7 @@ function Verification() {
 
   useEffect(() => {
     dispatch(newSellerSlice.actions.setId(formik.values));
-  }, [formik.isValid]);
+  }, [formik.values, formik.isValid]);
 
   return (
     <div className={styles.content}>
