@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import styles from '@/components/pages/sellers/preview_terms_conditions/styles.module.scss';
 import { MdOutlineShield } from 'react-icons/md';
 import { FaCheck } from 'react-icons/fa6';
