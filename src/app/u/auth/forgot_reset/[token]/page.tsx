@@ -10,13 +10,20 @@ import { useMemo } from 'react';
 import MultiChecked, {
   MultiCheckItem,
 } from '@/components/shared/Inputs/MultiChecked/MultiChecked';
+import { authServices } from '@/services/authServices';
+import authSlice from '@/lib/store/slices/user/auth';
+import { useAppDispatch } from '@/lib/store/hooks';
 
 function page({ params }: { params: { token: string } }) {
+  const dispatch = useAppDispatch();
   const { token } = params;
 
-  const handleSubmit = async (
-    values: InferType<typeof ForgotResetSchema>
-  ) => {};
+  const handleSubmit = async (values: InferType<typeof ForgotResetSchema>) => {
+    const res = await authServices.resetPassword(values);
+    if (res) {
+      dispatch(authSlice.actions.loggedIn(res));
+    }
+  };
 
   const initVals: InferType<typeof ForgotResetSchema> = {
     newPassword: '',

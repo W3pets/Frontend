@@ -1,45 +1,43 @@
-import { authHttp } from '@/lib/httpClient/config';
-import { StatusCode } from '@/models/types/global.enum';
 import { InferType } from 'yup';
 import {
+  AuthenticatedRes,
   ForgotInitSchema,
   ForgotResetSchema,
+  MessageMini,
   SignInSchema,
   SignUpSchema,
 } from '@/model/DTO/user/auth';
 import { utils } from '@/lib/utils/base';
+import { authHttp, reqHandler } from './config/http';
+import { StatusCode } from '@/model/types/global';
 
 class AuthServices {
-  @utils.setBgMsg([], OtpToken)
+  @utils.setBgMsg<MessageMini>([StatusCode.Success])
   public async signup(values: InferType<typeof SignUpSchema>) {
-    const res = <OtpToken>await authHttp.post('/signup/1', values);
+    const { confirmPassword, ...rest } = values;
+    const res = <MessageMini>await authHttp.post('/signup', rest);
     return res;
   }
 
-  @utils.setBgMsg()
+  @utils.setBgMsg<AuthenticatedRes>([StatusCode.Success])
   public async signIn(values: InferType<typeof SignInSchema>) {
-    const res = <JwtTokens>await authHttp.post('/signin', values);
-    return res;
+    const res = <AuthenticatedRes>await authHttp.post('/login', values);
+    reqHandler.handleBearerToken(res.accessToken);
+    return res.user;
   }
 
-  @utils.setBgMsg()
+  @utils.setBgMsg([StatusCode.Success])
   public async forgotPass(values: InferType<typeof ForgotInitSchema>) {
-    const res = <OtpToken>await authHttp.post('/pr', values);
-
-    // do not return otp when emails work
+    const res = <MessageMini>await authHttp.post('/forgot-password', values);
     return res;
   }
 
-  @utils.setBgMsg()
+  @utils.setBgMsg([StatusCode.Success])
   public async resetPassword(values: InferType<typeof ForgotResetSchema>) {
-    const res = <JwtTokens>await authHttp.post('/resetp', values);
-    return res;
-  }
-
-  @utils.setBgMsg([StatusCode.Timeout, StatusCode.Network])
-  public async refresh() {
-    const res = <JwtTokens>await authHttp.post('/signinrt');
-    return res;
+    const { confirmPassword, ...rest } = values;
+    const res = <AuthenticatedRes>await authHttp.post('/reset-password', rest);
+    reqHandler.handleBearerToken(res.accessToken);
+    return res.user;
   }
 }
 

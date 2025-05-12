@@ -8,9 +8,19 @@ import { InferType } from 'yup';
 import Link from 'next/link';
 import { AuthPaths } from '@/model/types/user/auth';
 import { Paths } from '@/model/types/global';
+import { authServices } from '@/services/authServices';
+import { useAppDispatch } from '@/lib/store/hooks';
+import authSlice from '@/lib/store/slices/user/auth';
 
 export default function LoginPage() {
-  const handleSubmit = async (values: InferType<typeof SignInSchema>) => {};
+  const dispatch = useAppDispatch();
+
+  const handleSubmit = async (values: InferType<typeof SignInSchema>) => {
+    const res = await authServices.signIn(values);
+    if (res) {
+      dispatch(authSlice.actions.loggedIn(res));
+    }
+  };
 
   const initValS: InferType<typeof SignInSchema> = {
     email: '',

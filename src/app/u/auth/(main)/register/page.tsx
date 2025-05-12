@@ -9,18 +9,19 @@ import { InferType } from 'yup';
 import MultiChecked, {
   MultiCheckItem,
 } from '@/components/shared/Inputs/MultiChecked/MultiChecked';
-import { useMemo } from 'react';
-import { redirect, useSearchParams } from 'next/navigation';
+import { useEffect, useMemo } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 import authSlice from '@/lib/store/slices/user/auth';
 import { Paths } from '@/model/types/global';
 import { AuthPaths } from '@/model/types/user/auth';
+import { authServices } from '@/services/authServices';
 
 export default function RegisterPage() {
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const redirectUrl = searchParams.get('redirect') || '';
-  const justRegistered = useAppSelector((s) => s.user.auth.justRegistered);
 
   const setJustRegistered = authSlice.actions.setJustRegistered;
 
@@ -34,8 +35,13 @@ export default function RegisterPage() {
   };
 
   const handleSubmit = async (values: InferType<typeof SignUpSchema>) => {
-    dispatch(setJustRegistered(values.email));
-    redirect(`${Paths.Auth}${AuthPaths.VerifyAlert}`);
+    const res = await authServices.signup(values);
+    if (res) {
+      dispatch(setJustRegistered(values.email));
+      setTimeout(() => {
+        router.push(`${Paths.Auth}${AuthPaths.VerifyAlert}`);
+      }, 500);
+    }
   };
 
   const formik = useFormik({
@@ -83,56 +89,53 @@ export default function RegisterPage() {
 
   return (
     <>
-      {!justRegistered && (
-        <form className={styles.form} onSubmit={formik.handleSubmit}>
-          <TextInput
-            label="Full Name"
-            placeholder="Enter your full name"
-            error={formik.touched.username ? formik.errors.username : ''}
-            props={formik.getFieldProps('username')}
+      <form className={styles.form} onSubmit={formik.handleSubmit}>
+        <TextInput
+          label="Full Name"
+          placeholder="Enter your full name"
+          error={formik.touched.username ? formik.errors.username : ''}
+          props={formik.getFieldProps('username')}
+        />
+        <TextInput
+          label="Email"
+          type="email"
+          placeholder="Enter your email"
+          error={formik.touched.email ? formik.errors.email : ''}
+          props={formik.getFieldProps('email')}
+        />
+        <TextInput
+          type="password"
+          label="Password"
+          placeholder="Enter your password"
+          error={formik.touched.password ? formik.errors.password : ''}
+          props={formik.getFieldProps('password')}
+        />
+        <TextInput
+          type="password"
+          label="Confirm Password"
+          placeholder="Confirm Password"
+          error={
+            formik.touched.confirmPassword ? formik.errors.confirmPassword : ''
+          }
+          props={formik.getFieldProps('confirmPassword')}
+        />
+        <div className={styles.required}>
+          <div className={styles.title}>Password Requirements:</div>
+          <MultiChecked
+            items={passwordTests}
+            className={styles.inputs}
+            type="radio"
           />
-          <TextInput
-            label="Email"
-            type="email"
-            placeholder="Enter your email"
-            error={formik.touched.email ? formik.errors.email : ''}
-            props={formik.getFieldProps('email')}
-          />
-          <TextInput
-            type="password"
-            label="Password"
-            placeholder="Enter your password"
-            error={formik.touched.password ? formik.errors.password : ''}
-            props={formik.getFieldProps('password')}
-          />
-          <TextInput
-            type="password"
-            label="Confirm Password"
-            placeholder="Confirm Password"
-            error={
-              formik.touched.confirmPassword
-                ? formik.errors.confirmPassword
-                : ''
-            }
-            props={formik.getFieldProps('confirmPassword')}
-          />
-          <div className={styles.required}>
-            <div className={styles.title}>Password Requirements:</div>
-            <MultiChecked
-              items={passwordTests}
-              className={styles.inputs}
-              type="radio"
-            />
-          </div>
-          <Button
-            className={styles.submit_btn}
-            type="submit"
-            isLoading={formik.isSubmitting}
-          >
-            Sign Up
-          </Button>
-        </form>
-      )}
+        </div>
+        <Button
+          className={styles.submit_btn}
+          isDisabled={!formik.isValid}
+          type="submit"
+          isLoading={formik.isSubmitting}
+        >
+          Sign Up
+        </Button>
+      </form>
     </>
   );
 }

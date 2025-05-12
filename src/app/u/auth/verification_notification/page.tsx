@@ -1,19 +1,8 @@
 'use client';
 
-import authSlice from '@/lib/store/slices/user/auth';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import styles from '@/components/pages/auth/styles.module.scss';
 
 function page() {
-  const dispatch = useDispatch();
-  const setJustRegistered = authSlice.actions.setJustRegistered;
-
-  useEffect(() => {
-    return () => {
-      dispatch(setJustRegistered(''));
-    };
-  }, []);
   return (
     <div className={styles.email_verification}>
       <div className={styles.background} />

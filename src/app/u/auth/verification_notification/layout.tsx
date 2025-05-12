@@ -31,7 +31,7 @@ export default function Layout({
       {children}
       <Link
         className={styles.return_path}
-        href={`${Paths.Auth}${AuthPaths.Register}`}
+        href={`${Paths.Auth}/${AuthPaths.Register}`}
       >
         <IoMdArrowBack />
         Go back to signup

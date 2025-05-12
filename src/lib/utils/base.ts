@@ -28,10 +28,7 @@ class Utils {
     };
   }
 
-  public setBgMsg<T>(
-    codes: StatusCode[] = [],
-    type?: new (...args: any[]) => T
-  ): MethodDecorator {
+  public setBgMsg<T>(ignoreCodes: StatusCode[] = []): MethodDecorator {
     return function (
       target: any,
       propertyKey: string | symbol,
@@ -41,8 +38,8 @@ class Utils {
       descriptor.value = async function (...args: any) {
         const res = <APIRes<T>>await originalMethod.apply(this, args);
 
-        if (codes.length) {
-          if (codes.includes(res.status.code)) {
+        if (ignoreCodes.length) {
+          if (!ignoreCodes.includes(res.status.code)) {
             store.dispatch(globalSlice.actions.setMsg(res.status));
           }
         } else {

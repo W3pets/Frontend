@@ -9,11 +9,15 @@ import Button from '@/components/shared/Button/Button';
 import { IoIosSend } from 'react-icons/io';
 import { IoCheckmarkDoneCircleOutline } from 'react-icons/io5';
 import { useState } from 'react';
+import { authServices } from '@/services/authServices';
 
 function page() {
   const [isSent, setSent] = useState(false);
   const handleSubmit = async (values: InferType<typeof ForgotInitSchema>) => {
-    setSent(!isSent);
+    const res = await authServices.forgotPass(values);
+    if (res) {
+      setSent(!isSent);
+    }
   };
 
   const initVal: InferType<typeof ForgotInitSchema> = {

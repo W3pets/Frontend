@@ -13,7 +13,7 @@ export const SignUpSchema = Yup.object().shape({
     .required('No password provided.')
     .min(6, 'Password is too short - should be 6 chars minimum.')
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#?!@$%^&*-])[A-Za-z\d#?!@$%^&*-]{6,}$/,
       'Password does not match requirements'
     ),
   redirectUrl: Yup.string(),
@@ -41,7 +41,7 @@ export const ForgotResetSchema = Yup.object().shape({
     .required('No password provided.')
     .min(6, 'Password is too short - should be 6 chars minimum.')
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#?!@$%^&*-])[A-Za-z\d#?!@$%^&*-]{6,}$/,
       'Password does not match requirements'
     ),
   confirmPassword: Yup.string()
@@ -51,8 +51,11 @@ export const ForgotResetSchema = Yup.object().shape({
 
 export type AuthenticatedRes = {
   user: UserMini;
-  message: string;
   accessToken: string;
+} & MessageMini;
+
+export type MessageMini = {
+  message: string;
 };
 
 export type UserMini = {

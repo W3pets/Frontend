@@ -1,4 +1,5 @@
-import { AuthStore, UserMini } from '@/model/types/user/auth';
+import { UserMini } from '@/model/DTO/user/auth';
+import { AuthStore } from '@/model/types/user/auth';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: AuthStore = {
