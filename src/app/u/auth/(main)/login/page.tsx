@@ -5,9 +5,22 @@ import { SignInSchema } from '@/model/DTO/user/auth';
 import Button from '@/components/shared/Button/Button';
 import styles from '@/components/pages/auth/styles.module.scss';
 import { InferType } from 'yup';
+import Link from 'next/link';
+import { AuthPaths } from '@/model/types/user/auth';
+import { Paths } from '@/model/types/global';
+import { authServices } from '@/services/authServices';
+import { useAppDispatch } from '@/lib/store/hooks';
+import authSlice from '@/lib/store/slices/user/auth';
 
 export default function LoginPage() {
-  const handleSubmit = async (values: InferType<typeof SignInSchema>) => {};
+  const dispatch = useAppDispatch();
+
+  const handleSubmit = async (values: InferType<typeof SignInSchema>) => {
+    const res = await authServices.signIn(values);
+    if (res) {
+      dispatch(authSlice.actions.loggedIn(res.user));
+    }
+  };
 
   const initValS: InferType<typeof SignInSchema> = {
     email: '',
@@ -18,6 +31,7 @@ export default function LoginPage() {
     initialValues: initValS,
     validationSchema: SignInSchema,
     onSubmit: handleSubmit,
+    validateOnMount: true,
   });
 
   return (
@@ -35,6 +49,12 @@ export default function LoginPage() {
         error={formik.touched.password ? formik.errors.password : ''}
         props={formik.getFieldProps('password')}
       />
+
+      <div className={styles.forgot_pass}>
+        <Link href={`${Paths.Auth}/${AuthPaths.ForgotPassInit}`}>
+          Forgot password?
+        </Link>
+      </div>
 
       <Button
         className={styles.submit_btn}

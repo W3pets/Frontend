@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './styles.module.scss';
 import { MdOutlineShield } from 'react-icons/md';
 import { NewSellerSchema2 } from '@/model/DTO/seller';
-import { InferType } from 'yup';
 import { useFormik } from 'formik';
 import FileInput from '@/components/shared/Inputs/FileInput/FileInput';
 import Button from '@/components/shared/Button/Button';
 import { FaCheck } from 'react-icons/fa6';
 import uniqid from 'uniqid';
+import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
+import { Paths } from '@/model/types/global';
+import { OnBoardingSteps, SellerPaths } from '@/model/types/seller';
+import { useRouter } from 'next/navigation';
+import newSellerSlice from '@/lib/store/slices/seller/newSeller';
 
 const strengths = [
   'Builds trust with potential buyers',
@@ -16,17 +20,30 @@ const strengths = [
 ];
 
 function Verification() {
-  const handleSubmit = async (values: InferType<typeof NewSellerSchema2>) => {};
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const isProfileValid = useAppSelector(
+    (s) => s.seller.newSeller.profile.isValid
+  );
 
-  const initVals: InferType<typeof NewSellerSchema2> = {
-    image: [],
+  const data = useAppSelector((s) => s.seller.newSeller.id);
+
+  const handleSubmit = async () => {
+    router.push(
+      `${Paths.Sellers}${SellerPaths.SellerRegister}?progress=${OnBoardingSteps.Listing}`
+    );
   };
 
   const formik = useFormik({
-    initialValues: initVals,
+    initialValues: data,
     validationSchema: NewSellerSchema2,
     onSubmit: handleSubmit,
+    validateOnMount: true,
   });
+
+  useEffect(() => {
+    dispatch(newSellerSlice.actions.setId(formik.values));
+  }, [formik.values, formik.isValid]);
 
   return (
     <div className={styles.content}>
@@ -52,21 +69,31 @@ function Verification() {
         <FileInput
           label="Upload a government-issued ID document(Nin,ID Card,e.t.c)"
           placeHolder="National ID, Driver's License, or Passport"
-          error={formik.errors.image}
+          error={formik.errors.id}
           min={1}
           max={1}
           onChange={formik.setFieldValue}
-          defaultFiles={initVals?.image}
-          name="image"
+          defaultFiles={formik.values.id}
+          name="id"
         />
-        <Button
-          className={styles.submit_btn}
-          type="submit"
-          isDisabled={!formik.isValid}
-          isLoading={formik.isSubmitting}
-        >
-          Submit for Verification
-        </Button>
+
+        <div className={styles.btn_row}>
+          <Button
+            onClick={handleSubmit}
+            className={styles.btn}
+            isDisabled={!isProfileValid}
+          >
+            Skip
+          </Button>
+          <Button
+            className={styles.btn}
+            type="submit"
+            isDisabled={!formik.isValid}
+            isLoading={formik.isSubmitting}
+          >
+            Submit for Verification
+          </Button>
+        </div>
       </form>
     </div>
   );

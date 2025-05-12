@@ -1,9 +1,11 @@
-import { AuthStore, UserMini } from '@/model/types/user/auth';
+import { UserMini } from '@/model/DTO/user/auth';
+import { AuthStore } from '@/model/types/user/auth';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: AuthStore = {
   isAuth: false,
   user: null,
+  justRegistered: '',
 };
 
 const authSlice = createSlice({
@@ -14,7 +16,10 @@ const authSlice = createSlice({
       return initialState;
     },
     loggedIn: (state, action: PayloadAction<UserMini>) => {
-      return { isAuth: true, user: action.payload };
+      return { ...state, isAuth: true, user: action.payload };
+    },
+    setJustRegistered: (state, action: PayloadAction<string>) => {
+      return { ...state, justRegistered: action.payload };
     },
   },
 });

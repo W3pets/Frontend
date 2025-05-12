@@ -4,7 +4,7 @@ import '@/globalStyles/global.scss';
 import { Metadata } from 'next';
 import StoreLayout from './StoreLayout';
 import { ImgPaths } from '@/model/types/global';
-import { ConfigProvider } from 'antd';
+import Msg from '@/components/shared/Msg/Msg';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -26,9 +26,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <StoreLayout>
-          <ConfigProvider theme={{ token: { colorPrimary: '#22c55e' } }}>
-            <ConditionalLayout>{children}</ConditionalLayout>
-          </ConfigProvider>
+          <Msg />
+          {/* <ConfigProvider theme={{ token: { colorPrimary: '#22c55e' } }}> */}
+          <ConditionalLayout>{children}</ConditionalLayout>
+          {/* </ConfigProvider> */}
         </StoreLayout>
       </body>
     </html>
