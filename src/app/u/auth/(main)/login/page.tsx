@@ -18,7 +18,7 @@ export default function LoginPage() {
   const handleSubmit = async (values: InferType<typeof SignInSchema>) => {
     const res = await authServices.signIn(values);
     if (res) {
-      dispatch(authSlice.actions.loggedIn(res));
+      dispatch(authSlice.actions.loggedIn(res.user));
     }
   };
 

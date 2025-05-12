@@ -2,6 +2,8 @@ import { store } from '../store';
 import globalSlice from '../store/slices/globalSlice';
 import { Message, MessageType, StatusCode } from '@/model/types/global';
 import { APIRes, APIStatusDTO } from '@/model/DTO/global';
+import { reqHandler } from '@/services/config/http';
+import { JwtToken } from '@/model/DTO/user/auth';
 
 class Utils {
   public getStatusWithCategory(
@@ -28,7 +30,10 @@ class Utils {
     };
   }
 
-  public setBgMsg<T>(ignoreCodes: StatusCode[] = []): MethodDecorator {
+  public setBgMsg<T>(
+    ignoreCodes: StatusCode[] = [],
+    setToken = false
+  ): MethodDecorator {
     return function (
       target: any,
       propertyKey: string | symbol,
@@ -37,6 +42,11 @@ class Utils {
       const originalMethod = descriptor.value;
       descriptor.value = async function (...args: any) {
         const res = <APIRes<T>>await originalMethod.apply(this, args);
+
+        if (setToken && res.status.success) {
+          const token = (res.data as JwtToken).accessToken;
+          reqHandler.handleBearerToken(token);
+        }
 
         if (ignoreCodes.length) {
           if (!ignoreCodes.includes(res.status.code)) {

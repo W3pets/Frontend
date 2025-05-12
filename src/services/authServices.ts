@@ -12,18 +12,17 @@ import { authHttp, reqHandler } from './config/http';
 import { StatusCode } from '@/model/types/global';
 
 class AuthServices {
-  @utils.setBgMsg<MessageMini>([StatusCode.Success])
+  @utils.setBgMsg([StatusCode.Success])
   public async signup(values: InferType<typeof SignUpSchema>) {
     const { confirmPassword, ...rest } = values;
     const res = <MessageMini>await authHttp.post('/signup', rest);
     return res;
   }
 
-  @utils.setBgMsg<AuthenticatedRes>([StatusCode.Success])
+  @utils.setBgMsg([StatusCode.Success], true)
   public async signIn(values: InferType<typeof SignInSchema>) {
     const res = <AuthenticatedRes>await authHttp.post('/login', values);
-    reqHandler.handleBearerToken(res.accessToken);
-    return res.user;
+    return res;
   }
 
   @utils.setBgMsg([StatusCode.Success])
@@ -32,12 +31,11 @@ class AuthServices {
     return res;
   }
 
-  @utils.setBgMsg([StatusCode.Success])
+  @utils.setBgMsg([StatusCode.Success], true)
   public async resetPassword(values: InferType<typeof ForgotResetSchema>) {
     const { confirmPassword, ...rest } = values;
     const res = <AuthenticatedRes>await authHttp.post('/reset-password', rest);
-    reqHandler.handleBearerToken(res.accessToken);
-    return res.user;
+    return res;
   }
 }
 
