@@ -20,13 +20,13 @@
     top: 0;
     height: 100%;
     width: inherit;
-    @include max_width;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     color: white;
     justify-content: center;
+    @include max_width();
 
     .content {
       z-index: 1;

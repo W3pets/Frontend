@@ -6,7 +6,7 @@ import styles from '@/components/pages/auth/styles.module.scss';
 import { InferType } from 'yup';
 import TextInput from '@/components/shared/Inputs/TextInput/TextInput';
 import Button from '@/components/shared/Button/Button';
-import { useMemo } from 'react';
+import { useMemo, use } from 'react';
 import MultiChecked, {
   MultiCheckItem,
 } from '@/components/shared/Inputs/MultiChecked/MultiChecked';
@@ -14,14 +14,15 @@ import { authServices } from '@/services/authServices';
 import authSlice from '@/lib/store/slices/user/auth';
 import { useAppDispatch } from '@/lib/store/hooks';
 
-function page({ params }: { params: { token: string } }) {
+function page(props0: { params: Promise<{ token: string }> }) {
+  const params = use(props0.params);
   const dispatch = useAppDispatch();
   const { token } = params;
 
   const handleSubmit = async (values: InferType<typeof ForgotResetSchema>) => {
     const res = await authServices.resetPassword(values);
     if (res) {
-      dispatch(authSlice.actions.loggedIn(res));
+      dispatch(authSlice.actions.loggedIn(res.user));
     }
   };
 

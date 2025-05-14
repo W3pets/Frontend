@@ -9,7 +9,7 @@ export default function Layout({
 }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
 
-  const isPreview = pathname.includes(SellerPaths.PrivacyPreview);
+  const isPreview = pathname.includes(SellerPaths.PreviewTerms);
 
   return (
     <div className={styles.preview_terms}>

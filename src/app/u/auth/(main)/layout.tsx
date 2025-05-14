@@ -5,7 +5,7 @@ import styles from '@/components/pages/auth/styles.module.scss';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { ImgPaths, Paths } from '@/model/types/global';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 
 export default function Layout({
   children,
@@ -34,7 +34,7 @@ export default function Layout({
   };
 
   return (
-    <>
+    <Suspense>
       <div className={styles.header}>
         <Image src={ImgPaths.Logo} width={48} height={48} alt="logo" />
         <div className={styles.title}>Welcome to W3pets</div>
@@ -53,6 +53,6 @@ export default function Layout({
         <div className={styles.indicator} style={{ left }} />
       </div>
       {children}
-    </>
+    </Suspense>
   );
 }

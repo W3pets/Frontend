@@ -1,4 +1,4 @@
-import { MouseEventHandler, useState } from 'react';
+import { MouseEventHandler, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import Loader from '../Loader/Loader';
 
@@ -46,7 +46,7 @@ function Button({
     }
   };
 
-  useState(() => {
+  useEffect(() => {
     return () => {
       if (timer || interval) {
         if (interval) clearInterval(interval);
