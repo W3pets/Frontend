@@ -13,9 +13,9 @@
   }
 
   .content {
-    @include max_width;
     margin: 64px 0;
     width: 100%;
+    @include max_width();
 
     .card {
       display: flex;

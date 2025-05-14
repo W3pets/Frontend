@@ -3,16 +3,16 @@
 import ProtectedRoute from '@/app/ProtectedRoute';
 import { Paths } from '@/model/types/global';
 import { AuthPaths } from '@/model/types/user/auth';
+import { Suspense } from 'react';
 
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ProtectedRoute
-      redirect_path={`${Paths.Auth}${AuthPaths.Login}`}
-      isAuthCheck
-    >
-      {children}
-    </ProtectedRoute>
+    <Suspense>
+      <ProtectedRoute redirect_path={`${Paths.Auth}${AuthPaths.Login}`}>
+        {children}
+      </ProtectedRoute>
+    </Suspense>
   );
 }

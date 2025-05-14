@@ -8,6 +8,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { InferType } from 'yup';
 
 export const initialState: NewSellerStore = {
+  acceptedTerms: false,
   profile: {
     business_name: '',
     city: '',
@@ -49,6 +50,9 @@ const newSellerSlice = createSlice({
       >
     ) => {
       return { ...state, profile: action.payload };
+    },
+    setTerms: (state, action: PayloadAction<boolean>) => {
+      return { ...state, acceptedTerms: action.payload };
     },
     setId: (
       state,

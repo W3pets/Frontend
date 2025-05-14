@@ -3,9 +3,9 @@
 
 .content {
   background-color: $tertiary;
-  @include max_width;
   display: flex;
   flex-direction: column;
   row-gap: 4rem;
   padding: 40px 0;
+  @include max_width();
 }

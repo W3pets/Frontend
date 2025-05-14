@@ -2,13 +2,14 @@
 @use '../../../globalStyles/mixin.scss' as *;
 
 .content {
-  @include max_width;
   padding: 64px 0;
-
   background-color: white;
+  @include max_width();
 
-  @media only screen and (min-width: 650px) {
-    background-color: inherit;
+  & {
+    @media only screen and (min-width: 650px) {
+      background-color: inherit;
+    }
   }
 
   .card {

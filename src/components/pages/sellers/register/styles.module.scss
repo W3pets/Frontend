@@ -3,14 +3,13 @@
 
 .register_seller_wrapper {
   flex: 1;
-  @include max_width;
-  padding: 48px 0;
+  padding: 48px 0 !important;
   background-color: white;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 1rem;
+  @include max_width();
 
   .progress {
     max-width: 500px;
