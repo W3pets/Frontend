@@ -12,6 +12,9 @@ import uniqId from 'uniqid';
 import MultiChecked, {
   MultiCheckItem,
 } from '@/components/shared/Inputs/MultiChecked/MultiChecked';
+import { useAppDispatch } from '@/lib/store/hooks';
+import newSellerSlice from '@/lib/store/slices/seller/newSeller';
+import { useRouter } from 'next/navigation';
 
 const termsSeed = [
   'Verify your identity and contact information',
@@ -24,9 +27,17 @@ function page() {
   const [isAccepting, setIsAccepting] = useState(false);
   const [isAccepted, setIsAccepted] = useState(false);
 
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
   const handleAccept = () => {
     setIsAccepting(true);
+    dispatch(newSellerSlice.actions.setTerms(true));
     setIsAccepting(false);
+
+    setTimeout(() => {
+      router.push(`${Paths.Sellers}${SellerPaths.SellerRegister}`);
+    }, 500);
   };
 
   const onAcceptChange = (items: MultiCheckItem[]) => {

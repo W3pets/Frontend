@@ -6,7 +6,7 @@ import { Steps } from 'antd';
 import Verification from '@/components/pages/sellers/register/Verification';
 import Profile from '@/components/pages/sellers/register/Profile';
 import FirstListing from '@/components/pages/sellers/register/FirstListing';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { redirect, useRouter, useSearchParams } from 'next/navigation';
 import { OnBoardingSteps, SellerPaths } from '@/model/types/seller';
 import { useAppSelector } from '@/lib/store/hooks';
 import { Paths } from '@/model/types/global';
@@ -22,9 +22,12 @@ function page() {
   const searchParams = useSearchParams();
   const search = searchParams.get('progress');
   const [progress, setProgress] = useState(0);
+
   const isProfileValid = useAppSelector(
     (s) => s.seller.newSeller.profile.isValid
   );
+
+  const acceptedTerms = useAppSelector((s) => s.seller.newSeller.acceptedTerms);
 
   const handleStepChange = (newStep: number) => {
     if (isProfileValid && newStep == 2) {
@@ -47,6 +50,10 @@ function page() {
   };
 
   useLayoutEffect(() => {
+    if (!acceptedTerms) {
+      redirect(`${Paths.Sellers}${SellerPaths.PreviewTerms}`);
+    }
+
     if (search === OnBoardingSteps.Profile) {
       setProgress(0);
     }
