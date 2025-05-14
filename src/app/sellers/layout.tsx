@@ -10,10 +10,7 @@ export default function Layout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <Suspense>
-      <ProtectedRoute
-        redirect_path={`${Paths.Auth}${AuthPaths.Login}`}
-        isAuthCheck={false}
-      >
+      <ProtectedRoute redirect_path={`${Paths.Auth}${AuthPaths.Login}`}>
         {children}
       </ProtectedRoute>
     </Suspense>
