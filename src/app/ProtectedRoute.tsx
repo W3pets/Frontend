@@ -5,18 +5,26 @@ import { useLayoutEffect, useState } from 'react';
 import Loader from '@/components/shared/Loader/Loader';
 import { redirect, usePathname, useSearchParams } from 'next/navigation';
 
+const createSelectorFromPath = (path: string) => (state: any) => {
+  return path.split('.').reduce((acc, key) => acc?.[key], state);
+};
+
 export default function ProtectedRoute({
-  isAuthCheck = true,
+  path,
+  isNegative = false,
   redirect_path = '',
+  includeCurrentPath = false,
   children,
 }: {
-  isAuthCheck?: boolean;
+  path: string;
+  isNegative?: boolean;
+  includeCurrentPath?: boolean;
   redirect_path?: string;
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
-  const user = useAppSelector((s) => s.user.auth);
+  const constraint = useAppSelector(createSelectorFromPath(path)) as boolean;
 
   const searchParams = useSearchParams();
 
@@ -24,21 +32,19 @@ export default function ProtectedRoute({
     const redirectFromPath =
       redirect_path || searchParams.get('redirect') || '/';
 
-    if (isAuthCheck) {
-      if (!user.isAuth) {
-        setIsLoading(false);
-        redirect(
-          `${redirectFromPath}?redirect=${encodeURIComponent(pathname)}`
-        );
-      }
-    } else {
-      if (user.isAuth) {
-        setIsLoading(false);
-        redirect(redirectFromPath);
-      }
+    const isValid = isNegative ? !constraint : constraint;
+
+    if (!isValid) {
+      let redirectLink = `${redirectFromPath}`;
+      redirectLink += includeCurrentPath
+        ? `redirect=${encodeURIComponent(pathname)}`
+        : '';
+      setIsLoading(false);
+      redirect(redirectFromPath);
     }
+
     setIsLoading(false);
-  }, [user.isAuth]);
+  }, [constraint]);
 
   return isLoading ? <Loader radius={70} isFixed /> : children;
 }

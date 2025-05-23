@@ -22,6 +22,7 @@ const globalSlice = createSlice({
       action: PayloadAction<APIStatusDTO & { time?: number }>
     ) => {
       const status = utils.getStatusWithCategory(action.payload);
+      // console.log('status', status);
       return { ...state, msg: status };
     },
   },

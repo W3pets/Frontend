@@ -9,7 +9,7 @@ export default function Layout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <Suspense>
-      <ProtectedRoute isAuthCheck={false}>
+      <ProtectedRoute path="user.auth.isAuth" isNegative>
         <div className={styles.content}>
           <div className={styles.card}>{children}</div>
         </div>

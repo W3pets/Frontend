@@ -1,6 +1,7 @@
-import { MouseEventHandler, useEffect, useState } from 'react';
+import { MouseEventHandler, useEffect, useMemo, useState } from 'react';
 import styles from './styles.module.scss';
 import Loader from '../Loader/Loader';
+import Link from 'next/link';
 
 type Props = {
   type?: 'submit' | 'button';
@@ -11,6 +12,7 @@ type Props = {
   outline?: boolean;
   children: React.ReactNode;
   isDisabled?: boolean;
+  link?: string;
   onClick?: MouseEventHandler;
 };
 
@@ -23,6 +25,7 @@ function Button({
   outline = false,
   onClick,
   maxTime = 0,
+  link = '',
   loaderRadius,
 }: Readonly<Props>) {
   const [timer, setTimer] = useState(0);
@@ -55,7 +58,20 @@ function Button({
     };
   }, []);
 
-  return (
+  const content = useMemo(
+    () => (
+      <>
+        {' '}
+        {!!timer && <Loader radius={loaderRadius} />}
+        {children}
+        {isLoading && <Loader radius={loaderRadius} />}
+        {!!timer && `(${timer}s)`}
+      </>
+    ),
+    [isLoading, timer]
+  );
+
+  return !link ? (
     <button
       type={type}
       onClick={handleClick}
@@ -63,11 +79,17 @@ function Button({
         outline ? styles.outline : ''
       }`}
     >
-      {!!timer && <Loader radius={loaderRadius} />}
-      {children}
-      {isLoading && <Loader radius={loaderRadius} />}
-      {!!timer && `(${timer}s)`}
+      {content}
     </button>
+  ) : (
+    <Link
+      href={link}
+      className={`${className} ${styles.button} ${isDisabled || timer ? styles.disabled : ''} ${
+        outline ? styles.outline : ''
+      }`}
+    >
+      {content}
+    </Link>
   );
 }
 

@@ -17,6 +17,15 @@ export enum OnBoardingSteps {
   ID = 'owner_id',
   Listing = 'first_listing',
 }
+export enum SellerDashboardPaths {
+  Dashboard = '/dashboard/landing',
+  Products = '/dashboard/products',
+  Messages = '/dashboard/messages',
+  Analytics = '/dashboard/analytics',
+  Notifications = '/dashboard/notifications',
+  Support = '/dashboard/customer_support',
+  Settings = '/dashboard/settings',
+}
 
 export type NewSellerStore = {
   acceptedTerms: boolean;

@@ -13,19 +13,30 @@ export default function MainLayout({
   const pathname = usePathname();
 
   const header = useMemo(() => {
-    const header1 = <Header hideSearch hideOthers hideSeller />;
+    const header1Paths = [Paths.Auth];
+    const hideHeaderPaths = [Paths.Sellers];
 
-    const header1Paths = [Paths.Auth, Paths.Sellers];
+    const header1 = <Header hideSearch hideOthers hideSeller />;
     if (header1Paths.some((p) => pathname.startsWith(p))) {
       return header1;
+    }
+
+    if (hideHeaderPaths.some((p) => pathname.startsWith(p))) {
+      return null;
     }
 
     return <Header />;
   }, [pathname]);
 
   const footer = useMemo(() => {
+    const hideFooterPaths = [Paths.Sellers];
+
     if (pathname === Paths.Default) {
       return <Footer />;
+    }
+
+    if (hideFooterPaths.some((p) => pathname.startsWith(p))) {
+      return null;
     }
 
     return <Footer isMinInfo />;
