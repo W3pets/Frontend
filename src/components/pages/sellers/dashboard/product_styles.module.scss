@@ -1,0 +1,53 @@
+@use '../../../../globalStyles/var.scss' as *;
+@use '../../../../globalStyles/mixin.scss' as *;
+
+.card {
+  align-items: start !important;
+  padding: 0.5rem;
+
+  @media only screen and (min-width: 800px) {
+    padding: 1rem;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+
+    h1 {
+      color: $color_1;
+      font-weight: 600;
+    }
+
+    .items_count {
+      display: flex;
+      align-items: center;
+      column-gap: 0.2rem;
+      font-size: 0.8rem;
+      color: $color_2;
+      background-color: rgb($color_1, 0.1);
+      padding: 0.3rem 0.5rem;
+      border-radius: 0.2rem;
+    }
+  }
+
+  .products {
+    flex: 1;
+    display: grid;
+    width: 100%;
+    gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+
+    @media only screen and (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media only screen and (min-width: 1000px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media only screen and (min-width: 1400px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

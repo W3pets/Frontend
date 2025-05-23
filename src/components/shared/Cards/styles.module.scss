@@ -1,0 +1,26 @@
+@use '../../../globalStyles/var.scss' as *;
+@use '../../../globalStyles/mixin.scss' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  max-width: 1200px;
+  width: 100%;
+  border-radius: 0.3rem;
+  row-gap: 2rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  overflow: hidden;
+
+  @media only screen and (min-width: 650px) {
+    padding: 2rem;
+    box-shadow: -2px 2px 8px $gray2;
+  }
+
+  &.outlined {
+    box-shadow: none;
+    border: 1px solid $gray2;
+  }
+}

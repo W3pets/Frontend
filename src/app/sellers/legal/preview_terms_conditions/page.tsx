@@ -15,6 +15,7 @@ import MultiChecked, {
 import { useAppDispatch } from '@/lib/store/hooks';
 import newSellerSlice from '@/lib/store/slices/seller/newSeller';
 import { useRouter } from 'next/navigation';
+import CheckedList from '@/components/shared/CheckedList/CheckedList';
 
 const termsSeed = [
   'Verify your identity and contact information',
@@ -72,12 +73,7 @@ function page() {
       </div>
       <div className={styles.terms}>
         <div className={styles.header}>Before you start selling on W3pets:</div>
-        {termsSeed.map((term) => (
-          <div key={uniqId()} className={styles.term}>
-            <FaCheck />
-            <span>{term}</span>
-          </div>
-        ))}
+        <CheckedList items={termsSeed} />
       </div>
       <MultiChecked
         items={[{ name: confirmTsx, id: 0, selected: isAccepted }]}

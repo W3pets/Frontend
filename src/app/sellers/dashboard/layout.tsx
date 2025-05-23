@@ -66,7 +66,7 @@ export default function Layout({
     >
       <div className={styles.dashboard}>
         <Sidebar
-          minDestopWidth={600}
+          minDestopWidth={800}
           header={{
             icon: <MdOutlineDashboard />,
             text: 'Abraham',
