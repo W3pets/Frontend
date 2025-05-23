@@ -71,7 +71,7 @@ function Button({
     [isLoading, timer]
   );
 
-  return !!link ? (
+  return !link ? (
     <button
       type={type}
       onClick={handleClick}
