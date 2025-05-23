@@ -239,8 +239,13 @@ class ReqHandler {
         resError.statusCode =
           code >= StatusCode.Success && code <= 299 ? StatusCode.Success : code;
 
+        const message =
+          typeof resError.message === 'string'
+            ? resError.message
+            : 'Internal Server error';
+
         const prevStatus: APIStatusDTO = {
-          message: resError.message || error.response?.statusText || '',
+          message,
           code: resError.statusCode,
           success: false,
         };
