@@ -27,6 +27,10 @@ export enum SellerDashboardPaths {
   Settings = '/dashboard/settings',
 }
 
+export enum DashboardProductsPaths {
+  New = '/new',
+}
+
 export type NewSellerStore = {
   acceptedTerms: boolean;
   profile: InferType<typeof NewSellerSchema> & { isValid: boolean };
