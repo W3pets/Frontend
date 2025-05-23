@@ -27,9 +27,9 @@ type BarProps = {
   children: Child[];
   pathsIds?: string[];
   header?: Child;
-  iconPos: {
-    left?: number;
-    top?: number;
+  iconPos?: {
+    left: number;
+    top: number;
   };
   isFullWidth?: boolean;
   minDestopWidth?: number;
