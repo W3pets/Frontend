@@ -63,8 +63,8 @@ export type UserMini = {
   email: string;
   username: string;
   role: string;
-  isSeller?: boolean;
-  isVerified?: boolean;
+  isSeller: boolean;
+  isVerified: boolean;
 };
 
 export type JwtToken = {

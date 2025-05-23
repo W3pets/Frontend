@@ -9,10 +9,13 @@ export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <Suspense>
-      <ProtectedRoute redirect_path={`${Paths.Auth}${AuthPaths.Login}`}>
-        {children}
-      </ProtectedRoute>
-    </Suspense>
+    <ProtectedRoute
+      path="user.auth.isAuth"
+      includeCurrentPath
+      isNegative
+      redirect_path={`${Paths.Auth}${AuthPaths.Login}`}
+    >
+      {children}
+    </ProtectedRoute>
   );
 }
