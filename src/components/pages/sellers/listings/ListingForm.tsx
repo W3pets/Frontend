@@ -9,16 +9,23 @@ import { dummyCategory } from '../../home/MainCategories/MainCategories';
 import Button from '@/components/shared/Button/Button';
 import newSellerSlice from '@/lib/store/slices/seller/newSeller';
 import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
+import { sellerServices } from '@/services/sellerServices';
+import { InferType } from 'yup';
 
 function ListingForm() {
   const dispatch = useAppDispatch();
-  const handleSubmit = async () => {};
-  const data = useAppSelector((s) => s.seller.newSeller.listing);
+  const data = useAppSelector((s) => s.seller.newSeller);
   const categories = dummyCategory.map((c) => c.name);
   const genders = ['Male', 'Female', 'Male and Female'];
 
+  const handleSubmit = async (values: InferType<typeof ListingSchema>) => {
+    const res = await sellerServices.onboard({ ...data, listing: values });
+    if (res) {
+    }
+  };
+
   const formik = useFormik({
-    initialValues: data,
+    initialValues: data.listing,
     validationSchema: ListingSchema,
     onSubmit: handleSubmit,
     validateOnMount: true,

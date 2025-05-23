@@ -192,14 +192,22 @@ class ReqHandler {
     instance.interceptors.response.use(
       async (response) => {
         // Check the status code here
-        const data = { ...response.data } as APIRes<any>;
-        const code = data.status.code;
-        data.status.code =
-          code >= StatusCode.Success && code <= 299 ? StatusCode.Success : code;
+        const returnedCode = response.status || 500;
+        const code =
+          returnedCode >= StatusCode.Success && returnedCode <= 299
+            ? StatusCode.Success
+            : returnedCode;
 
-        if (data.status.success) {
-          return data as any; // Proceed with the successful response
-        }
+        const data = {
+          data: response.data,
+          status: {
+            code,
+            message: response.data?.message || response.statusText,
+            success: code === StatusCode.Success,
+          },
+        } as APIRes<any>;
+
+        if (data.status.success) return data as any; // Proceed with the successful response
 
         // handle error
         const res = await this.handleErrorasync(
@@ -226,12 +234,13 @@ class ReqHandler {
         }
 
         const resError = error.response?.data as APIErrorDTO2;
-        const code = resError.statusCode;
+
+        const code = resError.statusCode || error.response?.status || 500;
         resError.statusCode =
           code >= StatusCode.Success && code <= 299 ? StatusCode.Success : code;
 
         const prevStatus: APIStatusDTO = {
-          message: resError.message,
+          message: resError.message || error.response?.statusText || '',
           code: resError.statusCode,
           success: false,
         };
@@ -254,6 +263,7 @@ class ReqHandler {
 
 // Create your Axios instances with different base URLs and headers
 export const reqHandler = new ReqHandler();
-export const authHttp = reqHandler.createHttpClient(Paths.Auth);
+export const authHttp = reqHandler.createHttpClient('/api/auth');
+export const sellerHttp = reqHandler.createHttpClient('/api/seller');
 
 reqHandler.handleBearerToken();
