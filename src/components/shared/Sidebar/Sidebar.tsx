@@ -27,6 +27,10 @@ type BarProps = {
   children: Child[];
   pathsIds?: string[];
   header?: Child;
+  iconPos: {
+    left?: number;
+    top?: number;
+  };
   isFullWidth?: boolean;
   minDestopWidth?: number;
 };
@@ -38,6 +42,7 @@ function Sidebar({
   header,
   pathsIds = [],
   isFullWidth,
+  iconPos = { left: 20, top: 30 },
 }: BarProps) {
   const id = uniqid();
   const pathname = usePathname();
@@ -142,6 +147,7 @@ function Sidebar({
         </div>
       </>
     );
+
     return header?.link ? (
       <Link className={styles.header} href={header.link}>
         {child}
@@ -151,10 +157,45 @@ function Sidebar({
     );
   }, [header]);
 
+  const childrenJSX = useMemo(() => {
+    return children.map((child, i) => {
+      const childJSX = (
+        <div
+          key={i}
+          className={` ${styles.child} ${selectedIndex === i ? styles.selected : ''} ${child?.isLast ? styles.flex_end : ''}`}
+        >
+          {child?.icon}
+          <div className={styles.info}>
+            <div className={styles.text}>{child.text}</div>
+            {child?.tagline && (
+              <div className={styles.tag_line}>{child?.tagline}</div>
+            )}
+          </div>
+        </div>
+      );
+
+      return child?.link || (!!pathsIds.length && !child?.onclick) ? (
+        <Link
+          key={i}
+          href={child?.link || pathsIds[i]}
+          className={styles.child_link}
+        >
+          {childJSX}
+        </Link>
+      ) : (
+        childJSX
+      );
+    });
+  }, [children, selectedIndex]);
+
   return (
     <div className={`${styles.bar_wrapper} ${className}`}>
       {isMobile && (
-        <SideBarIcon className={styles.icon} onClick={handleBarAction} />
+        <SideBarIcon
+          style={{ ...iconPos }}
+          className={styles.icon}
+          onClick={handleBarAction}
+        />
       )}
 
       <div
@@ -175,19 +216,7 @@ function Sidebar({
           ) : null} */}
           <div className={styles.children}>
             {headerJSX}
-            {children.map((child, i) => (
-              <div
-                className={` ${styles.child} ${selectedIndex === i ? styles.selected : ''} ${child?.isLast ? styles.flex_end : ''}`}
-              >
-                {child?.icon}
-                <div className={styles.info}>
-                  <div className={styles.text}>{child.text}</div>
-                  {child?.tagline && (
-                    <div className={styles.tag_line}>{child.tagline}</div>
-                  )}
-                </div>
-              </div>
-            ))}
+            {childrenJSX}
           </div>
         </div>
       </div>

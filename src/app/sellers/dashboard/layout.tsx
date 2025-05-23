@@ -13,6 +13,9 @@ import { RiNotification3Line } from 'react-icons/ri';
 import { MdOutlineHeadphones } from 'react-icons/md';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { MdLogout } from 'react-icons/md';
+import Footer from '@/components/shared/Footer/Footer';
+import Button from '@/components/shared/Button/Button';
+import { MdOutlineLibraryAdd } from 'react-icons/md';
 
 const sidebarMeta = [
   {
@@ -47,6 +50,7 @@ const sidebarMeta = [
     icon: <MdLogout />,
     text: 'Logout',
     isLast: true,
+    onclick: () => {},
   },
 ] as Child[];
 
@@ -69,8 +73,23 @@ export default function Layout({
             tagline: 'Seller Account',
           }}
           children={sidebarMeta}
+          pathsIds={Object.values(SellerDashboardPaths).map(
+            (p) => `${Paths.Sellers}${p}`
+          )}
         />
-        {children}
+        <div className={styles.main}>
+          <div className={styles.header_bar}>
+            <h1 className={styles.title}>Dashboard</h1>
+            <div className={styles.actions}>
+              <Button link="">
+                <MdOutlineLibraryAdd size={20} />
+                <span>New Product</span>
+              </Button>
+            </div>
+          </div>
+          {children}
+          <Footer isMinInfo />
+        </div>
       </div>
     </ProtectedRoute>
   );

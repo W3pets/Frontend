@@ -18,13 +18,13 @@ export enum OnBoardingSteps {
   Listing = 'first_listing',
 }
 export enum SellerDashboardPaths {
-  Dashboard = '/dashboard',
-  Products = '/products',
-  Messages = '/messages',
-  Analytics = '/analytics',
-  Notifications = '/notifications',
-  Support = '/support',
-  Settings = '/settings',
+  Dashboard = '/dashboard/landing',
+  Products = '/dashboard/products',
+  Messages = '/dashboard/messages',
+  Analytics = '/dashboard/analytics',
+  Notifications = '/dashboard/notifications',
+  Support = '/dashboard/customer_support',
+  Settings = '/dashboard/settings',
 }
 
 export type NewSellerStore = {

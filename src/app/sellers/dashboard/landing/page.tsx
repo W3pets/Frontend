@@ -1,7 +1,7 @@
-import React from 'react';
+import styles from '@/components/pages/sellers/dashboard/styles.module.scss';
 
 function page() {
-  return <div>here</div>;
+  return <div className={styles.page}>here</div>;
 }
 
 export default page;
