@@ -1,3 +1,5 @@
+'use client';
+
 import { MouseEventHandler, useEffect, useMemo, useState } from 'react';
 import styles from './styles.module.scss';
 import Loader from '../Loader/Loader';
@@ -9,9 +11,9 @@ type Props = {
   isLoading?: boolean;
   className?: string;
   loaderRadius?: number;
-  outline?: boolean;
   children: React.ReactNode;
   isDisabled?: boolean;
+  isOutline?: boolean;
   link?: string;
   onClick?: MouseEventHandler;
 };
@@ -22,7 +24,7 @@ function Button({
   className = '',
   isLoading = false,
   isDisabled = false,
-  outline = false,
+  isOutline = false,
   onClick,
   maxTime = 0,
   link = '',
@@ -76,7 +78,7 @@ function Button({
       type={type}
       onClick={handleClick}
       className={`${className} ${styles.button} ${isDisabled || timer ? styles.disabled : ''} ${
-        outline ? styles.outline : ''
+        isOutline ? styles.outline : ''
       }`}
     >
       {content}
@@ -85,7 +87,7 @@ function Button({
     <Link
       href={link}
       className={`${className} ${styles.button} ${isDisabled || timer ? styles.disabled : ''} ${
-        outline ? styles.outline : ''
+        isOutline ? styles.outline : ''
       }`}
     >
       {content}

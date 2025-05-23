@@ -25,12 +25,13 @@
 
   &.outline {
     background: transparent;
-    border: 1px solid $color_2;
-    color: black;
+    border: 1px solid $primary;
+    color: $primary;
 
     &:hover {
-      background: transparent;
-      @include box-shadow($gray1);
+      background: $primary;
+      color: white;
+      border: none;
     }
   }
 

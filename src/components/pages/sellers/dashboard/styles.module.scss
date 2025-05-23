@@ -26,7 +26,7 @@
         color: $color_base;
         margin-left: 23px;
 
-        @media only screen and (min-width: 650px) {
+        @media only screen and (min-width: 800px) {
           margin-left: 0;
         }
       }
@@ -39,7 +39,7 @@
       display: flex;
       flex: 1;
       flex-direction: column;
-      padding: 1rem;
+      padding: 0.5rem;
       background-color: $gray3;
     }
   }

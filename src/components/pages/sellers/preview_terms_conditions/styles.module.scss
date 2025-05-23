@@ -17,73 +17,56 @@
     width: 100%;
     @include max_width();
 
-    .card {
+    .header {
       display: flex;
       flex-direction: column;
-      background-color: white;
-      max-width: 1200px;
-      width: 100%;
-      border-radius: 0.3rem;
-      row-gap: 2rem;
-      margin: 0 auto;
-      padding: 0 1rem;
+      align-items: center;
+      row-gap: 0.5rem;
 
-      @media only screen and (min-width: 650px) {
-        padding: 2rem;
-        box-shadow: -2px 2px 8px $gray1;
+      svg {
+        color: $primary;
+        font-size: 50px;
       }
 
-      & > .header {
+      .slogan {
+        font-size: 1rem;
+        color: $color_2;
+      }
+
+      .title {
+        font-weight: 600;
+        font-size: 1.8rem;
+      }
+    }
+
+    .terms {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+      padding: 1rem;
+      background-color: #eeeeee51;
+      border-radius: 0.2rem;
+
+      .header {
+        font-size: 1.1rem;
+      }
+
+      .term {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        row-gap: 0.5rem;
+        column-gap: 1rem;
+        color: $color_2;
 
         svg {
           color: $primary;
-          font-size: 50px;
-        }
-
-        .slogan {
-          font-size: 1rem;
-          color: $color_2;
-        }
-
-        .title {
-          font-weight: 600;
-          font-size: 1.8rem;
         }
       }
+    }
 
-      .terms {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        row-gap: 1rem;
-        padding: 1rem;
-        background-color: #eeeeee51;
-        border-radius: 0.2rem;
-
-        .header {
-          font-size: 1.1rem;
-        }
-
-        .term {
-          display: flex;
-          align-items: center;
-          column-gap: 1rem;
-          color: $color_2;
-
-          svg {
-            color: $primary;
-          }
-        }
-      }
-
-      .confirm_txt {
-        a {
-          color: $primary;
-        }
+    .confirm_txt {
+      a {
+        color: $primary;
       }
     }
   }

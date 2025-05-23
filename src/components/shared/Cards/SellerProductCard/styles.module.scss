@@ -1,0 +1,97 @@
+@use '../../../../globalStyles/var.scss' as *;
+@use '../../../../globalStyles/mixin.scss' as *;
+
+.card_wrapper {
+  padding: 0 !important;
+  position: relative;
+  align-items: start !important;
+  gap: 0 !important;
+
+  .status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    padding: 0.2rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 0.2rem;
+
+    &.active {
+      background-color: rgb($primary, 0.2);
+      color: $primary;
+      border: 1px solid $primary;
+    }
+
+    &.sold {
+      background-color: rgb($info, 0.2);
+      color: $info;
+      border: 1px solid $info;
+    }
+
+    &.sold_out {
+      background-color: rgb($error, 0.2);
+      color: $error;
+      border: 1px solid $error;
+    }
+  }
+
+  .video {
+    height: 220px;
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+    object-fit: cover;
+  }
+
+  .card_content {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 0.7rem 1rem;
+    row-gap: 0.5rem;
+
+    .title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: $color_1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .price {
+      font-size: 1rem;
+      font-weight: 600;
+      color: $primary;
+    }
+
+    .cat_and_views {
+      display: flex;
+      justify-content: space-between;
+      color: $color_low;
+      font-size: 0.8rem;
+      align-items: center;
+    }
+
+    .actions {
+      display: flex;
+      column-gap: 1rem;
+      align-items: center;
+      button {
+        height: 2rem;
+
+        &:last-child {
+          border-color: $color_low !important;
+          color: $color_low;
+
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

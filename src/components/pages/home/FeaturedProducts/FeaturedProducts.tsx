@@ -4,7 +4,7 @@ import ProductCard from '@/components/shared/ProductCard/ProductCard';
 import uniqId from 'uniqid';
 import Filter from '@/components/shared/Filter/Filter';
 
-const productDetails: ProductMini[] = [
+const productSeed: ProductMini[] = [
   {
     imageUrl: '/dummy/dummy_dog.jpeg',
     title: 'Golden Retriever Puppy',
@@ -86,7 +86,7 @@ function FeaturedProducts() {
         <Filter />
       </div>
       <div className={styles.products}>
-        {productDetails.map((product) => (
+        {productSeed.map((product) => (
           <ProductCard key={uniqId()} {...product} />
         ))}
       </div>

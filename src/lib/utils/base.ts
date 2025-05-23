@@ -6,6 +6,12 @@ import { reqHandler } from '@/services/config/http';
 import { JwtToken } from '@/model/DTO/user/auth';
 
 class Utils {
+  public getReaablePrice(price: number): string {
+    return price.toLocaleString('en-NG', {
+      style: 'currency',
+      currency: 'NGN',
+    });
+  }
   public getStatusWithCategory(
     status: APIStatusDTO & { time?: number }
   ): Message {
