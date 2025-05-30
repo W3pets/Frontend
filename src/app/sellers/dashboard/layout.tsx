@@ -2,7 +2,11 @@
 
 import ProtectedRoute from '@/app/ProtectedRoute';
 import { Paths } from '@/model/types/global';
-import { SellerDashboardPaths, SellerPaths } from '@/model/types/seller';
+import {
+  DashboardProductsPaths,
+  SellerDashboardPaths,
+  SellerPaths,
+} from '@/model/types/seller';
 import styles from '@/components/pages/sellers/dashboard/styles.module.scss';
 import Sidebar, { Child } from '@/components/shared/Sidebar/Sidebar';
 import { MdOutlineDashboard } from 'react-icons/md';
@@ -81,7 +85,9 @@ export default function Layout({
           <div className={styles.header_bar}>
             <h1 className={styles.title}>Dashboard</h1>
             <div className={styles.actions}>
-              <Button link="">
+              <Button
+                link={`${Paths.Sellers}${SellerDashboardPaths.Messages}${DashboardProductsPaths.New}`}
+              >
                 <MdOutlineLibraryAdd size={20} />
                 <span>New Product</span>
               </Button>
