@@ -48,19 +48,19 @@ export default function Layout({
           <div className={styles.paths}>
             <div className={styles.path} onClick={() => handlePathChange(0)}>
               <FiUser />
-              Profile
+              <span>Profile</span>
             </div>
             <div className={styles.path} onClick={() => handlePathChange(1)}>
               <IoMdNotificationsOutline />
-              Notifications
+              <span>Notifications</span>
             </div>
             <div className={styles.path} onClick={() => handlePathChange(2)}>
               <FiLock />
-              Security
+              <span>Security</span>
             </div>
             <div className={styles.path} onClick={() => handlePathChange(3)}>
               <MdPayment />
-              Payment
+              <span>Payment</span>
             </div>
             <div className={styles.indicator} style={{ left }} />
           </div>

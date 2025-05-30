@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useLayoutEffect } from 'react';
 import styles from './styles.module.scss';
 import { NewSellerSchema } from '@/model/DTO/seller';
@@ -13,7 +15,7 @@ import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 import { useRouter } from 'next/navigation';
 import newSellerSlice from '@/lib/store/slices/seller/newSeller';
 
-function Profile() {
+function Profile({ showHeader = true }: { showHeader?: boolean }) {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const profileData = useAppSelector((s) => s.seller.newSeller.profile);
@@ -42,12 +44,14 @@ function Profile() {
 
   return (
     <div className={styles.content}>
-      <div className={styles.header}>
-        <div className={styles.title}>Welcome, Abraham Kuforiji !</div>
-        <div className={styles.slogan}>
-          We're excited to learn more about you.
+      {showHeader && (
+        <div className={styles.header}>
+          <div className={styles.title}>Welcome, Abraham Kuforiji !</div>
+          <div className={styles.slogan}>
+            We're excited to learn more about you.
+          </div>
         </div>
-      </div>
+      )}
 
       <form className={styles.form} onSubmit={formik.handleSubmit}>
         <TextInput
