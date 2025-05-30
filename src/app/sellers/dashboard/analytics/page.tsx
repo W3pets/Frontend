@@ -19,38 +19,37 @@ import { CiGlobe } from 'react-icons/ci';
 
 const { Text } = Typography;
 
-export const table_cols: ColumnsType<DataType> = [
-  {
-    title: 'Item',
-    dataIndex: 'item',
-    key: 'item',
-    render: (text: string) => <Text>{text}</Text>,
-  },
-  {
-    title: 'Price',
-    dataIndex: 'price',
-    key: 'price',
-    render: (price: number) => (
-      <Text style={{ fontWeight: 'bold' }}>
-        {utils.getReaablePrice(price)}{' '}
-        {/* Format with comma and currency symbol */}
-      </Text>
-    ),
-    sorter: (a, b) => a.price - b.price, // Example: Enable sorting by price
-  },
-  {
-    title: 'Date',
-    dataIndex: 'date',
-    key: 'date',
-  },
-  {
-    title: 'Buyer',
-    dataIndex: 'buyer',
-    key: 'buyer',
-  },
-];
-
 function page() {
+  const table_cols: ColumnsType<DataType> = [
+    {
+      title: 'Item',
+      dataIndex: 'item',
+      key: 'item',
+      render: (text: string) => <Text>{text}</Text>,
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
+      render: (price: number) => (
+        <Text style={{ fontWeight: 'bold' }}>
+          {utils.getReaablePrice(price)}{' '}
+        </Text>
+      ),
+      sorter: (a, b) => a.price - b.price, // Example: Enable sorting by price
+    },
+    {
+      title: 'Date',
+      dataIndex: 'date',
+      key: 'date',
+    },
+    {
+      title: 'Buyer',
+      dataIndex: 'buyer',
+      key: 'buyer',
+    },
+  ];
+
   return (
     <div className={`${parentStyles.page} ${styles.page}`}>
       <div className={styles.summary}>
