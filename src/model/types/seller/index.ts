@@ -24,7 +24,7 @@ export enum SellerDashboardPaths {
   Analytics = '/dashboard/analytics',
   Notifications = '/dashboard/notifications',
   Support = '/dashboard/customer_support',
-  Settings = '/dashboard/settings',
+  Settings = '/dashboard/settings/profile',
 }
 
 export enum SettingsProductsPaths {
