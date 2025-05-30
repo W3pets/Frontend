@@ -28,8 +28,8 @@ function page(props: { params: Promise<{ productId: string }> }) {
 
   return (
     <div className={`${styles.product_page} ${parentStyles.page}`}>
-      <div className={styles.back} onClick={() => router.back()}>
-        <div className={styles.click}>
+      <div className={styles.back}>
+        <div className={styles.click} onClick={() => router.back()}>
           <IoArrowBack />
           <span>Back</span>
         </div>

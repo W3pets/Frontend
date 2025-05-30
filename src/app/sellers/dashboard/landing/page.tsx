@@ -33,7 +33,7 @@ function page() {
           color="primary"
           action={{
             title: 'New',
-            link: `${Paths.Sellers}${SellerDashboardPaths.Messages}${DashboardProductsPaths.New}`,
+            link: `${Paths.Sellers}${SellerDashboardPaths.Products}${DashboardProductsPaths.New}`,
           }}
           metric={{ title: 'Active Products', value: `1` }}
         />

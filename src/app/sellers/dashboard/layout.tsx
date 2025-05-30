@@ -86,7 +86,7 @@ export default function Layout({
             <h1 className={styles.title}>Dashboard</h1>
             <div className={styles.actions}>
               <Button
-                link={`${Paths.Sellers}${SellerDashboardPaths.Messages}${DashboardProductsPaths.New}`}
+                link={`${Paths.Sellers}${SellerDashboardPaths.Products}${DashboardProductsPaths.New}`}
               >
                 <MdOutlineLibraryAdd size={20} />
                 <span>New Product</span>

@@ -11,9 +11,11 @@ function page() {
 
   return (
     <div className={`${styles.product_page} ${parentStyles.page}`}>
-      <div className={styles.back} onClick={() => router.back()}>
-        <IoArrowBack />
-        <span>Back to Dashboard</span>
+      <div className={styles.back}>
+        <div className={styles.click} onClick={() => router.back()}>
+          <IoArrowBack />
+          <span>Back</span>
+        </div>
       </div>
       <Card maxWidth={1000}>
         <ListingForm />

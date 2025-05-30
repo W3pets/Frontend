@@ -1,0 +1,65 @@
+@use '../../../../globalStyles/var.scss' as *;
+@use '../../../../globalStyles/mixin.scss' as *;
+
+.card {
+  align-items: start !important;
+  padding: 1.5rem !important;
+
+  & > * {
+    width: 100%;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.3rem;
+    border-bottom: 1px solid $gray2;
+
+    .title {
+      color: $color_2;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    .slogan {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      color: $color_low;
+      max-width: 700px;
+    }
+
+    .paths {
+      display: grid;
+      position: relative;
+      max-width: 600px;
+      grid-template-columns: repeat(4, 1fr);
+
+      .indicator {
+        z-index: 2;
+        position: absolute;
+        width: 25%;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        background-color: $primary;
+        transition: left 0.2s;
+      }
+
+      .path {
+        display: flex;
+        column-gap: 0.7rem;
+        align-items: center;
+        flex: 1;
+        font-size: 0.9rem;
+        color: $color_2;
+        padding: 0.7rem;
+        cursor: pointer;
+
+        svg {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}

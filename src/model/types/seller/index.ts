@@ -27,6 +27,13 @@ export enum SellerDashboardPaths {
   Settings = '/dashboard/settings',
 }
 
+export enum SettingsProductsPaths {
+  Profile = '/profile',
+  Msg = '/notifications',
+  Security = '/security',
+  Payments = '/payments',
+}
+
 export enum DashboardProductsPaths {
   New = '/new',
   Preview = '/preview',
