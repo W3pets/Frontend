@@ -6,7 +6,7 @@ import parentStyles from '@/components/pages/sellers/dashboard/styles.module.scs
 import styles from '@/components/pages/sellers/dashboard/product_styles.module.scss';
 import Card from '@/components/shared/Cards/Card';
 
-const defaultSeed = [
+export const productsSeed = [
   {
     imageUrl: '/dummy/dummy_dog.jpeg',
     title: 'Golden Retriever Puppy',
@@ -16,6 +16,9 @@ const defaultSeed = [
     isSold: false,
     isSoldOut: false,
     views: 100,
+    breed: 'Well-fed',
+    age: '5 months',
+    gender: 'nil',
   },
   {
     imageUrl: '/dummy/dummy_cat.jpeg',
@@ -26,6 +29,9 @@ const defaultSeed = [
     isSold: true,
     isSoldOut: true,
     views: 200,
+    breed: 'Well-fed',
+    gender: 'female',
+    age: '5 months',
   },
   {
     imageUrl: '/dummy/dummy_bird.jpeg',
@@ -36,6 +42,9 @@ const defaultSeed = [
     isSold: true,
     isSoldOut: false,
     views: 150,
+    breed: 'Well-fed',
+    age: '5 months',
+    gender: 'male',
   },
 ] as CardProps[];
 
@@ -46,13 +55,17 @@ function page() {
         <div className={styles.header}>
           <h1>Your Products</h1>
           <button className={styles.items_count}>
-            <span>{defaultSeed.length}</span>
+            <span>{productsSeed.length}</span>
             <span>items</span>
           </button>
         </div>
         <div className={styles.products}>
-          {defaultSeed.map((product) => (
-            <SelllerProductCard key={product.productId} data={product} />
+          {productsSeed.map((product) => (
+            <SelllerProductCard
+              isMininal
+              key={product.productId}
+              data={product}
+            />
           ))}
         </div>
       </Card>

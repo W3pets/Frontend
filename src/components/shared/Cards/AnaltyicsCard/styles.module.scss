@@ -2,7 +2,6 @@
 @use '../../../../globalStyles/mixin.scss' as *;
 
 .card {
-  height: min-content;
   max-width: 300px;
   align-items: start !important;
   padding: 1rem !important;
@@ -12,40 +11,72 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    display: flex;
 
     .title,
     .action {
       color: $color_1;
+      column-gap: 0.5rem;
     }
 
     &.primary {
       .title,
       .action {
-        color: $primary;
-        background-color: rgb($primary, 0.2);
+        column-gap: 0.5rem;
+        & .icon {
+          color: $primary;
+          background-color: rgb($primary, 0.2);
+        }
+      }
+    }
+
+    &.error {
+      .title,
+      .action {
+        column-gap: 0.5rem;
+        & .icon {
+          color: $error;
+          background-color: rgb($error, 0.2);
+        }
       }
     }
 
     &.info {
       .title,
       .action {
-        color: $info;
-        background-color: rgb($info, 0.2);
+        column-gap: 0.5rem;
+        & .icon {
+          color: $info;
+          background-color: rgb($info, 0.2);
+        }
       }
     }
 
     .title,
     .action {
-      svg {
-        font-size: 18px;
-      }
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.8rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 0.5rem;
+      & .icon {
+        svg {
+          font-size: 18px;
+        }
+        padding: 0.3rem;
+        box-shadow: 1px 1px 3px $gray1;
+        border-radius: 50%;
+      }
+
+      & span {
+        font-weight: 500;
+      }
     }
+  }
+
+  .description {
+    display: flex;
+    font-size: 0.9rem;
+    color: $color_1;
   }
 
   .metric {

@@ -9,6 +9,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     .header_bar {
       display: flex;
@@ -41,6 +42,7 @@
       flex-direction: column;
       padding: 0.5rem;
       background-color: $gray3;
+      align-items: center;
     }
   }
 }

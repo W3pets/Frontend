@@ -11,12 +11,15 @@ import newSellerSlice from '@/lib/store/slices/seller/newSeller';
 import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 import { sellerServices } from '@/services/sellerServices';
 import { InferType } from 'yup';
+import { LuSaveAll } from 'react-icons/lu';
 
-function ListingForm() {
+function ListingForm({ productId }: { productId?: string }) {
   const dispatch = useAppDispatch();
   const data = useAppSelector((s) => s.seller.newSeller);
   const categories = dummyCategory.map((c) => c.name);
   const genders = ['Male', 'Female', 'Male and Female'];
+
+  const isUpdate = !!productId;
 
   const handleSubmit = async (values: InferType<typeof ListingSchema>) => {
     const res = await sellerServices.onboard({ ...data, listing: values });
@@ -49,7 +52,7 @@ function ListingForm() {
         )}
         onChange={formik.setFieldValue}
         error={formik.errors.product_category}
-        name="category"
+        name="product_category"
         label="Product Category"
         options={categories}
       />
@@ -121,7 +124,8 @@ function ListingForm() {
         isDisabled={!formik.isValid}
         isLoading={formik.isSubmitting}
       >
-        Create Listing
+        <LuSaveAll />
+        {isUpdate ? 'Update Listing' : 'Create Listing'}
       </Button>
     </form>
   );

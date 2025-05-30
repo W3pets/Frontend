@@ -18,40 +18,55 @@
     border-radius: 0.2rem;
 
     &.active {
-      background-color: rgb($primary, 0.2);
-      color: $primary;
+      background-color: rgb($primary, 1);
+      color: white;
       border: 1px solid $primary;
     }
 
     &.sold {
-      background-color: rgb($info, 0.2);
-      color: $info;
+      background-color: rgb($info, 1);
+      color: white;
       border: 1px solid $info;
     }
 
     &.sold_out {
-      background-color: rgb($error, 0.2);
-      color: $error;
+      background-color: rgb($error, 1);
+      color: white;
       border: 1px solid $error;
     }
   }
 
   .video {
-    height: 220px;
+    height: 250px;
     max-width: 100%;
     width: 100%;
     min-width: 100%;
     object-fit: cover;
+    object-position: top;
   }
 
   .card_content {
     width: 100%;
     flex: 1;
+    height: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: start;
     padding: 0.7rem 1rem;
-    row-gap: 0.5rem;
+    row-gap: 1rem;
+
+    .sec {
+      .sec_title {
+        color: $color_low;
+        font-weight: 400;
+        font-size: 0.8rem;
+      }
+
+      .sec_text {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: $color_1;
+      }
+    }
 
     .title {
       font-size: 1rem;
@@ -68,18 +83,19 @@
       color: $primary;
     }
 
-    .cat_and_views {
+    .span_info {
       display: flex;
       justify-content: space-between;
-      color: $color_low;
-      font-size: 0.8rem;
-      align-items: center;
+      flex: 1;
+      max-width: 600px;
     }
 
     .actions {
       display: flex;
       column-gap: 1rem;
-      align-items: center;
+      max-width: 400px;
+      // align-items: end;
+      // flex: 1;
       button {
         height: 2rem;
 
@@ -92,6 +108,24 @@
           }
         }
       }
+    }
+  }
+
+  &.is_span {
+    flex-direction: row;
+    // @media screen and (min-width: 550px) {
+    //   max-width: 60%;
+    // }
+
+    .card_content {
+      height: 300px;
+    }
+
+    .video {
+      max-width: 35%;
+      min-width: 35%;
+      height: 300px;
+      border-radius: 0.3rem;
     }
   }
 }

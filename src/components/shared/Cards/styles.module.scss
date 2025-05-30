@@ -6,13 +6,14 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  max-width: 1200px;
+  max-width: 100%;
   width: 100%;
   border-radius: 0.3rem;
   row-gap: 2rem;
   margin: 0 auto;
   padding: 0 1rem;
   overflow: hidden;
+  box-shadow: -1px 1px 4px $gray2;
 
   @media only screen and (min-width: 650px) {
     padding: 2rem;

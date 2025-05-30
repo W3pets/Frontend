@@ -1,0 +1,161 @@
+@use '../../../../globalStyles/var.scss' as *;
+@use '../../../../globalStyles/mixin.scss' as *;
+
+.product_page {
+  row-gap: 1rem !important;
+  padding-top: 1rem !important;
+  & > * {
+    max-width: 1000;
+    width: 100%;
+  }
+
+  .back {
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+
+    .click {
+      display: flex;
+      column-gap: 0.5rem;
+      align-items: center;
+      span {
+        color: $color_2;
+      }
+
+      &:hover {
+        color: $primary;
+
+        span {
+          color: $primary;
+        }
+      }
+    }
+
+    .btn {
+      width: min-content;
+    }
+  }
+
+  .preview_card {
+    padding: 0;
+    row-gap: 0.5rem;
+    margin: 0;
+    position: relative;
+
+    .video {
+      height: 600px;
+      max-width: 100%;
+      width: 100%;
+      min-width: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .status {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 2;
+      padding: 0.2rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border-radius: 0.2rem;
+
+      &.active {
+        background-color: rgb($primary, 1);
+        color: white;
+        border: 1px solid $primary;
+      }
+
+      &.sold {
+        background-color: rgb($info, 1);
+        color: white;
+        border: 1px solid $info;
+      }
+
+      &.sold_out {
+        background-color: rgb($error, 1);
+        color: white;
+        border: 1px solid $error;
+      }
+    }
+
+    .content {
+      width: 100%;
+      flex: 1;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      padding: 0.7rem 1rem;
+      row-gap: 1rem;
+
+      .main_sec {
+        border-top: 1px solid $gray2;
+        padding-top: 1rem;
+        .sec_title {
+          color: $color_1;
+          font-weight: bold;
+          font-size: 1rem;
+        }
+
+        .sec_text {
+          display: flex;
+          align-items: center;
+          column-gap: 0.5rem;
+          font-size: 0.8rem;
+          color: $color_2;
+          padding-top: 0.5rem;
+          max-width: 700px;
+        }
+      }
+
+      .sec {
+        .sec_title {
+          color: $color_low;
+          font-weight: 400;
+          font-size: 0.8rem;
+        }
+
+        .sec_text {
+          font-size: 0.9rem;
+          font-weight: bold;
+          color: $color_1;
+        }
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .title {
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: $color_1;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+
+        .views {
+          display: flex;
+          align-items: center;
+          column-gap: 0.3rem;
+          color: $color_2;
+          font-size: 0.8rem;
+        }
+      }
+      .price {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: $primary;
+      }
+
+      .span_info {
+        gap: 1rem;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        flex: 1;
+      }
+    }
+  }
+}
