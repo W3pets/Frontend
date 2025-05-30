@@ -1,15 +1,81 @@
-.summary {
-  flex: 1;
-  display: grid;
-  width: 100%;
-  gap: 1rem;
-  grid-template-columns: repeat(1, 1fr);
+@use '../../../../globalStyles/var.scss' as *;
+@use '../../../../globalStyles/mixin.scss' as *;
 
-  @media only screen and (min-width: 600px) {
-    grid-template-columns: repeat(2, 1fr);
+.page {
+  row-gap: 1.6rem;
+  .summary {
+    display: grid;
+    width: 100%;
+    gap: 1rem;
+    max-width: 1500;
+    grid-template-columns: repeat(1, 1fr);
+
+    @media only screen and (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media only screen and (min-width: 1000px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
-  @media only screen and (min-width: 1000px) {
-    grid-template-columns: repeat(4, 1fr);
+  .welcome {
+    row-gap: 1rem;
+    margin: 0;
+    padding: 1rem;
+    align-items: start;
+    .header {
+      column-gap: 0.5rem;
+      display: flex;
+      align-items: center;
+      width: 100%;
+
+      svg {
+        color: $primary;
+        font-size: 25px;
+      }
+    }
+
+    .slogan {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: $color_low;
+    }
+
+    .cards {
+      display: grid;
+      width: 100%;
+      gap: 1rem;
+      grid-template-columns: repeat(1, 1fr);
+
+      @media only screen and (min-width: 600px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media only screen and (min-width: 1150px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  .last_listing {
+    padding: 0;
+    row-gap: 0rem;
+    margin: 0;
+    .header {
+      width: 100%;
+      border-bottom: 1px solid $gray2;
+      padding: 1rem;
+    }
+
+    .content {
+      flex: 1;
+      width: 100%;
+      padding: 1rem;
+
+      & > * {
+        border: none;
+      }
+    }
   }
 }

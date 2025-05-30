@@ -15,8 +15,8 @@ type Props = {
     onClick?: () => void;
   };
   description?: {
-    title: string;
-    value: string;
+    title?: string;
+    value?: string;
   };
   metric?: {
     title: string;
@@ -36,20 +36,23 @@ function AnalyticsCard({
     <Card className={styles.card}>
       <div className={`${styles.header} ${styles[color]}`}>
         <div className={styles.title}>
-          {title?.icon}
-          {title?.title}
+          {!!title?.icon && <div className={styles.icon}>{title?.icon}</div>}
+          {!!title?.title && <span>{title?.title}</span>}
         </div>
         {action ? (
           action?.link ? (
             <Link className={styles.action} href={action.link}>
-              {' '}
-              {action?.icon}
-              {action?.title}
+              {!!action?.icon && (
+                <div className={styles.icon}>{action?.icon}</div>
+              )}
+              {!!action?.title && <span>{action?.title}</span>}
             </Link>
           ) : (
             <div className={styles.action} onClick={action?.onClick}>
-              {action?.icon}
-              {action?.title}
+              {!!action?.icon && (
+                <div className={styles.icon}>{action?.icon}</div>
+              )}
+              {!!action?.title && <span>{action?.title}</span>}
             </div>
           )
         ) : null}
@@ -61,6 +64,11 @@ function AnalyticsCard({
             <span>{metric?.value}</span>
             <span>{metric?.unit}</span>
           </div>
+        </div>
+      )}
+      {description && (
+        <div className={styles.description}>
+          <span className={styles.title}>{description?.title}</span>
         </div>
       )}
     </Card>

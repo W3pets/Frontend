@@ -49,7 +49,7 @@ function ListingForm() {
         )}
         onChange={formik.setFieldValue}
         error={formik.errors.product_category}
-        name="category"
+        name="product_category"
         label="Product Category"
         options={categories}
       />

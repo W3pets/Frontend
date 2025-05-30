@@ -11,14 +11,27 @@ export type CardProps = {
   price: number;
   views: number;
   category: string;
+  breed: string;
+  age: string;
   isSold: boolean;
   isSoldOut: boolean;
   productId: number;
 };
 
-function SelllerProductCard({ data }: { data: CardProps }) {
+function SelllerProductCard({
+  data,
+  isSpan = false,
+  isMininal = false,
+}: {
+  data: CardProps;
+  isSpan?: boolean;
+  isMininal?: boolean;
+}) {
   return (
-    <Card isOutlined className={styles.card_wrapper}>
+    <Card
+      isOutlined
+      className={`${styles.card_wrapper} ${isSpan ? styles.is_span : ''}`}
+    >
       <Image
         src={data.imageUrl}
         alt={data.title}
@@ -36,10 +49,29 @@ function SelllerProductCard({ data }: { data: CardProps }) {
       <div className={styles.card_content}>
         <h3 className={styles.title}>{data.title}</h3>
         <p className={styles.price}>{utils.getReaablePrice(data.price)}</p>
-        <div className={styles.cat_and_views}>
-          <p className={styles.category}>{data.category}</p>
-          <p className={styles.views}>{data.views} views</p>
+        <div className={styles.span_info}>
+          <div className={styles.sec}>
+            <div className={styles.sec_title}>Category</div>
+            <div className={styles.sec_text}>{data.category}</div>
+          </div>
+
+          <div className={styles.sec}>
+            <div className={styles.sec_title}>Views</div>
+            <div className={styles.sec_text}>{data.views}</div>
+          </div>
         </div>
+        {!isMininal && (
+          <div className={styles.span_info}>
+            <div className={styles.sec}>
+              <div className={styles.sec_title}>Age</div>
+              <div className={styles.sec_text}>{data.age}</div>
+            </div>
+            <div className={styles.sec}>
+              <div className={styles.sec_title}>Breed</div>
+              <div className={styles.sec_text}>{data.breed}</div>
+            </div>
+          </div>
+        )}
         <div className={styles.actions}>
           <Button isOutline>Edit</Button>
           <Button isOutline>Preview</Button>
