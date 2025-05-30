@@ -18,6 +18,7 @@ export const productsSeed = [
     views: 100,
     breed: 'Well-fed',
     age: '5 months',
+    gender: 'nil',
   },
   {
     imageUrl: '/dummy/dummy_cat.jpeg',
@@ -29,6 +30,7 @@ export const productsSeed = [
     isSoldOut: true,
     views: 200,
     breed: 'Well-fed',
+    gender: 'female',
     age: '5 months',
   },
   {
@@ -42,6 +44,7 @@ export const productsSeed = [
     views: 150,
     breed: 'Well-fed',
     age: '5 months',
+    gender: 'male',
   },
 ] as CardProps[];
 

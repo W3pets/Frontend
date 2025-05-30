@@ -29,6 +29,7 @@ export enum SellerDashboardPaths {
 
 export enum DashboardProductsPaths {
   New = '/new',
+  Preview = '/preview',
 }
 
 export type NewSellerStore = {

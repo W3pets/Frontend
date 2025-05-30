@@ -18,20 +18,20 @@
     border-radius: 0.2rem;
 
     &.active {
-      background-color: rgb($primary, 0.2);
-      color: $primary;
+      background-color: rgb($primary, 1);
+      color: white;
       border: 1px solid $primary;
     }
 
     &.sold {
-      background-color: rgb($info, 0.2);
-      color: $info;
+      background-color: rgb($info, 1);
+      color: white;
       border: 1px solid $info;
     }
 
     &.sold_out {
-      background-color: rgb($error, 0.2);
-      color: $error;
+      background-color: rgb($error, 1);
+      color: white;
       border: 1px solid $error;
     }
   }
@@ -57,8 +57,8 @@
     .sec {
       .sec_title {
         color: $color_low;
-        font-weight: 500;
-        font-size: 0.9rem;
+        font-weight: 400;
+        font-size: 0.8rem;
       }
 
       .sec_text {

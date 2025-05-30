@@ -8,6 +8,7 @@ import { Paths } from '@/model/types/global';
 import {
   DashboardProductsPaths,
   SellerDashboardPaths,
+  SellerPaths,
 } from '@/model/types/seller';
 import SelllerProductCard from '@/components/shared/Cards/SellerProductCard/SelllerProductCard';
 import { productsSeed } from '../products/page';
@@ -72,6 +73,7 @@ function page() {
           />
           <AnalyticsCard
             color="primary"
+            link={`${Paths.Sellers}${SellerDashboardPaths.Products}${DashboardProductsPaths.New}`}
             title={{
               icon: <FiPlusSquare />,
               title: 'Add More Products',

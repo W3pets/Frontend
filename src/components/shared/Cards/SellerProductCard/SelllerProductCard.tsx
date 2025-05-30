@@ -4,12 +4,18 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 import { utils } from '@/lib/utils/base';
 import Button from '../../Button/Button';
+import {
+  DashboardProductsPaths,
+  SellerDashboardPaths,
+} from '@/model/types/seller';
+import { Paths } from '@/model/types/global';
 
 export type CardProps = {
   title: string;
   imageUrl: string;
   price: number;
   views: number;
+  gender: string;
   category: string;
   breed: string;
   age: string;
@@ -73,8 +79,18 @@ function SelllerProductCard({
           </div>
         )}
         <div className={styles.actions}>
-          <Button isOutline>Edit</Button>
-          <Button isOutline>Preview</Button>
+          <Button
+            link={`${Paths.Sellers}${SellerDashboardPaths.Products}/${data.productId}`}
+            isOutline
+          >
+            Edit
+          </Button>
+          <Button
+            link={`${Paths.Sellers}${SellerDashboardPaths.Products}${DashboardProductsPaths.Preview}/${data.productId}`}
+            isOutline
+          >
+            Preview
+          </Button>
         </div>
       </div>
     </Card>

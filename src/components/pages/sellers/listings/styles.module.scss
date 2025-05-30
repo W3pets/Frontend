@@ -1,0 +1,11 @@
+.form_listing {
+  flex: 1;
+  width: 100%;
+  display: grid;
+  column-gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+
+  .submit_btn {
+    grid-column: span 2;
+  }
+}
