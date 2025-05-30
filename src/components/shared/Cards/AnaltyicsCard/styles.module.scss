@@ -30,6 +30,17 @@
       }
     }
 
+    &.error {
+      .title,
+      .action {
+        column-gap: 0.5rem;
+        & .icon {
+          color: $error;
+          background-color: rgb($error, 0.2);
+        }
+      }
+    }
+
     &.info {
       .title,
       .action {

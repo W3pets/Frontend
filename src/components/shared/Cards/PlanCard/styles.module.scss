@@ -1,0 +1,50 @@
+@use '../../../../globalStyles/var.scss' as *;
+@use '../../../../globalStyles/mixin.scss' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  align-items: start;
+  position: relative;
+  padding: 1.3rem;
+
+  .recommend {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: $primary;
+    color: white;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $color_1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .price {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $color_1;
+    margin-top: -0.3rem;
+  }
+
+  .period {
+    font-size: 0.9rem;
+    color: $color_low;
+    margin-top: -0.3rem;
+  }
+
+  .btn {
+    margin-top: auto;
+  }
+}

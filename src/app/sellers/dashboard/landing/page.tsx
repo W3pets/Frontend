@@ -8,7 +8,6 @@ import { Paths } from '@/model/types/global';
 import {
   DashboardProductsPaths,
   SellerDashboardPaths,
-  SellerPaths,
 } from '@/model/types/seller';
 import SelllerProductCard from '@/components/shared/Cards/SellerProductCard/SelllerProductCard';
 import { productsSeed } from '../products/page';
@@ -17,6 +16,7 @@ import { LuBadgeCheck } from 'react-icons/lu';
 import { RxPerson } from 'react-icons/rx';
 import { FiPlusSquare } from 'react-icons/fi';
 import { IoAnalytics } from 'react-icons/io5';
+import { TbCurrencyNaira } from 'react-icons/tb';
 
 function page() {
   return (
@@ -46,7 +46,7 @@ function page() {
           metric={{ title: 'Messages', value: `3` }}
         />
         <AnalyticsCard
-          title={{ title: '₦' }}
+          title={{ icon: <TbCurrencyNaira /> }}
           action={{ title: 'Start selling' }}
           metric={{ title: 'Total Sales', value: `₦0` }}
         />

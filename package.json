@@ -12,6 +12,7 @@
     "format": "npm run prettier && npm run lint:fix"
   },
   "dependencies": {
+    "@ant-design/charts": "^2.3.0",
     "@reduxjs/toolkit": "^2.6.1",
     "antd": "^5.24.5",
     "autoprefixer": "^10.4.20",
