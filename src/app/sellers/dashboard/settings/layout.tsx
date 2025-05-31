@@ -31,7 +31,7 @@ export default function Layout({
     if (index !== pathIndex) {
       setLeft(`${index * 25}%`);
       router.push(
-        `${Paths.Sellers}${SellerDashboardPaths.Settings}${paths[index]}`
+        `${Paths.Sellers}${SellerDashboardPaths.Settings.split(SettingsProductsPaths.Profile)[0]}${paths[index]}`
       );
     }
   };

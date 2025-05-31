@@ -3,7 +3,6 @@
 
 .page {
   row-gap: 2rem;
-  overflow: hidden;
   flex: 1;
   padding: 1rem !important;
 
@@ -39,7 +38,7 @@
   }
 
   .table {
-    flex: 1;
+    max-width: 100%;
     overflow-x: auto;
   }
 

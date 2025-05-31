@@ -100,20 +100,22 @@ function page() {
         </Card>
       </div>
 
-      <div className={styles.table}>
-        <Card
-          title="Recent Sales"
-          variant="borderless"
-          style={{ minWidth: '700px' }}
+      <Card title="Recent Sales" variant="borderless">
+        <div
+          className={styles.table}
+          style={{ overflowX: 'auto', width: '100%' }}
         >
           <Table
             columns={table_cols}
             dataSource={table_data}
             pagination={false} // Disable pagination if you want to show all items
-            showHeader={true} // Explicitly show header
+            showHeader={true} //
+            style={{ minWidth: 700 }}
+            //  Explicitly show header
           />
-        </Card>
-      </div>
+        </div>
+      </Card>
+
       <section>
         <div className={styles.header}>
           <div className={styles.icon}>
