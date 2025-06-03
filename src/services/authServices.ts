@@ -2,7 +2,7 @@ import { InferType } from 'yup';
 import {
   AuthenticatedRes,
   ForgotInitSchema,
-  ForgotResetSchema,
+  PasswordResetSchema,
   MessageMini,
   SignInSchema,
   SignUpSchema,
@@ -32,7 +32,7 @@ class AuthServices {
   }
   // 34Ag#$kj
   @utils.setBgMsg([StatusCode.Success], true)
-  public async resetPassword(values: InferType<typeof ForgotResetSchema>) {
+  public async resetPassword(values: InferType<typeof PasswordResetSchema>) {
     const { confirmPassword, ...rest } = values;
     const res = <AuthenticatedRes>await authHttp.post('/reset-password', rest);
     return res;

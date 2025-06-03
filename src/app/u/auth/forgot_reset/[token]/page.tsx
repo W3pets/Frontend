@@ -1,6 +1,6 @@
 'use client';
 
-import { ForgotResetSchema } from '@/model/DTO/user/auth';
+import { PasswordResetSchema } from '@/model/DTO/user/auth';
 import { useFormik } from 'formik';
 import styles from '@/components/pages/auth/styles.module.scss';
 import { InferType } from 'yup';
@@ -19,14 +19,16 @@ function page(props0: { params: Promise<{ token: string }> }) {
   const dispatch = useAppDispatch();
   const { token } = params;
 
-  const handleSubmit = async (values: InferType<typeof ForgotResetSchema>) => {
+  const handleSubmit = async (
+    values: InferType<typeof PasswordResetSchema>
+  ) => {
     const res = await authServices.resetPassword(values);
     if (res) {
       dispatch(authSlice.actions.loggedIn(res.user));
     }
   };
 
-  const initVals: InferType<typeof ForgotResetSchema> = {
+  const initVals: InferType<typeof PasswordResetSchema> = {
     newPassword: '',
     token,
     confirmPassword: '',
@@ -34,7 +36,7 @@ function page(props0: { params: Promise<{ token: string }> }) {
 
   const formik = useFormik({
     initialValues: initVals,
-    validationSchema: ForgotResetSchema,
+    validationSchema: PasswordResetSchema,
     onSubmit: handleSubmit,
   });
 

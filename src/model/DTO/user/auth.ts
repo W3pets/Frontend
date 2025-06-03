@@ -35,7 +35,7 @@ export const ForgotInitSchema = Yup.object().shape({
     .required('Email is required'),
 });
 
-export const ForgotResetSchema = Yup.object().shape({
+export const PasswordResetSchema = Yup.object().shape({
   token: Yup.string(),
   newPassword: Yup.string()
     .required('No password provided.')

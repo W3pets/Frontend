@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import uniqid from 'uniqid';
 
@@ -33,6 +33,10 @@ function MultiChecked({
     if (onChange) onChange(newItems);
     setItems(newItems);
   };
+
+  useLayoutEffect(() => {
+    setItems(items);
+  }, [items]);
 
   return (
     <div className={`${styles.items} ${className}`}>
