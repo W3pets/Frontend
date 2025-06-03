@@ -10,7 +10,7 @@
   .status {
     position: absolute;
     top: 1rem;
-    right: 1rem;
+    right: 0rem;
     z-index: 2;
     padding: 0.2rem 1rem;
     font-size: 0.7rem;
@@ -112,20 +112,24 @@
   }
 
   &.is_span {
-    flex-direction: row;
-    // @media screen and (min-width: 550px) {
-    //   max-width: 60%;
-    // }
+    flex-direction: column;
+    @media screen and (min-width: 550px) {
+      flex-direction: row;
+    }
 
     .card_content {
       height: 300px;
     }
 
     .video {
-      max-width: 35%;
-      min-width: 35%;
+      max-width: 100%;
+      min-width: 50%;
       height: 300px;
       border-radius: 0.3rem;
+
+      @media screen and (min-width: 550px) {
+        max-width: 50%;
+      }
     }
   }
 }

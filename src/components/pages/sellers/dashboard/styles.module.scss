@@ -42,8 +42,17 @@
       padding: 0.5rem;
       background-color: $gray3;
       align-items: center;
-      overflow-y: scroll;
+      overflow-y: auto;
       overflow-x: hidden;
+
+      row-gap: 2rem;
+      flex: 1;
+      padding: 1rem !important;
+
+      & > * {
+        width: 100%;
+        max-width: 1200px !important;
+      }
     }
   }
 }
