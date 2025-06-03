@@ -72,3 +72,15 @@
     }
   }
 }
+
+.not_page {
+  row-gap: 1.6rem;
+  display: flex;
+  flex-direction: column;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.7rem;
+  }
+}
