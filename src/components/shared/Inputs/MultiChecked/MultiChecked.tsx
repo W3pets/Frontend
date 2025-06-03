@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import uniqid from 'uniqid';
 
@@ -22,19 +22,25 @@ function MultiChecked({
   className,
   type = 'checkbox',
 }: Props) {
+  const [prevItems, setItems] = useState(items);
   const handleChange = (index: number) => {
     const newItem: MultiCheckItem = {
-      ...items[index],
-      selected: !(items[index]?.selected || false),
+      ...prevItems[index],
+      selected: !(prevItems[index]?.selected || false),
     };
-    const newItems = [...items];
+    const newItems = [...prevItems];
     newItems[index] = newItem;
     if (onChange) onChange(newItems);
+    setItems(newItems);
   };
+
+  useLayoutEffect(() => {
+    setItems(items);
+  }, [items]);
 
   return (
     <div className={`${styles.items} ${className}`}>
-      {items.map(({ id, name, ...rest }, i) => (
+      {prevItems.map(({ id, name, ...rest }, i) => (
         <div key={uniqid()} className={styles.item}>
           <input
             type={type}

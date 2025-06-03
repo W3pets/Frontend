@@ -2,15 +2,6 @@
 @use '../../../../globalStyles/mixin.scss' as *;
 
 .page {
-  row-gap: 2rem;
-  flex: 1;
-  padding: 1rem !important;
-
-  & > * {
-    width: 100%;
-    max-width: 1200px !important;
-  }
-
   .summary {
     display: grid;
     width: 100%;
