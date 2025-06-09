@@ -12,7 +12,7 @@ import uniqId from 'uniqid';
 import MultiChecked, {
   MultiCheckItem,
 } from '@/components/shared/Inputs/MultiChecked/MultiChecked';
-import { useAppDispatch } from '@/lib/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 import newSellerSlice from '@/lib/store/slices/seller/newSeller';
 import { useRouter } from 'next/navigation';
 import CheckedList from '@/components/shared/CheckedList/CheckedList';
@@ -27,6 +27,8 @@ const termsSeed = [
 function page() {
   const [isAccepting, setIsAccepting] = useState(false);
   const [isAccepted, setIsAccepted] = useState(false);
+
+  const user = useAppSelector((state) => state.user.auth.user);
 
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -66,7 +68,7 @@ function page() {
     <>
       <div className={styles.header}>
         <MdOutlineShield />
-        <div className={styles.title}>Hi Abraham Kuforiji !</div>
+        <div className={styles.title}>Hi {user?.email} !</div>
         <div className={styles.slogan}>
           Ready to begin ? Do you accept W3pets's terms to continue?
         </div>

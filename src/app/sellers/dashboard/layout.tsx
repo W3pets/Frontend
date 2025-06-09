@@ -20,6 +20,7 @@ import { MdLogout } from 'react-icons/md';
 import Footer from '@/components/shared/Footer/Footer';
 import Button from '@/components/shared/Button/Button';
 import { MdOutlineLibraryAdd } from 'react-icons/md';
+import { useAppSelector } from '@/lib/store/hooks';
 
 const sidebarMeta = [
   {
@@ -61,6 +62,7 @@ const sidebarMeta = [
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const user = useAppSelector((state) => state.user.auth.user);
   return (
     <ProtectedRoute
       path="user.auth.user.isSeller"
@@ -73,7 +75,7 @@ export default function Layout({
           minDestopWidth={800}
           header={{
             icon: <MdOutlineDashboard />,
-            text: 'Abraham',
+            text: user?.email || '',
             tagline: 'Seller Account',
           }}
           children={sidebarMeta}

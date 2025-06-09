@@ -17,6 +17,8 @@ import newSellerSlice from '@/lib/store/slices/seller/newSeller';
 
 function Profile({ showHeader = true }: { showHeader?: boolean }) {
   const router = useRouter();
+
+  const user = useAppSelector((state) => state.user.auth.user);
   const dispatch = useAppDispatch();
   const profileData = useAppSelector((s) => s.seller.newSeller.profile);
 
@@ -46,7 +48,7 @@ function Profile({ showHeader = true }: { showHeader?: boolean }) {
     <div className={styles.content}>
       {showHeader && (
         <div className={styles.header}>
-          <div className={styles.title}>Welcome, Abraham Kuforiji !</div>
+          <div className={styles.title}>Welcome, {user?.email} !</div>
           <div className={styles.slogan}>
             We're excited to learn more about you.
           </div>
