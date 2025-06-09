@@ -9,7 +9,6 @@ const page = () => {
   return (
     <div>
       <HomeBanner />
-
       <div className={styles.content}>
         <MainCategories />
         <FeaturedProducts />

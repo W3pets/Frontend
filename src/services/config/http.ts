@@ -8,7 +8,7 @@ import axios, {
 import consts from '@/model/consts';
 import { Paths, StatusCode } from '@/model/types/global';
 import { store } from '@/lib/store';
-import { JwtToken } from '@/model/DTO/user/auth';
+import { AuthenticatedRes, JwtToken } from '@/model/DTO/user/auth';
 import { APIErrorDTO2, APIRes, APIStatusDTO } from '@/model/DTO/global';
 import authSlice from '@/lib/store/slices/user/auth';
 
@@ -26,9 +26,10 @@ class ReqHandler {
   public readonly baseURL = consts.global.url.app;
   private readonly timeout = 1000 * 30; // 30s timeout
   // variables for refreshing tokens
-  private refreshPromise: Promise<AxiosResponse<JwtToken>> | null = null;
+  private refreshPromise: Promise<AxiosResponse<AuthenticatedRes>> | null =
+    null;
   private isRefreshing = false;
-  private readonly baseInstance: AxiosInstance;
+  public baseInstance: AxiosInstance;
 
   constructor() {
     this.baseInstance = axios.create({
@@ -79,13 +80,15 @@ class ReqHandler {
         try {
           const refreshResponse = await this.refreshPromise;
           const authRes = refreshResponse.data;
-
           // Add access token to instances header
           this.handleBearerToken(authRes.accessToken);
+          if (!store.getState().user.auth.isAuth) {
+            store.dispatch(authSlice.actions.loggedIn(authRes.user));
+          }
 
           // Retry the original request
           originalRequest._retry = true; // Mark the request as retried
-          const initRes = <AxiosResponse<APIRes<JwtToken>>>(
+          const initRes = <AxiosResponse<APIRes<any>>>(
             await instance(originalRequest)
           );
 

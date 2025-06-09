@@ -38,9 +38,7 @@ export default function RegisterPage() {
     const res = await authServices.signup(values);
     if (res) {
       dispatch(setJustRegistered(values.email));
-      setTimeout(() => {
-        router.push(`${Paths.Auth}${AuthPaths.VerifyAlert}`);
-      }, 500);
+      router.push(`${Paths.Auth}${AuthPaths.VerifyAlert}`);
     }
   };
 

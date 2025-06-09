@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import StoreLayout from './StoreLayout';
 import { ImgPaths } from '@/model/types/global';
 import Msg from '@/components/shared/Msg/Msg';
+import TryAuth from './TryAuth';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -26,10 +27,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <StoreLayout>
-          <Msg />
-          {/* <ConfigProvider theme={{ token: { colorPrimary: '#22c55e' } }}> */}
-          <ConditionalLayout>{children}</ConditionalLayout>
-          {/* </ConfigProvider> */}
+          <TryAuth>
+            <Msg />
+            {/* <ConfigProvider theme={{ token: { colorPrimary: '#22c55e' } }}> */}
+            <ConditionalLayout>{children}</ConditionalLayout>
+            {/* </ConfigProvider> */}
+          </TryAuth>
         </StoreLayout>
       </body>
     </html>

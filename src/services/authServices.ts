@@ -8,8 +8,10 @@ import {
   SignUpSchema,
 } from '@/model/DTO/user/auth';
 import { utils } from '@/lib/utils/base';
-import { authHttp } from './config/http';
+import { authHttp, reqHandler } from './config/http';
 import { StatusCode } from '@/model/types/global';
+import { store } from '@/lib/store';
+import authSlice from '@/lib/store/slices/user/auth';
 
 class AuthServices {
   @utils.setBgMsg([], false)
@@ -36,6 +38,18 @@ class AuthServices {
     const { confirmPassword, ...rest } = values;
     const res = <AuthenticatedRes>await authHttp.post('/reset-password', rest);
     return res;
+  }
+
+  public async getUserAttempt() {
+    try {
+      const refreshResponse = await reqHandler.baseInstance.post(
+        '/api/auth/refresh-token'
+      );
+      const authRes = refreshResponse.data;
+      // Add access token to instances header
+      reqHandler.handleBearerToken(authRes.accessToken);
+      store.dispatch(authSlice.actions.loggedIn(authRes.user));
+    } catch (error) {}
   }
 }
 

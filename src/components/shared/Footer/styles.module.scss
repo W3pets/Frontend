@@ -52,6 +52,14 @@
         row-gap: 1.6rem;
       }
 
+      .dropdown {
+        max-height: min-content;
+      }
+
+      .dropdown_list {
+        font-weight: 700;
+      }
+
       &:first-child {
         max-width: 300px;
         @media only screen and (min-width: 770px) {
@@ -93,6 +101,10 @@
       &:not(:first-child) {
         h3 {
           font-size: 1.3rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          // width: 100%;
         }
 
         ul {

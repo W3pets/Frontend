@@ -55,7 +55,7 @@ export type AuthenticatedRes = {
 } & MessageMini;
 
 export type MessageMini = {
-  message: string;
+  message?: string;
 };
 
 export type UserMini = {

@@ -10,6 +10,8 @@ import { ImgPaths, Paths } from '@/model/types/global';
 import consts from '@/model/consts';
 import { AuthPaths } from '@/model/types/user/auth';
 import { SellerPaths } from '@/model/types/seller';
+import { Dropdown, Space } from 'antd';
+import { FaCaretDown } from 'react-icons/fa';
 
 type Props = {
   isMinInfo?: boolean;
@@ -97,20 +99,46 @@ const Footer = ({ isMinInfo = false }: Props) => {
           </section>
 
           <section>
-            <div>
-              <h3>Company</h3>
-              <ul>
-                <li>
-                  <Link href={Paths.Help}>Help & Support</Link>
-                </li>
-                <li>
-                  <Link href={Paths.Terms}>Terms & Conditions</Link>
-                </li>
-                <li>
-                  <Link href={Paths.Privacy}>Privacy Policy</Link>
-                </li>
-              </ul>
-            </div>
+            <Dropdown
+              open
+              className={styles.dropdown}
+              trigger={['click']}
+              openClassName={styles.dropdown_list}
+              rootClassName={styles.dropdown_list}
+              menu={{
+                items: [
+                  {
+                    key: 1,
+                    label: (
+                      <li>
+                        <Link href={Paths.Help}>Help & Support</Link>
+                      </li>
+                    ),
+                  },
+                  {
+                    key: 2,
+                    label: (
+                      <li>
+                        <Link href={Paths.Terms}>Terms & Conditions</Link>
+                      </li>
+                    ),
+                  },
+                  {
+                    key: 1,
+                    label: (
+                      <li>
+                        <Link href={Paths.Privacy}>Privacy Policy</Link>
+                      </li>
+                    ),
+                  },
+                ],
+              }}
+            >
+              <h3>
+                Companyy
+                {/* <FaCaretDown /> */}
+              </h3>
+            </Dropdown>
           </section>
 
           <section>
