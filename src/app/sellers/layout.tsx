@@ -13,7 +13,6 @@ export default function Layout({
       <ProtectedRoute
         path="user.auth.isAuth"
         includeCurrentPath
-        isNegative
         redirect_path={`${Paths.Auth}${AuthPaths.Login}`}
       >
         {children}

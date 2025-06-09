@@ -45,7 +45,7 @@ const Header = ({
 
         {!hideSeller && !isSeller && (
           <Link
-            href={`${Paths.Sellers}${SellerPaths.SellerRegister}`}
+            href={`${Paths.Sellers}${SellerPaths.PreviewTerms}`}
             className={styles.seller}
           >
             <span>Become a Seller</span>

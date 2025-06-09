@@ -3,7 +3,7 @@ export const isLive = process.env.NODE_ENV === 'production';
 const consts = {
   global: {
     url: {
-      api: 'https://w3pets.nw.r.appspot.com/',
+      api: isLive ? 'https://w3pets.nw.r.appspot.com' : 'http://localhost:5000',
       app: isLive ? '' : 'http:localhost:3000',
       socials: {
         x: '',
