@@ -37,10 +37,10 @@ export default function ProtectedRoute({
     if (!isValid) {
       let redirectLink = `${redirectFromPath}`;
       redirectLink += includeCurrentPath
-        ? `redirect=${encodeURIComponent(pathname)}`
+        ? `?redirect=${encodeURIComponent(pathname)}`
         : '';
       setIsLoading(false);
-      redirect(redirectFromPath);
+      redirect(redirectLink);
     }
 
     setIsLoading(false);

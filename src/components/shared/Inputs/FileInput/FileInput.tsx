@@ -37,7 +37,6 @@ function FileInput({
   const types = consts.files.imgTypes.split(/\./).slice(1);
   const inputRef = useRef<HTMLInputElement>(null);
   const isImg = type == 'img';
-
   const [inputs, setInputs] = useState<IFile[]>([]);
 
   useLayoutEffect(() => {
@@ -64,7 +63,6 @@ function FileInput({
     setInputs(targetFiles);
     if (onChange) onChange(name, targetFiles, true);
   };
-
   return (
     <div className={styles.files}>
       {!!label && (
@@ -93,8 +91,8 @@ function FileInput({
           type="file"
           title=" "
           className={styles.input_box}
-          multiple={min > 0}
-          required
+          multiple={max > 1} // Allow multiple files if max is greater than 1
+          required={min > 0} // Only required if min is greater than 0
           accept={isImg ? consts.files.imgTypes : consts.files.vidTypes}
           onChange={(e) => {
             handleFileChange(e.target.files as FileList);
@@ -102,7 +100,6 @@ function FileInput({
         />
       </div>
       {error && <div className={styles.error}>{error}</div>}
-
       <div className={styles.uploaded}>
         {/* // multiple added inputs */}
         {inputs.map((input, index) => {
@@ -113,6 +110,8 @@ function FileInput({
                 <video
                   className={styles.img}
                   src={`${(input as IFile).baseUrl}${(input as IFile).src}`}
+                  autoPlay
+                  loop
                 />
               )}
               {isImg && (

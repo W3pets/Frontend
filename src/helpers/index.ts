@@ -33,11 +33,14 @@ class Helpers {
   public getFileShema(
     min = 0,
     max = 1,
+    isImg = true,
     types = consts.files.imgTypes,
     size = consts.files.imgSize
   ) {
-    const SUPPORTED_FORMATS = types.split(/\.|\,\./).map((t) => `image/${t}`);
-    return Yup.array()
+    const SUPPORTED_FORMATS = types
+      .split(/\.|\,\./)
+      .map((t) => `${isImg ? 'image' : 'video'}/${t}`);
+    const base = Yup.array()
       .min(min, `At least ${min} image is required`)
       .max(max, `You can upload up to ${max} images`)
       .of(
@@ -48,12 +51,13 @@ class Helpers {
             `A file should be less than ${(size / (1024 * 1024)).toFixed(0)}MB`,
             (value) => value.file.size <= size
           )
-          .test(
-            'fileFormat',
-            'Unsupported file format',
-            (value) => value && SUPPORTED_FORMATS.includes(value.file.type)
-          )
+          .test('fileFormat', 'Unsupported file format', (value) => {
+            console.log('value', value);
+            return value && SUPPORTED_FORMATS.includes(value.file.type);
+          })
       );
+
+    return min === 0 ? base : base.required('At least one file is required');
   }
 }
 const helpers = new Helpers();

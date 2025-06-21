@@ -39,7 +39,7 @@ function ListingForm({ productId }: { productId?: string }) {
   }, [formik.values, formik.isValid]);
 
   return (
-    <form className={styles.form_listing}>
+    <form className={styles.form_listing} onSubmit={formik.handleSubmit}>
       <TextInput
         label="Product Title"
         placeholder="e.g., 'Healthy Rhode Island Red Chickens'"
@@ -103,17 +103,17 @@ function ListingForm({ productId }: { productId?: string }) {
         placeHolder="Size of video should not exceed 20mb"
         error={formik.errors.product_video}
         type="video"
-        min={0}
+        min={1}
         max={1}
         onChange={formik.setFieldValue}
         defaultFiles={formik.values.product_video}
         name="product_video"
       />
       <FileInput
-        label="Photo builds trust, add a face to your brand!"
+        label="Add photos of your product"
         error={formik.errors.product_photos}
         min={1}
-        max={1}
+        max={5}
         onChange={formik.setFieldValue}
         defaultFiles={formik.values.product_photos}
         name="product_photos"

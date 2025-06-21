@@ -48,8 +48,9 @@ export const NewSellerSchema2 = Yup.object().shape({
 
 export const ListingSchema = Yup.object().shape({
   product_video: helpers.getFileShema(
-    0,
     1,
+    1,
+    false,
     consts.files.vidTypes,
     consts.files.vidSize
   ),
