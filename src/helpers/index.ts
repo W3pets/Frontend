@@ -52,7 +52,6 @@ class Helpers {
             (value) => value.file.size <= size
           )
           .test('fileFormat', 'Unsupported file format', (value) => {
-            console.log('value', value);
             return value && SUPPORTED_FORMATS.includes(value.file.type);
           })
       );

@@ -18,7 +18,7 @@ class SellerServices {
     formData.append('profile', JSON.stringify(profileDetails));
 
     // The brand_image is an array of IFile, but we only expect one for the brand.
-    if (id?.id) {
+    if (id?.id?.length) {
       const file = id.id[0].file;
       formData.append('verification_id', file);
     }

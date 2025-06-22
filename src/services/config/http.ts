@@ -156,17 +156,7 @@ class ReqHandler {
 
   public handleBearerToken(token = '') {
     this.instances.forEach((instance) => {
-      instance.interceptors.request.use(
-        (reqConfig) => {
-          if (token) {
-            reqConfig.headers.Authorization = `Bearer ${token}`;
-          } else {
-            reqConfig.headers.Authorization = undefined;
-          }
-          return reqConfig;
-        },
-        (error) => Promise.reject(error)
-      );
+      instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     });
   }
 
