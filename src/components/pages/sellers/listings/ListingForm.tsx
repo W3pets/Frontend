@@ -12,18 +12,25 @@ import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 import { sellerServices } from '@/services/sellerServices';
 import { InferType } from 'yup';
 import { LuSaveAll } from 'react-icons/lu';
+import { useRouter } from 'next/navigation';
+import { Paths } from '@/model/types/global';
+import { SellerDashboardPaths, SellerPaths } from '@/model/types/seller';
+import authSlice from '@/lib/store/slices/user/auth';
 
 function ListingForm({ productId }: { productId?: string }) {
   const dispatch = useAppDispatch();
   const data = useAppSelector((s) => s.seller.newSeller);
   const categories = dummyCategory.map((c) => c.name);
   const genders = ['Male', 'Female', 'Male and Female'];
+  const router = useRouter();
 
   const isUpdate = !!productId;
 
   const handleSubmit = async (values: InferType<typeof ListingSchema>) => {
     const res = await sellerServices.onboard({ ...data, listing: values });
     if (res) {
+      dispatch(authSlice.actions.setSellerStatus(true));
+      router.push(`${Paths.Sellers}${SellerDashboardPaths.Dashboard}`);
     }
   };
 

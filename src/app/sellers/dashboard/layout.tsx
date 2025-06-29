@@ -66,8 +66,6 @@ export default function Layout({
   return (
     <ProtectedRoute
       path="user.auth.user.isSeller"
-      includeCurrentPath
-      isNegative
       redirect_path={`${Paths.Sellers}${SellerPaths.PreviewTerms}`}
     >
       <div className={styles.dashboard}>

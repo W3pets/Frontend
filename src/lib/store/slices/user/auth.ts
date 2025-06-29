@@ -21,6 +21,10 @@ const authSlice = createSlice({
     setJustRegistered: (state, action: PayloadAction<string>) => {
       return { ...state, justRegistered: action.payload };
     },
+    setSellerStatus: (state, action: PayloadAction<boolean>) => {
+      if (state.user) state.user.isSeller = action.payload;
+      return state;
+    },
   },
 });
 

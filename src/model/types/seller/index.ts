@@ -6,10 +6,10 @@ import {
 import { InferType } from 'yup';
 
 export enum SellerPaths {
-  SellerRegister = '/become_a_seller',
-  Terms = '/legal/terms_of_service',
-  Privacy = '/legal/privacy_policy',
-  PreviewTerms = '/legal/preview_terms_conditions',
+  SellerRegister = '/onboard/become_a_seller',
+  Terms = '/onboard/legal/terms_of_service',
+  Privacy = '/onboard/legal/privacy_policy',
+  PreviewTerms = '/onboard/legal/preview_terms_conditions',
 }
 
 export enum OnBoardingSteps {
