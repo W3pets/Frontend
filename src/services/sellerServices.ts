@@ -17,7 +17,6 @@ class SellerServices {
     // Append other profile data as a single stringified JSON object.
     formData.append('profile', JSON.stringify(profileDetails));
 
-    // The brand_image is an array of IFile, but we only expect one for the brand.
     if (id?.id?.length) {
       const file = id.id[0].file;
       formData.append('verification_id', file);
@@ -40,7 +39,9 @@ class SellerServices {
       formData.append('product_video', product_video[0].file);
     }
 
-    const res = <MessageMini>await sellerHttp.post('/onboard', formData);
+    const res = <MessageMini>await sellerHttp.post('/onboard', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
     return res;
   }
 }
