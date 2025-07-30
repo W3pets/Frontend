@@ -1,7 +1,14 @@
-import React from 'react';
+import React from "react";
+import ChatSidebar from "@/components/pages/sellers/chat/ChatSidebar";
+import ChatWindow from "@/components/pages/sellers/chat/ChatWindow";
 
-function page() {
-  return <div>page</div>;
-}
+const SellerMessagesPage = () => {
+  return (
+    <div className="flex h-screen overflow-hidden">
+      <ChatSidebar />
+      <ChatWindow />
+    </div>
+  );
+};
 
-export default page;
+export default SellerMessagesPage;
