@@ -41,16 +41,28 @@ class AuthServices {
   }
 
   public async getUserAttempt() {
-    try {
-      const refreshResponse = await reqHandler.baseInstance.post(
-        '/api/auth/refresh-token'
-      );
-      const authRes = refreshResponse.data;
-      // Add access token to instances header
-      reqHandler.handleBearerToken(authRes.accessToken);
-      store.dispatch(authSlice.actions.loggedIn(authRes.user));
-    } catch (error) {}
+  try {
+    const mockUser = {
+      id: 123,
+      email: 'test@example.com',
+      name: 'Test User',
+      username: 'testuser',
+      role: 'seller',
+      isSeller: true,
+      isVerified: true,
+    };
+
+    // Set mock token for requests
+    reqHandler.handleBearerToken('mocked-token');
+
+    // Pass correct user shape to reducer
+    store.dispatch(authSlice.actions.loggedIn(mockUser));
+  } catch (error) {
+    console.error('Mock login failed', error);
   }
+}
+
+
 }
 
 export const authServices = new AuthServices();
