@@ -7,21 +7,21 @@ const mockConversations = [
     name: 'John Doe',
     message: 'Is the German Shepherd still available?',
     time: '2 min ago',
-    avatar: '/images/avatars/john.png',
+    avatar: '/avatars/john.png', // Correct path for Next.js public folder
   },
   {
     id: 2,
     name: 'Sarah Smith',
     message: 'Thank you for the information',
     time: '1 hour ago',
-    avatar: '/images/avatars/sarah.png',
+    avatar: '/avatars/sarah.png', // Correct path for Next.js public folder
   },
   {
     id: 3,
     name: 'Mike Johnson',
     message: 'Can you send more pictures?',
     time: '2 hours ago',
-    avatar: '/images/avatars/mike.png',
+    avatar: '/avatars/mike.png', // Correct path for Next.js public folder
     unread: true,
   },
 ];

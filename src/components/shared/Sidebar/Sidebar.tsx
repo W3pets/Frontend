@@ -1,4 +1,5 @@
-import { sidebarMeta } from '@/components/pages/sellers/dashboard/layoutData';
+"use client";
+// Removed invalid and unused import of sidebarMeta
 
 import {
   useState,
@@ -16,10 +17,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export type Child = {
-  icon?: JSX.Element;
+  icon?: React.ReactNode; // Accept any React node, including Lucide icons
   text: string;
   tagline?: string;
-  link?: string;
+  href?: string; // Use href for navigation
+  link?: string; // legacy support
   onclick?: () => void;
   isLast?: string;
 };

@@ -7,7 +7,7 @@ function ChatWindow() {
     <div className={styles.chatWindow}>
       <div className={styles.header}>
         <Image
-          src="/images/avatars/john.png"
+          src="/public/avatars/john.png"
           alt="John Doe"
           width={40}
           height={40}

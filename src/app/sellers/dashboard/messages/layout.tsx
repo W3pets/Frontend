@@ -1,24 +1,20 @@
 // dashboard/messages/layout.tsx
 import Sidebar from '@/components/shared/Sidebar/Sidebar';
-import { sidebarMeta } from '@/components/pages/sellers/dashboard/layoutData'; // move sidebarMeta to a shared file
+import { sidebarMeta } from '@/components/pages/sellers/dashboard/layoutdata'; // move sidebarMeta to a shared file
 import styles from './messagesLayout.module.scss';
 
 export default function MessagesLayout({ children }: { children: React.ReactNode }) {
+  // Sellers chat messages layout: Sidebar is now on the left, no right sidebar
   return (
     <div className={styles.wrapper}>
-      <div className={styles.main}>{children}</div>
-    <div className={styles.sidebarRight}>
+      {/* Default sidebar at the leftmost position */}
       <Sidebar
-        children={sidebarMeta.map(item => ({
-          ...item,
-          icon: typeof item.icon === 'string'
-            ? <img src={item.icon} alt={item.text + " icon"} />
-            : item.icon
-        }))}
+        children={sidebarMeta.filter((item) => typeof item === 'object')}
         pathsIds={[]}
         minDestopWidth={800}
       />
-    </div>
+      {/* Main chat content area */}
+      <div className={styles.main}>{children}</div>
     </div>
   );
 }
