@@ -1,32 +1,28 @@
+'use client';
+
 import styles from './messages.module.scss';
 import Image from 'next/image';
-
-const mockConversations = [
-  {
-    id: 1,
-    name: 'John Doe',
-    message: 'Is the German Shepherd still available?',
-    time: '2 min ago',
-    avatar: '/avatars/john.png', // Correct path for Next.js public folder
-  },
-  {
-    id: 2,
-    name: 'Sarah Smith',
-    message: 'Thank you for the information',
-    time: '1 hour ago',
-    avatar: '/avatars/sarah.png', // Correct path for Next.js public folder
-  },
-  {
-    id: 3,
-    name: 'Mike Johnson',
-    message: 'Can you send more pictures?',
-    time: '2 hours ago',
-    avatar: '/avatars/mike.png', // Correct path for Next.js public folder
-    unread: true,
-  },
-];
+import { useEffect, useState } from 'react';
+import api from '@/services/api';
+import { useChatContext } from './context';
 
 function ChatSidebar() {
+  const [conversations, setConversations] = useState<any[]>([]);
+  const { setSelectedConvo } = useChatContext();
+
+  useEffect(() => {
+    const fetchConversations = async () => {
+      try {
+        const res = await api.get('/messages/conversations');
+        setConversations(res.data || []);
+      } catch (err) {
+        console.error('Failed to fetch conversations', err);
+      }
+    };
+
+    fetchConversations();
+  }, []);
+
   return (
     <div className={styles.sidebar}>
       <input
@@ -35,22 +31,28 @@ function ChatSidebar() {
         placeholder="Search messages..."
       />
       <div className={styles.conversationList}>
-        {mockConversations.map((c) => (
-          <div key={c.id} className={styles.conversation}>
+        {conversations.map((c) => (
+          <div
+            key={c.id}
+            className={styles.conversation}
+            onClick={() => setSelectedConvo(c)}
+          >
             <Image
-              src={c.avatar}
-              alt={c.name}
+              src={c.otherUser.profileImage || '/avatars/default.png'}
+              alt={c.otherUser.businessName}
               width={40}
               height={40}
               className={styles.avatar}
             />
             <div className={styles.details}>
-              <div className={styles.name}>{c.name}</div>
-              <div className={styles.message}>{c.message}</div>
+              <div className={styles.name}>{c.otherUser.businessName}</div>
+              <div className={styles.message}>{c.lastMessage?.content || ''}</div>
             </div>
             <div className={styles.meta}>
-              <div className={styles.time}>{c.time}</div>
-              {c.unread && <div className={styles.unreadDot} />}
+              <div className={styles.time}>
+                {new Date(c.updatedAt).toLocaleTimeString()}
+              </div>
+              {!!c.unreadCount && <div className={styles.unreadDot} />}
             </div>
           </div>
         ))}

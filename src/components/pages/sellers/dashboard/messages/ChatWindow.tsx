@@ -1,45 +1,82 @@
+'use client';
+
 import styles from './messages.module.scss';
 import Image from 'next/image';
-import { FiSend } from 'react-icons/fi';
+import { useEffect, useState } from 'react';
+import api from '@/services/api';
+import { useChatContext } from './context';
+import MessageInput from './MessageInput';
 
 function ChatWindow() {
+  const { selectedConvo } = useChatContext();
+  const [messages, setMessages] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!selectedConvo) return;
+
+    const fetchMessages = async () => {
+      try {
+        const res = await api.get(
+          `/messages/conversations/${selectedConvo.id}/messages`
+        );
+        setMessages(res.data || []);
+
+        await api.put(`/messages/conversations/${selectedConvo.id}/read`);
+      } catch (err) {
+        console.error('Failed to load messages', err);
+      }
+    };
+
+    fetchMessages();
+  }, [selectedConvo]);
+
+  if (!selectedConvo) {
+    return <div className={styles.chatWindow}>Select a conversation</div>;
+  }
+
   return (
     <div className={styles.chatWindow}>
       <div className={styles.header}>
         <Image
-          src="/public/avatars/john.png"
-          alt="John Doe"
+          src={selectedConvo.otherUser.profileImage || '/avatars/default.png'}
+          alt={selectedConvo.otherUser.businessName}
           width={40}
           height={40}
           className={styles.avatar}
         />
         <div className={styles.userDetails}>
-          <div className={styles.name}>John Doe</div>
+          <div className={styles.name}>{selectedConvo.otherUser.businessName}</div>
           <div className={styles.status}>Online</div>
         </div>
       </div>
+
       <div className={styles.messages}>
-        <div className={styles.messageRow}>
-          <div className={styles.messageBubble}>
-            Hello! I'm interested in your German Shepherd puppy listing.
+        {messages.map((msg) => (
+          <div
+            key={msg.id}
+            className={`${styles.messageRow} ${
+              msg.sender.id === selectedConvo.otherUser.id
+                ? ''
+                : styles.outgoing
+            }`}
+          >
+            <div
+              className={
+                msg.sender.id === selectedConvo.otherUser.id
+                  ? styles.messageBubble
+                  : styles.messageBubbleOutgoing
+              }
+            >
+              {msg.content}
+            </div>
           </div>
-        </div>
-        <div className={`${styles.messageRow} ${styles.outgoing}`}>
-          <div className={styles.messageBubbleOutgoing}>
-            Hi! Yes, it's still available. Would you like to know more details?
-          </div>
-        </div>
+        ))}
       </div>
-      <div className={styles.inputArea}>
-        <input
-          type="text"
-          placeholder="Type your message..."
-          className={styles.input}
-        />
-        <button className={styles.sendButton}>
-          <FiSend />
-        </button>
-      </div>
+
+      <MessageInput
+        conversationId={selectedConvo.id}
+        onSend={(newMsg) => setMessages((prev) => [...prev, newMsg])}
+      />
     </div>
   );
 }

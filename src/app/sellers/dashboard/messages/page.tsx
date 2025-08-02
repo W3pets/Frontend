@@ -1,17 +1,20 @@
+'use client';
+
 import parentStyles from '@/components/pages/sellers/dashboard/styles.module.scss';
 import styles from '@/components/pages/sellers/dashboard/messages/messages.module.scss';
 import ChatSidebar from '@/components/pages/sellers/dashboard/messages/ChatSidebar';
 import ChatWindow from '@/components/pages/sellers/dashboard/messages/ChatWindow';
+import { ChatProvider } from '@/components/pages/sellers/dashboard/messages/context';
 
-function page() {
+export default function Page() {
   return (
-    <div className={`${parentStyles.page} ${styles.page}`}>
-      <div className={styles.chatLayout}>
-        <ChatSidebar />
-        <ChatWindow />
+    <ChatProvider>
+      <div className={`${parentStyles.page} ${styles.page}`}>
+        <div className={styles.chatLayout}>
+          <ChatSidebar />
+          <ChatWindow />
+        </div>
       </div>
-    </div>
+    </ChatProvider>
   );
 }
-
-export default page;

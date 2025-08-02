@@ -32,7 +32,7 @@ class AuthServices {
     const res = <MessageMini>await authHttp.post('/forgot-password', values);
     return res;
   }
-  // 34Ag#$kj
+
   @utils.setBgMsg([StatusCode.Success], true)
   public async resetPassword(values: InferType<typeof PasswordResetSchema>) {
     const { confirmPassword, ...rest } = values;
@@ -41,28 +41,30 @@ class AuthServices {
   }
 
   public async getUserAttempt() {
-  try {
-    const mockUser = {
-      id: 123,
-      email: 'test@example.com',
-      name: 'Test User',
-      username: 'testuser',
-      role: 'seller',
-      isSeller: true,
-      isVerified: true,
-    };
+    try {
+      const mockUser = {
+        id: 123,
+        email: 'test@example.com',
+        name: 'Test User',
+        username: 'testuser',
+        role: 'seller',
+        isSeller: true,
+        isVerified: true,
+        token: 'mocked-token',
+      };
 
-    // Set mock token for requests
-    reqHandler.handleBearerToken('mocked-token');
+      // Inject mock token into all Axios instances
+      reqHandler.handleBearerToken(mockUser.token);
 
-    // Pass correct user shape to reducer
-    store.dispatch(authSlice.actions.loggedIn(mockUser));
-  } catch (error) {
-    console.error('Mock login failed', error);
+      // Save token to localStorage (optional, helps with refresh)
+      localStorage.setItem('accessToken', mockUser.token);
+
+      // Fake login state
+      store.dispatch(authSlice.actions.loggedIn(mockUser));
+    } catch (error) {
+      console.error('Mock login failed', error);
+    }
   }
-}
-
-
 }
 
 export const authServices = new AuthServices();
