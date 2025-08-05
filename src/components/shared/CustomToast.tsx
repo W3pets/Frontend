@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Message } from '@/lib/store/slices/chatSlice'; // Ensure 'type' import
-import styles from './customToast.module.scss';
+import styles from '@/components/shared/CustomToast.module.scss';
 
 interface Props {
   message: Message;

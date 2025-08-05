@@ -1,26 +1,62 @@
-import React from 'react';
-import type { Message } from '@/lib/store/slices/chatSlice'; // Ensure 'type' import
-import styles from './CustomToast.module.scss'; // Corrected: Capital 'C' for CustomToast
+'use client'; // This directive marks the component as a client component
 
-interface Props {
-  message: Message;
-}
+import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
+import { fetchConversations, setCurrentChat } from '@/lib/store/slices/chatSlice';
+import styles from './messageList.module.scss';
+import type { Conversation } from '@/lib/store/slices/chatSlice';
 
-export default function CustomToast({ message }: Props) {
+export default function MessageList() {
+  const dispatch = useAppDispatch();
+  const { conversations, typing, online } = useAppSelector((s) => s.chat);
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    dispatch(fetchConversations());
+  }, [dispatch]);
+
+  const filtered = conversations.filter((c: Conversation) =>
+    c.otherUser.businessName.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <div className={styles.toast}>
-      <img
-        src={message.sender.profileImage || `https://placehold.co/40x40/aabbcc/ffffff?text=${message.sender.businessName.charAt(0).toUpperCase()}`}
-        alt="avatar"
-        className={styles.avatar}
-        onError={(e) => {
-          (e.target as HTMLImageElement).src = `https://placehold.co/40x40/aabbcc/ffffff?text=${message.sender.businessName.charAt(0).toUpperCase()}`;
-        }}
+    <div className={styles.wrapper}>
+      <input
+        className={styles.search}
+        placeholder="Search messages..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       />
-      <div className={styles.content}>
-        <strong>New message from {message.sender.businessName}</strong>
-        <p>{message.content.slice(0, 40)}...</p>
-      </div>
+      <ul className={styles.list}>
+        {filtered.map((c: Conversation) => (
+          <li
+            key={c.id}
+            className={styles.item}
+            onClick={() => dispatch(setCurrentChat(c.id))}
+          >
+            <div className={styles.avatarWrapper}>
+              <img
+                src={c.otherUser.profileImage || `https://placehold.co/40x40/aabbcc/ffffff?text=${c.otherUser.businessName.charAt(0).toUpperCase()}`}
+                alt="avatar"
+                className={styles.avatar}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = `https://placehold.co/40x40/aabbcc/ffffff?text=${c.otherUser.businessName.charAt(0).toUpperCase()}`;
+                }}
+              />
+              {online[c.otherUser.id] && <span className={styles.onlineDot} />}
+            </div>
+            <div className={styles.info}>
+              <div className={styles.name}>{c.otherUser.businessName}</div>
+              <div className={styles.snippet}>
+                {typing[c.id]
+                  ? <em className={styles.typing}>typing...</em>
+                  : c.lastMessage.content}
+              </div>
+            </div>
+            {c.unreadCount > 0 && <span className={styles.unread}>{c.unreadCount}</span>}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

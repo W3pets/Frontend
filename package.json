@@ -32,6 +32,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@types/node": "^22.13.13",
     "@types/react": "19.1.4",
+    "@types/react-toastify": "^4.0.2",
     "@types/uniqid": "^5.3.4",
     "eslint": "^9.23.0",
     "eslint-config-next": "15.3.2",
