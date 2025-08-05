@@ -28,4 +28,8 @@ const globalSlice = createSlice({
   },
 });
 
-export default globalSlice;
+// Corrected: Export the reducer function as the default export
+export default globalSlice.reducer;
+
+// If you need to export actions, do it like this:
+// export const { resetState, resetMsg, setMsg } = globalSlice.actions;

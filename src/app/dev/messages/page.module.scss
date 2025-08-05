@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100vh;
+}
+
+.listPanel {
+  border-right: 1px solid #ddd;
+}
+
+.chatPanel {
+  background: white;
+}

@@ -1,0 +1,24 @@
+.bubble {
+  max-width: 60%;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  position: relative;
+  p { margin: 0; }
+  .timestamp {
+    font-size: 0.75rem;
+    position: absolute;
+    bottom: -1.25rem;
+    right: 0.5rem;
+    color: #999;
+  }
+}
+.incoming {
+  background: #e0e0e0;
+  align-self: flex-start;
+}
+.outgoing {
+  background: #00C853;
+  color: white;
+  align-self: flex-end;
+}
