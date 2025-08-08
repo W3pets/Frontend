@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from '../styles.module.scss';
+import styles from './styles.module.scss';
 import Sidebar from '@/components/shared/Sidebar/Sidebar';
 import ConversationsPanel from '@/components/pages/sellers/dashboard/messages/ConversationsPanel';
 import ChatWindow from '@/components/pages/sellers/dashboard/messages/ChatWindow';

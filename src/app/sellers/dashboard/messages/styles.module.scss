@@ -1,0 +1,162 @@
+  // src/app/sellers/dashboard/styles.module.scss
+  @use '../../globalStyles/var.scss' as *;
+
+  .seller_layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+    width: 100vw;
+    
+    @media (max-width: $tablet-width) {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+    }
+  }
+
+  .main_content {
+    overflow-y: auto;
+    background-color: $gray4;
+    padding: 1rem;
+  }
+
+  .chat_dashboard_grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    height: calc(100vh - 2rem);
+    gap: 1rem;
+    padding: 1rem;
+    
+    @media (max-width: $tablet-width) {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+    }
+    
+    .chat_window {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+  }
+
+  // Sidebar.tsx styles
+  .bar_wrapper {
+    // Styles for the sidebar wrapper
+    position: relative;
+    
+    .content {
+      background-color: transparent;
+      transition: all 0.2s linear;
+      width: 100%;
+      height: 100%;
+    }
+
+    .icon {
+      // Styles for the mobile sidebar toggle icon
+      position: absolute;
+      z-index: $z-index;
+      cursor: pointer;
+      font-size: 2rem;
+      color: $color_low;
+    }
+
+    .bar {
+      // Styles for the sidebar itself
+      width: 280px;
+      background-color: $gray3;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 1rem;
+      border-right: 1px solid $gray2;
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid $gray2;
+        position: relative;
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          
+          .text {
+            font-size: 1.5rem; // Corrected sidebar header title size to be larger
+            font-weight: bold;
+          }
+        }
+        
+        .header_action {
+          position: absolute;
+          right: 1rem;
+          font-size: 1.5rem;
+          color: $primary;
+          
+          &:hover {
+            color: $primary_dark;
+          }
+        }
+      }
+
+      .children {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        flex: 1;
+      }
+
+      .child {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        color: $color_low;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        position: relative;
+        
+        &:hover {
+          background-color: $gray2;
+          color: $color_2;
+        }
+        
+        &.selected {
+          background-color: $primary_light;
+          color: $primary_dark;
+          
+          &:hover {
+            color: $primary_dark;
+          }
+        }
+        
+        &.flex_end {
+          margin-top: 2rem;
+          
+          &.child_link {
+            margin-top: auto;
+          }
+        }
+        
+        .badge {
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: $accent;
+          color: white;
+          font-size: 0.75rem;
+          font-weight: bold;
+          padding: 0.25rem 0.5rem;
+          border-radius: 9999px;
+        }
+      }
+    }
+  }

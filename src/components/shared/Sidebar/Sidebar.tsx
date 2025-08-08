@@ -3,9 +3,10 @@ import {
   useRef,
   useEffect,
   CSSProperties,
-  JSX,
   useMemo,
   useLayoutEffect,
+  ReactNode,
+  ComponentType,
 } from 'react';
 import styles from './styles.module.scss';
 import { HiBars3BottomLeft as SideBarIcon } from 'react-icons/hi2';
@@ -14,12 +15,18 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export type Child = {
-  icon?: JSX.Element;
+  icon?: ComponentType;
   text: string;
   tagline?: string;
   link?: string;
   onclick?: () => void;
-  isLast?: string;
+  isLast?: boolean;
+  action?: {
+    icon: ComponentType;
+    label: string;
+    link: string;
+  };
+  unreadBadge?: boolean;
 };
 
 type BarProps = {
@@ -33,6 +40,7 @@ type BarProps = {
   };
   isFullWidth?: boolean;
   minDestopWidth?: number;
+  unreadCount?: number;
 };
 
 function Sidebar({
@@ -43,6 +51,7 @@ function Sidebar({
   pathsIds = [],
   isFullWidth,
   iconPos = { left: 20, top: 30 },
+  unreadCount = 0,
 }: BarProps) {
   const id = uniqid();
   const pathname = usePathname();
@@ -135,10 +144,11 @@ function Sidebar({
   }, [wrapperRef.current, isMobile, style]);
 
   const headerJSX = useMemo(() => {
+    const IconComponent = header?.icon;
+    const ActionIcon = header?.action?.icon;
     const child = header && (
       <>
-        {' '}
-        {header?.icon}
+        {IconComponent && <IconComponent />}
         <div className={styles.info}>
           <div className={styles.text}>{header?.text}</div>
           {header?.tagline && (
@@ -153,24 +163,37 @@ function Sidebar({
         {child}
       </Link>
     ) : (
-      <div className={styles.header}>{child}</div>
+      <div className={`${styles.header} ${styles.has_action}`}>
+        {child}
+        {ActionIcon && (
+          <Link href={header?.action?.link || '#'} className={styles.header_action}>
+            <ActionIcon />
+          </Link>
+        )}
+      </div>
     );
   }, [header]);
 
   const childrenJSX = useMemo(() => {
     return children.map((child, i) => {
+      const IconComponent = child.icon;
+      const isLast = typeof child.isLast === 'boolean' && child.isLast;
+      
       const childJSX = (
         <div
           key={i}
-          className={` ${styles.child} ${selectedIndex === i ? styles.selected : ''} ${child?.isLast ? styles.flex_end : ''}`}
+          className={` ${styles.child} ${selectedIndex === i ? styles.selected : ''} ${isLast ? styles.flex_end : ''}`}
         >
-          {child?.icon}
+          {IconComponent && <IconComponent />}
           <div className={styles.info}>
             <div className={styles.text}>{child.text}</div>
             {child?.tagline && (
               <div className={styles.tag_line}>{child?.tagline}</div>
             )}
           </div>
+          {child.unreadBadge && unreadCount > 0 && (
+            <span className={styles.badge}>{unreadCount}</span>
+          )}
         </div>
       );
 
@@ -178,7 +201,7 @@ function Sidebar({
         <Link
           key={i}
           href={child?.link || pathsIds[i]}
-          className={styles.child_link}
+          className={`${styles.child_link} ${isLast ? styles.flex_end : ''}`}
         >
           {childJSX}
         </Link>
@@ -186,7 +209,7 @@ function Sidebar({
         childJSX
       );
     });
-  }, [children, selectedIndex]);
+  }, [children, selectedIndex, unreadCount]);
 
   return (
     <div className={`${styles.bar_wrapper} ${className}`}>
@@ -208,12 +231,6 @@ function Sidebar({
           style={style}
           id={id}
         >
-          {/* {isFullWidth ? (
-            <div className={styles.back} onClick={hideBar}>
-              <IoArrowBack />
-              {headerJSX}
-            </div>
-          ) : null} */}
           <div className={styles.children}>
             {headerJSX}
             {childrenJSX}

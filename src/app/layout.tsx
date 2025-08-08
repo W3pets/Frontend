@@ -1,5 +1,6 @@
 import ConditionalLayout from '../components/ConditionalLayout';
 import { Roboto } from 'next/font/google';
+import '@/globalStyles/global.css';
 import '@/globalStyles/global.scss';
 import { Metadata } from 'next';
 import StoreLayout from './StoreLayout';
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   title: 'W3Pets',
   description: 'Find Your Perfect Pet Companion',
   icons: {
-    icon: ImgPaths.Logo, // Path to your favicon
+    icon: ImgPaths.Logo,
   },
 };
 

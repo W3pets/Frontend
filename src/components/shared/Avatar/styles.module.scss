@@ -1,10 +1,41 @@
-@use '../../../globalStyles/var.scss' as *;
-@use '../../../globalStyles/mixin.scss' as *;
+@use '@/globalStyles/var.scss' as *;
 
-.wrapper {
-  color: $color_2;
+.avatar_wrapper {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 
-  .not_auth {
-    font-size: 1.5rem;
+.avatar_image {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar_placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: $gray1;
+  color: $color_low;
+  svg {
+    font-size: 20px;
   }
+}
+
+.online_indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: $primary;
+  border: 2px solid white;
 }

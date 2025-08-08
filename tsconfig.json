@@ -29,6 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "tailwind.config.js"
-  ],
+, "src/model/DTO/product"  ],
   "exclude": ["node_modules"]
 }

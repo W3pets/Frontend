@@ -1,4 +1,6 @@
 $primary: rgb(44, 202, 102);
+$primary_light: rgb(222, 246, 233);
+$primary_dark: rgb(28, 128, 65);
 $secondary: rgb(139, 69, 19);
 $tertiary: rgb(240, 240, 240);
 $error: rgb(179, 38, 30);
@@ -9,8 +11,21 @@ $color_1: rgb(31, 41, 55);
 $color_2: rgb(55, 65, 81);
 $color_low: rgb(107, 114, 128);
 
-$gray1: rgb(204, 204, 204);
-$gray2: rgb(235, 235, 235);
-$gray3: rgb(249, 250, 251);
+$green: #28a745;
+$red: #dc3545;
 
-$z-index: 100;
+$gray1: #f8f9fa;
+$gray2: #e9ecef;
+$gray3: #dee2e6;
+$gray4: #ced4da;
+$gray5: #adb5bd;
+$gray_light: #f8f9fa;
+$gray_dark: #495057;
+$gray_text: #6c757d;
+
+
+$desktop-width: 1024px;
+$tablet-width: 768px;
+$mobile-width: 480px;
+
+$z-index: 10;
