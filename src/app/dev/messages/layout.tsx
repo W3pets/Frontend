@@ -1,7 +1,6 @@
-// dashboard/messages/layout.tsx
 import * as React from 'react';
 import Sidebar from '@/components/shared/Sidebar/Sidebar';
-import { sidebarMeta } from '@/components/pages/sellers/dashboard/layoutdata'; // move sidebarMeta to a shared file
+import { sidebarMeta } from '@/components/pages/sellers/dashboard/layoutdata';
 import styles from './messagesLayout.module.scss';
 
 export default function MessagesLayout({ children }: { children: React.ReactNode }) {
@@ -12,7 +11,7 @@ export default function MessagesLayout({ children }: { children: React.ReactNode
       <Sidebar
         children={sidebarMeta
         .filter(
-  (item): item is { icon: string | React.ReactElement; text: string; href: string; [key: string]: any } =>
+  (item): item is { icon: React.ReactElement; text: string; href: string; [key: string]: any } =>
     typeof item === 'object' &&
     item !== null &&
     'icon' in item &&

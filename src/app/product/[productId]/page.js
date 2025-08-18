@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
-const productDetails = [
+export const productDetails = [
   {
     images: [
       '/dog-pic.png',
@@ -295,10 +295,8 @@ export default function ProductPage() {
   const { user } = useUserContext()
   const { dispatch: cartDispatch } = useCartContext();
 
-  // Find the product based on productId
   const product = productDetails.find(item => item.productId === productId)
 
-  // Check if product is found
   if (!product) {
     return (
       <div className='flex items-center justify-center p-8 pt-64 text-6xl font-semibold'>

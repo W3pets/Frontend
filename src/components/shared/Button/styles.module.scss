@@ -19,17 +19,17 @@
 
   &:hover {
     background: $primary;
-    opacity: 0.8;
+    opacity: 0.5;
     @include box-shadow($gray1);
   }
 
   &.outline {
     background: transparent;
-    border: 1px solid $primary;
-    color: $primary;
+    border: 1px solid $error;
+    color: $error;
 
     &:hover {
-      background: $primary;
+      background: $error;
       color: white;
       border: none;
     }

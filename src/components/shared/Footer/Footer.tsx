@@ -99,7 +99,22 @@ const Footer = ({ isMinInfo = false }: Props) => {
           </section>
 
           <section>
-            <Dropdown
+            <div>
+              <h3>Site Map</h3>
+              <ul>
+                <li>
+                  <Link href={Paths.Help}>Help & Support</Link>
+                </li>
+                <li>
+                  <Link href={Paths.Terms}>Terms & Conditions</Link>
+                </li>
+                <li>
+                  <Link href={Paths.Privacy}>Privacy Policy</Link>
+                </li>
+              </ul>
+            </div>
+            {/*I have commented out the old dropdown menu for now as it was buggy. Updated this one to match the general footer style*/}
+            {/* <Dropdown
               open
               className={styles.dropdown}
               trigger={['click']}
@@ -124,7 +139,7 @@ const Footer = ({ isMinInfo = false }: Props) => {
                     ),
                   },
                   {
-                    key: 1,
+                    key: 3,
                     label: (
                       <li>
                         <Link href={Paths.Privacy}>Privacy Policy</Link>
@@ -135,10 +150,10 @@ const Footer = ({ isMinInfo = false }: Props) => {
               }}
             >
               <h3>
-                Companyy
+                Company
                 {/* <FaCaretDown /> */}
-              </h3>
-            </Dropdown>
+              {/*</h3>
+            </Dropdown> */}
           </section>
 
           <section>
