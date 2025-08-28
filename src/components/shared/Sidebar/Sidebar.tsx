@@ -1,6 +1,3 @@
-"use client";
-// Removed invalid and unused import of sidebarMeta
-
 import {
   useState,
   useRef,
@@ -17,11 +14,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export type Child = {
-  icon?: React.ReactNode; // Accept any React node, including Lucide icons
+  icon?: JSX.Element;
   text: string;
   tagline?: string;
-  href?: string; // Use href for navigation
-  link?: string; // legacy support
+  link?: string;
   onclick?: () => void;
   isLast?: string;
 };
