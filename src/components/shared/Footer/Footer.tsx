@@ -69,14 +69,10 @@ const Footer = ({ isMinInfo = false }: Props) => {
               <h3>Site Map</h3>
               <ul>
                 <li>
-                  <Link href={Paths.Cart}>
-                    <p>Market</p>
-                  </Link>
+                  <Link href={Paths.Cart}>Market</Link>
                 </li>
                 <li>
-                  <Link href={Paths.Cart}>
-                    <p>Cart</p>
-                  </Link>
+                  <Link href={Paths.Cart}>Cart</Link>
                 </li>
                 <li>
                   <Link href={Paths.SellersFeatured}>Featured Sellers</Link>
@@ -100,7 +96,7 @@ const Footer = ({ isMinInfo = false }: Props) => {
 
           <section>
             <div>
-              <h3>Site Map</h3>
+              <h3>Help, Support & Terms.</h3>
               <ul>
                 <li>
                   <Link href={Paths.Help}>Help & Support</Link>
@@ -158,7 +154,7 @@ const Footer = ({ isMinInfo = false }: Props) => {
 
           <section>
             <div>
-              <h3>Resource</h3>
+              <h3>Resources</h3>
               <ul>
                 <li>
                   <Link href={`${Paths.Sellers}${SellerPaths.SellerRegister}`}>
